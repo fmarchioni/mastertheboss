@@ -1,6 +1,6 @@
 #JMS Browser
 
-An example application which can be used to browse, consume and send test message to a JMS queue deployed on WildFly
+An example Web application which can be used to browse, consume and send test message to a JMS queue deployed on WildFly
 
 ```mvn clean install wildfly:deploy```
 
