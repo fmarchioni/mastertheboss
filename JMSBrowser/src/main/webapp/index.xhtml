@@ -1,0 +1,74 @@
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head></h:head>
+
+    <h:body>
+        <h2>JMS Message Browser v.1.0.0 alpha</h2>
+        <h:form id="jsfexample">
+            <p:panelGrid columns="3">
+                <p:panelGrid columns="2">
+
+                    <p:outputLabel for="combo" value="Enter Queue:" />
+                    <p:selectOneMenu id="combo" value="#{manager.queue}">
+                        <f:selectItem itemLabel="Select One" itemValue="" />
+                        <f:selectItems value="#{manager.listQueue}" />
+                    </p:selectOneMenu>
+
+                    <p:commandButton actionListener="#{manager.search}"
+                                     styleClass="buttons" value="Search" update="table" />
+
+
+                </p:panelGrid>
+                <p:panelGrid columns="2">
+                    <h:outputText value="Send Test Messages:" />
+                    <p:inputText value="#{manager.testmessages}" />
+
+
+                    <p:commandButton actionListener="#{manager.sendTestMessages}"
+                                     styleClass="buttons" value="Send" update="table" />
+
+                    <h:messages />
+
+                </p:panelGrid>
+                
+                                <p:panelGrid columns="2">
+                    <h:outputText value="Consume Message:" />
+               
+
+
+                    <p:commandButton actionListener="#{manager.consumeMessages}"
+                                     styleClass="buttons" value="Consume" update="table" />
+
+                    <h:messages />
+
+                </p:panelGrid>
+            </p:panelGrid>
+            <p:dataTable var="item" value="#{manager.list}" rows="10" id="table" widgetVar="jmsTable"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+                   <p:column filterBy="#{item.id}" headerText="Id" footerText="contains" filterMatchMode="contains">
+
+
+                    <h:outputText value="#{item.id}" />
+                </p:column>
+                <p:column filterBy="#{item.message}" headerText="Message" footerText="contains" filterMatchMode="contains">
+
+
+
+                    <h:outputText value="#{item.message}" />
+
+                </p:column>
+                 <p:column filterBy="#{item.priority}" headerText="Priority" footerText="contains" filterMatchMode="contains">
+
+                    <h:outputText value="#{item.priority}" />
+                </p:column>
+
+            </p:dataTable>
+
+
+        </h:form>  
+    </h:body>
+</html>

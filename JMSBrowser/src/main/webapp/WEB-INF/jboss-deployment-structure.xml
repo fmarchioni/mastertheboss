@@ -1,0 +1,8 @@
+<jboss-deployment-structure>
+  <deployment>
+      <dependencies>
+         <module name="org.jboss.as.controller-client" />
+           <module name="org.jboss.dmr" />
+      </dependencies>
+    </deployment>
+</jboss-deployment-structure>
