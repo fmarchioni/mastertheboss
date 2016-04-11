@@ -16,6 +16,13 @@
 [ -r /etc/java/java.conf ] && . /etc/java/java.conf
 export JAVA_HOME
 
+JBOSS_HOME=/usr/share/jboss-as/
+export JBOSS_HOME
+
+JBOSS_USER=jboss
+export JBOSS_USER
+
+
 # Load JBoss AS init.d configuration.
 if [ -z "$JBOSS_CONF" ]; then
 	JBOSS_CONF="/etc/default/wildfly.conf"
