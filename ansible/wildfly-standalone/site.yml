@@ -1,0 +1,9 @@
+---
+# This playbook deploys a simple standalone JBoss server. 
+
+- hosts: 10.3.11.47  
+  remote_user: centos 
+  sudo: yes
+
+  roles:
+    - jboss-standalone
