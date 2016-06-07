@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.jboss.quickstarts.infinispan</groupId>
+	<artifactId>infinispan-demo</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>Infinispan quickstart</name>
+	<description>Simple quickstart to use in Library mode</description>
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<distribution>repo</distribution>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+		</license>
+	</licenses>
+
+	<properties>
+		<infinispan.version>8.2.2.Final</infinispan.version>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+
+		<version.jboss.weld>2.2.6.Final</version.jboss.weld>
+		<version.jboss.spec.javaee.7.0>9.0.1.Final</version.jboss.spec.javaee.7.0>
+
+		<version.commons.logging>1.1.1</version.commons.logging>
+		<version.commons.codec>1.10</version.commons.codec>
+
+
+		<!-- other plugin versions -->
+		<version.war.plugin>2.2</version.war.plugin>
+		<version.buildhelper.maven.plugin>1.7</version.buildhelper.maven.plugin>
+
+
+		<!-- maven-compiler-plugin -->
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+
+		<!-- test dependencies versions -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<browser>phantomjs</browser>
+
+	</properties>
+
+
+	<dependencyManagement>
+		<dependencies>
+
+
+			<!-- Define the version of JBoss' Java EE 7 APIs we want to import. Any 
+				dependencies from org.wildfly.bom will have their version defined by this 
+				BOM -->
+			<!-- JBoss distributes a complete set of Java EE 7 APIs including a Bill 
+				of Materials (BOM). A BOM specifies the versions of a "stack" (or a collection) 
+				of artifacts. We use this here so that we always get the correct versions 
+				of artifacts. Here we use the jboss-javaee-7-with-tools stack. The -with-tools 
+				means also versions of other artifacts like Arquillian. -->
+			<dependency>
+				<groupId>org.wildfly.bom</groupId>
+				<artifactId>jboss-javaee-7.0-wildfly-with-tools</artifactId>
+				<version>${version.jboss.spec.javaee.7.0}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+
+
+		<dependency>
+			<groupId>org.infinispan</groupId>
+			<artifactId>infinispan-core</artifactId>
+			<version>${infinispan.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.infinispan</groupId>
+			<artifactId>infinispan-client-hotrod</artifactId>
+			<version>${infinispan.version}</version>
+		</dependency>
+
+		<!-- <dependency> <groupId>commons-logging</groupId> <artifactId>commons-logging</artifactId> 
+			<version>${version.commons.logging}</version> </dependency> -->
+
+		<dependency>
+			<groupId>org.jboss.spec.javax.faces</groupId>
+			<artifactId>jboss-jsf-api_2.2_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Import the CDI API, we use provided scope as the API is included in 
+			JBoss AS 7 -->
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.infinispan</groupId>
+			<artifactId>infinispan-embedded</artifactId>
+			<version>${infinispan.version}</version>
+		</dependency>
+
+
+	</dependencies>
+
+	<build>
+
+
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>${version.buildhelper.maven.plugin}</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/local/java</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>1.1.0.Alpha8</version>
+			</plugin>
+			<!-- Maven Surefire Plugin to skip tests on build -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+				<configuration>
+					<skipTests>true</skipTests>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${version.war.plugin}</version>
+				<configuration>
+					<!-- Java EE 6 doesn't require web.xml, Maven needs to catch up! -->
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+
+</project>
+
