@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:body>
+    <h:form id="jsfexample">
+        <p:panelGrid columns="2">
+            <f:facet name="header">Anagram maker</f:facet>
+ 
+            <h:outputLabel for="Word" value="Word" />
+            <p:inputText id="Word" value="#{bean.word}" label="Word" />
+            <h:outputLabel for="Anagram" value="Anagram" />
+            <h:outputText id="Anagram" value="#{bean.anagram}" />
+            <f:facet name="footer">
+ 
+                <p:commandButton action="#{bean.generateAnagram}" update="Anagram"
+                    value="Generate anagram" icon="ui-icon-check" style="margin:0" />
+            </f:facet>
+        </p:panelGrid>
+    </h:form>
+</h:body>
+</html>
