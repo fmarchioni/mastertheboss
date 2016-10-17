@@ -6,6 +6,10 @@ Technologies: EJB, CDI, JPS, JSF
 Summary: Basic example that shows how to use the 2nd Level cache with WildFly 10 
 Target Product: WildFly 10 
 
+Tutorial description
+---------------------
+
+A Complete tutorial about the Second Level Cache is available at the following URL: <http://www.mastertheboss.com/jboss-frameworks/hibernate-jpa/hibernate-cache/using-hibernate-second-level-cache-with-jboss-as-5-6-7>.
 
 System requirements
 -------------------
