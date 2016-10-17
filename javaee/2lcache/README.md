@@ -1,4 +1,4 @@
-javaee6example:
+2lcache:
 ===============================
 Author: Francesco Marchioni
 Level: Intermediate
