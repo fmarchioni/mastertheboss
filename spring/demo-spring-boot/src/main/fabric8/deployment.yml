@@ -1,0 +1,15 @@
+spec:
+  replicas: 1
+  template:
+    spec:
+      volumes:
+        - name: config
+          configMap:
+            name: ${project.artifactId}
+            items:
+            - key: application.properties
+              path: application.properties
+      containers:
+        - volumeMounts:
+            - name: config
+              mountPath: /app/config
