@@ -1,0 +1,12 @@
+RULE check head
+
+CLASS ServiceBean
+
+METHOD put
+
+AT EXIT
+
+
+DO THROW new RuntimeException("invalid header format");
+
+ENDRULE
