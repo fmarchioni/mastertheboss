@@ -51,7 +51,7 @@ public class FootballManager {
               .host("datagrid-app-hotrod")
               .port(11333);
         cacheManager = new RemoteCacheManager(builder.build());
-        cache = cacheManager.getCache("teams");
+        cache = cacheManager.getCache("default");
         if(!cache.containsKey(teamsKey)) {
             List<String> teams = new ArrayList<String>();
             Team t = new Team("Barcelona");
