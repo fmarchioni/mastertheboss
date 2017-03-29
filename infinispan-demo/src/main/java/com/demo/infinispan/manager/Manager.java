@@ -2,8 +2,9 @@
 package com.demo.infinispan.manager;
 
 import org.infinispan.commons.api.BasicCache;
+import org.openjdk.jol.info.ClassLayout;
+import org.openjdk.jol.info.GraphLayout;
 
- 
 import com.demo.infinispan.cache.LocalCacheContainerProvider;
 import com.demo.infinispan.model.Item;
 
@@ -63,6 +64,15 @@ public class Manager {
 		List<Item> dataList = new ArrayList<Item>();
 		if (cache != null)
 		dataList.addAll(cache.values());
+		
+ 
+		if (cache != null && cache.size() > 0) {
+        System.out.println(ClassLayout.parseClass(BasicCache.class).toPrintable(cache));
+         
+        System.out.println(GraphLayout.parseInstance(cache).toPrintable());
+        
+        System.out.println(GraphLayout.parseInstance(cache).toFootprint());
+		}
 		return dataList; 
 
 	}
