@@ -42,7 +42,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Christian Sadilek <csadilek@redhat.com>
  */
 @SuppressWarnings("serial")
-@WebServlet(value = "/AsynchronousServlet" )
+@WebServlet(value = "/test" )
 public class TestServlet extends HttpServlet {
 
  
@@ -59,7 +59,7 @@ public class TestServlet extends HttpServlet {
 		  
 	        FootballManager manager = new FootballManager();
 	 
-            manager.printTeams();
+            manager.printTeams(out);
 	     
 	             
  
