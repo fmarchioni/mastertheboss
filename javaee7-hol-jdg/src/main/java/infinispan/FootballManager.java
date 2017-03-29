@@ -52,6 +52,8 @@ public class FootballManager {
               .port(11333);
         cacheManager = new RemoteCacheManager(builder.build());
         cache = cacheManager.getCache("default");
+        
+        System.out.println("Cache is "+cache);
         if(!cache.containsKey(teamsKey)) {
             List<String> teams = new ArrayList<String>();
             Team t = new Team("Barcelona");
