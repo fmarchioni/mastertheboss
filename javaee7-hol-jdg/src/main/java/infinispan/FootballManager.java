@@ -119,12 +119,12 @@ public class FootballManager {
         }
     }
 */
-    public void printTeams() {
+    public void printTeams(PrintWriter out) {
         @SuppressWarnings("unchecked")
         List<String> teams = (List<String>) cache.get(teamsKey);
         if (teams != null) {
             for (String teamName : teams) {
-                con.printf(cache.get("Barcelona").toString());
+               out.println(cache.get("Barcelona").toString());
             }
         }
     }
@@ -135,13 +135,5 @@ public class FootballManager {
 
     
 
-    public static String jdgProperty(String name) {
-        Properties props = new Properties();
-        try {
-            props.load(FootballManager.class.getClassLoader().getResourceAsStream(PROPERTIES_FILE));
-        } catch (IOException ioe) {
-            throw new RuntimeException(ioe);
-        }
-        return props.getProperty(name);
-    }
+   
 }
