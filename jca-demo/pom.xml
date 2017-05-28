@@ -1,17 +1,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.mastertheboss.jca</groupId>
-  <artifactId>jca-demo</artifactId>
-  <version>1.0</version>
-  <packaging>jar</packaging>
+	<groupId>com.sample</groupId>
+	<artifactId>jca-demo</artifactId>
+	<version>1.0</version>
+	<packaging>jar</packaging>
 
-  <name>jca-demo</name>
-  <url>http://maven.apache.org</url>
+	<name>jca-demo</name>
+	<url>http://maven.apache.org</url>
 
- <properties>
+	<properties>
 		<version.org.jboss.ironjacamar>1.0.9.Final</version.org.jboss.ironjacamar>
+		 <version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
 	</properties>
 
 	<dependencies>
@@ -21,7 +22,7 @@
 			<version>${version.org.jboss.ironjacamar}</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 	</dependencies>
 
 
@@ -73,13 +74,17 @@
 							<goal>rar</goal>
 						</goals>
 						<configuration>
-							 
+
 							<raXmlFile>src/main/resources/META-INF/ironjacamar.xml</raXmlFile>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
-
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>${version.wildfly.maven.plugin}</version>
+            </plugin>
 		</plugins>
 	</build>
 
