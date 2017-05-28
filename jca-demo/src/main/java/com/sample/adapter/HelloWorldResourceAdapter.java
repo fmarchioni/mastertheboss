@@ -29,7 +29,7 @@ public class HelloWorldResourceAdapter implements ResourceAdapter
    private static Logger log = Logger.getLogger("HelloWorldResourceAdapter");
 
    /** Name property */
-   @ConfigProperty(defaultValue = "AS 7", supportsDynamicUpdates = true)
+   @ConfigProperty(defaultValue = "WildFly", supportsDynamicUpdates = true)
    private String name;
 
    /**
