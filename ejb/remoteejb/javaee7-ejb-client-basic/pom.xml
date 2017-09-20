@@ -1,0 +1,107 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>com.itbuzzpress.chapter4</groupId>
+   <artifactId>javaee7-ejb-client-basic</artifactId>
+   <packaging>jar</packaging>
+   <version>1.0</version>
+   <name>Remote EJB client</name>
+   <url>http://www.itbuzzpress.com</url>
+   <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <!-- other plugin versions -->
+      <version.compiler.plugin>3.1</version.compiler.plugin>
+      <version.exec.plugin>1.2.1</version.exec.plugin>
+      <version.war.plugin>2.1.1</version.war.plugin>
+      <!-- maven-compiler-plugin -->
+      <maven.compiler.target>1.7</maven.compiler.target>
+      <maven.compiler.source>1.7</maven.compiler.source>
+   </properties>
+   <repositories>
+      <repository>
+         <id>JBoss Repository</id>
+         <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+      </repository>
+   </repositories>
+   <dependencyManagement>
+      <dependencies>
+         <dependency>
+            <groupId>org.wildfly</groupId>
+            <artifactId>wildfly-ejb-client-bom</artifactId>
+            <version>11.0.0.CR1</version>
+            <type>pom</type>
+            <scope>import</scope>
+         </dependency>
+      </dependencies>
+   </dependencyManagement>
+   <dependencies>
+      <!-- We depend on the EJB remote business interfaces of this application -->
+      <dependency>
+         <groupId>com.itbuzzpress.chapter4</groupId>
+         <artifactId>javaee7-ejb-server-basic</artifactId>
+         <type>ejb-client</type>
+         <version>${project.version}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.wildfly</groupId>
+         <artifactId>wildfly-naming</artifactId>
+         <version>11.0.0.CR1</version>
+      </dependency>
+      <!-- This is needed if you want to use pure http client feature
+          <dependency>
+                <groupId>org.wildfly.wildfly-http-client</groupId>
+                <artifactId>wildfly-http-client-common</artifactId>                  
+         </dependency>
+            <dependency>
+                <groupId>org.wildfly.wildfly-http-client</groupId>
+                <artifactId>wildfly-http-naming-client</artifactId>                 
+           </dependency>
+        -->
+      <!-- JBoss EJB client API jar. We use runtime scope because the EJB client 
+			API isn't directly used in this example. We just need it in our runtime classpath -->
+      <dependency>
+         <groupId>org.jboss</groupId>
+         <artifactId>jboss-ejb-client</artifactId>
+         <scope>runtime</scope>
+      </dependency>
+   </dependencies>
+   <build>
+      <finalName>${project.artifactId}</finalName>
+      <plugins>
+         <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>${version.compiler.plugin}</version>
+            <configuration>
+               <source>${maven.compiler.source}</source>
+               <target>${maven.compiler.target}</target>
+            </configuration>
+         </plugin>
+         <!-- Add the maven exec plugin to allow us to run a java program via maven -->
+         <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>${version.exec.plugin}</version>
+            <executions>
+               <execution>
+                  <goals>
+                     <goal>exec</goal>
+                  </goals>
+               </execution>
+            </executions>
+            <configuration>
+               <executable>java</executable>
+               <workingDirectory>${project.build.directory}/exec-working-directory</workingDirectory>
+               <arguments>
+                  <!-- automatically creates the classpath using all project dependencies, 
+							also adding the project build directory -->
+                  <argument>-classpath</argument>
+                  <classpath />
+                  <argument>com.itbuzzpress.chapter4.client.RemoteEJBClient</argument>
+               </arguments>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
+</project>
+
+
