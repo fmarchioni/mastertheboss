@@ -1,8 +1,8 @@
-Remote Client EJB example
+Remote Client EJB example for WildFly 11
 =====================================
 Example taken from [Practical Java EE 7 Development using WildFly application server](http://www.itbuzzpress.com/ebooks/java-ee-7-development-on-wildfly.html)
 
-This example demonstrates the usage of Remote Client EJB in a Java EE 7 Environment.
+This example has been adapter to work on WildFly 11 and demonstrates the usage of Remote Client EJB in a Java EE 7 Environment.
 
 ###### Test
 ```shell
