@@ -1,7 +1,13 @@
-# mp-opentracing
+# mp-config-example
 
-This project contains a Web application which uses Eclipse Microprofile OpenTracing API to trace a JAX-RS application
+This project contains a Web application which uses Eclipse Microprofile Config API to read its configuration.
 
 # Instructions
 
-Instructions to run the application at: http://www.mastertheboss.com/eclipse/eclipse-microservices/using-opentracing-api-with-wildfly-applicaiton-server
+To run the example, you need:
+
+````
+mvn clean install wildfly:deploy
+````
+
+* Go to [http://localhost:8080/mp-config-example](http://localhost:8080/mp-config-example) for more information about it. 
