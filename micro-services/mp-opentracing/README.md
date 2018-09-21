@@ -1,5 +1,4 @@
-# mp-config-example
-
+# mp-opentracing
 This project contains a Web application which uses Eclipse OpenTracing API.
 
 # Instructions
