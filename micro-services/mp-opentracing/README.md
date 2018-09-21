@@ -1,6 +1,6 @@
 # mp-config-example
 
-This project contains a Web application which uses Eclipse Microprofile Config API to read its configuration.
+This project contains a Web application which uses Eclipse OpenTracing API.
 
 # Instructions
 
