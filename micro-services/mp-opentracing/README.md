@@ -7,9 +7,9 @@ This project contains a Web application which uses Eclipse Microprofile Config A
 To run the example, you need:
 
 ````
-mvn clean package deploy
+mvn clean install wildfly:deploy
 ````
 
-* Go to [http://localhost:8080/mp-config-example](http://localhost:8080/mp-config-example) to access the Servlet link 
+* Go to [http://localhost:8080/mp-config-example](http://localhost:8080/mp-config-example) for more information about it. 
 
 
