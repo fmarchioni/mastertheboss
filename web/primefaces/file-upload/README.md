@@ -16,7 +16,7 @@ Build and Deploy the Quickstart
 
         mvn clean install wildfly:deploy
 
-4. This will deploy `target/primefaces.war` to the running instance of the server.
+4. This will deploy `target/file-upload.war` to the running instance of the server.
 
 
 Access the application 
