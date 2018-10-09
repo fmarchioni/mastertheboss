@@ -1,4 +1,4 @@
-Primefaces Example
+Primefaces File Upload Example
 ===============================
 Author: Francesco Marchioni  
 Level: Beginner  
