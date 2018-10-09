@@ -1,0 +1,67 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+ 
+<h:head>
+</h:head>
+ 
+<h:body>
+    <h:form id="jsfexample">
+        <p:panelGrid columns="2">
+            <f:facet name="header">  
+                Basic PanelGrid  
+           </f:facet>
+            <h:outputLabel for="key" value="Enter Name" />
+            <p:inputText id="key" value="#{manager.name}" />
+ 
+            <h:outputLabel for="value" value="Enter Surname" />
+            <p:inputText id="value" value="#{manager.surname}" />
+ 
+            <h:outputLabel for="age" value="Enter Age" />
+            <p:inputText id="age" value="#{manager.age}" />
+ 
+            <h:outputLabel for="city" value="Enter City" />
+            <p:inputText id="city" value="#{manager.city}" />
+            <p:commandButton action="#{manager.save}" update="mydata"
+                value="Save" icon="ui-icon-check" style="margin:0" />
+            <p:commandButton action="#{manager.clear}" update="mydata"
+                value="Delete" icon="ui-icon-cancel" style="margin:0" />
+ 
+            <h:messages />
+ 
+        </p:panelGrid>
+        <br />
+        <p:dataTable value="#{manager.cacheList}" var="item" id="mydata">
+            <p:column>
+                <f:facet name="header">Name</f:facet>
+                <h:outputText value="#{item.name}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">Surname</f:facet>
+                <h:outputText value="#{item.surname}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">Age</f:facet>
+                <h:outputText value="#{item.age}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">City</f:facet>
+                <h:outputText value="#{item.city}" />
+            </p:column>
+        </p:dataTable>
+        <p:panel header="Export All Data">
+            <h:commandLink>
+                <p:graphicImage value="/icons/excel.jpg" />
+                <p:dataExporter type="xls" postProcessor="#{manager.postProcessXLS}"
+                    target="mydata" fileName="myexcel" pageOnly="true" />
+            </h:commandLink>
+            <h:commandLink>
+                <p:graphicImage value="/icons/pdf.png" />
+                <p:dataExporter type="pdf" target="mydata" fileName="mypdf" pageOnly="true" />
+            </h:commandLink>
+        </p:panel>
+ 
+    </h:form>
+</h:body>
+</html>
