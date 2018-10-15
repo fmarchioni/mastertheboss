@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:h="http://xmlns.jcp.org/jsf/html"
+          xmlns:p="http://primefaces.org/ui">
+        <h:head>
+            <title>DT Json</title>
+        </h:head>
+        <h:body>
+            <h:form>
+                <p:dataTable var="data" value="#{jsonView.monarchList}">
+                    <p:column headerText="Name" sortBy="#{data.name}">
+                        <h:outputText value="#{data.name}" />
+                    </p:column>
+                    <p:column headerText="House" sortBy="#{data.house}">
+                        <h:outputText value="#{data.house}" />
+                    </p:column>
+                    <p:column headerText="City" sortBy="#{data.city}">
+                        <h:outputText value="#{data.city}" />
+                    </p:column>
+                    <p:column headerText="Years" sortBy="#{data.years}">
+                        <h:outputText value="#{data.years}" />
+                    </p:column>                                        
+                </p:dataTable>
+            </h:form>
+        </h:body>
+    </html>
