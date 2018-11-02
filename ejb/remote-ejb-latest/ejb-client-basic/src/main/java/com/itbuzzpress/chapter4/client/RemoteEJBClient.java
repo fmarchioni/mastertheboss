@@ -53,7 +53,7 @@ public class RemoteEJBClient {
 		  
 
 		return (Account) ctx
-				.lookup("ejb:/javaee7-ejb-server-basic/AccountEJB!com.itbuzzpress.chapter4.ejb.Account?stateful");
+				.lookup("ejb:/ejb-server-basic/AccountEJB!com.itbuzzpress.chapter4.ejb.Account?stateful");
 	}
 
 	private static Calculator lookupCalculatorEJB() throws NamingException {
@@ -66,6 +66,6 @@ public class RemoteEJBClient {
 		final Context context = new InitialContext(jndiProperties);
 
 		return (Calculator) context
-				.lookup("ejb:/javaee7-ejb-server-basic/CalculatorEJB!com.itbuzzpress.chapter4.ejb.Calculator");
+				.lookup("ejb:/ejb-server-basic/CalculatorEJB!com.itbuzzpress.chapter4.ejb.Calculator");
 	}
 }
