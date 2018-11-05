@@ -41,29 +41,36 @@ public class RemoteEJBClient {
 	}
 
 	private static Account lookupAccountEJB() throws NamingException {
+
+        final Hashtable<String, String> jndiProperties = new Hashtable<>();
+        jndiProperties.put(Context.INITIAL_CONTEXT_FACTORY, "org.wildfly.naming.client.WildFlyInitialContextFactory");
+            //use HTTP upgrade, an initial upgrade requests is sent to upgrade to the remoting protocol
+            jndiProperties.put(Context.PROVIDER_URL,"remote+http://localhost:8080");
+      final Context context = new InitialContext(jndiProperties);
+
+/*
+
 		final Hashtable jndiProperties = new Hashtable();
  
 		jndiProperties.put(Context.INITIAL_CONTEXT_FACTORY,  "org.wildfly.naming.client.WildFlyInitialContextFactory");
-                jndiProperties.put(Context.PROVIDER_URL,"http-remoting://localhost:8080");
+                jndiProperties.put(Context.PROVIDER_URL,"remote+http://localhost:8080");
                 // Pure HTTP
 		//jndiProperties.put(Context.PROVIDER_URL,"http://localhost:8080/wildfly-services");
 
 		final Context ctx = new InitialContext(jndiProperties);
  
-		  
+*/		  
 
-		return (Account) ctx
+		return (Account) context
 				.lookup("ejb:/ejb-server-basic/AccountEJB!com.itbuzzpress.chapter4.ejb.Account?stateful");
 	}
 
 	private static Calculator lookupCalculatorEJB() throws NamingException {
-		final Hashtable jndiProperties = new Hashtable();
-		jndiProperties.put(Context.INITIAL_CONTEXT_FACTORY,  "org.wildfly.naming.client.WildFlyInitialContextFactory");
-                jndiProperties.put(Context.PROVIDER_URL,"http-remoting://localhost:8080");
-
-                // Pure HTTP  
-                //jndiProperties.put(Context.PROVIDER_URL,"http://localhost:8080/wildfly-services");
-		final Context context = new InitialContext(jndiProperties);
+	      final Hashtable<String, String> jndiProperties = new Hashtable<>();
+        jndiProperties.put(Context.INITIAL_CONTEXT_FACTORY, "org.wildfly.naming.client.WildFlyInitialContextFactory");
+            //use HTTP upgrade, an initial upgrade requests is sent to upgrade to the remoting protocol
+            jndiProperties.put(Context.PROVIDER_URL,"remote+http://localhost:8080");
+      final Context context = new InitialContext(jndiProperties);
 
 		return (Calculator) context
 				.lookup("ejb:/ejb-server-basic/CalculatorEJB!com.itbuzzpress.chapter4.ejb.Calculator");
