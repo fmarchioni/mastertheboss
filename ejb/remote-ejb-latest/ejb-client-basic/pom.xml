@@ -29,6 +29,7 @@
             <artifactId>wildfly-ejb-client-bom</artifactId>
             <version>14.0.1.Final</version>
             <type>pom</type>
+            <scope>import</scope>
          </dependency>
       </dependencies>
    </dependencyManagement>
@@ -43,22 +44,18 @@
       <dependency>
          <groupId>org.wildfly</groupId>
          <artifactId>wildfly-naming</artifactId>
-         <version>14.0.1.Final</version>
-      </dependency>
-      <dependency>
-         <groupId>org.wildfly.common</groupId>
-         <artifactId>wildfly-common</artifactId>
-         <version>1.4.0.Final</version>
       </dependency>
       <dependency>
          <groupId>org.wildfly</groupId>
          <artifactId>wildfly-naming-client</artifactId>
-         <version>1.0.9.Final</version>
+      </dependency>
+      <dependency>
+         <groupId>org.wildfly.common</groupId>
+         <artifactId>wildfly-common</artifactId>
       </dependency>
       <dependency>
          <groupId>org.jboss</groupId>
          <artifactId>jboss-ejb-client</artifactId>
-         <version>4.0.11.Final</version>
       </dependency>
    </dependencies>
    <build>
