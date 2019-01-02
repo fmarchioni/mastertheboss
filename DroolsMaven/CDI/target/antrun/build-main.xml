@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <copy includeemptydirs="false" todir="/home/francesco/git/mastertheboss/DroolsMaven/CDI/target/classes" failonerror="false" quiet="true">
+    <fileset dir="/home/francesco/git/mastertheboss/DroolsMaven/CDI/target/classes"/>
+    <globmapper from="*Constants.properties" to="*Constants_default.properties"/>
+  </copy>
+</target>
+</project>
