@@ -31,7 +31,7 @@
      <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
      <id>openshift</id>
      <build>
-        <finalName>SampleApp</finalName>
+        <finalName>demopdf</finalName>
         <plugins>
           <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
