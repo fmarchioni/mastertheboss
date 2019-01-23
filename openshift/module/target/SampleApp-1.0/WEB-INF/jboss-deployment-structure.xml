@@ -1,7 +1,0 @@
-<jboss-deployment-structure>
-  <deployment>
-    <dependencies>
-      <module name="com.itext" />
-    </dependencies>
-    </deployment>
-</jboss-deployment-structure>

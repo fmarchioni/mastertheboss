@@ -9,7 +9,7 @@
   <h1>Sample Application using iText</h1>
  
 
-   <p><a href="pdf.jsp">Click</a> to generate PDF example</p> 
+   <p><a href="pdf">Click</a> to generate PDF example</p> 
 
  
 
