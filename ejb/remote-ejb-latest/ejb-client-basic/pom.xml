@@ -15,6 +15,7 @@
       <!-- maven-compiler-plugin -->
       <maven.compiler.target>1.8</maven.compiler.target>
       <maven.compiler.source>1.8</maven.compiler.source>
+      <version.server.bom>16.0.0.Final</version.server.bom>
    </properties>
    <repositories>
       <repository>
@@ -25,9 +26,9 @@
    <dependencyManagement>
       <dependencies>
          <dependency>
-            <groupId>org.wildfly</groupId>
-            <artifactId>wildfly-ejb-client-bom</artifactId>
-            <version>14.0.1.Final</version>
+            <groupId>org.wildfly.bom</groupId>
+            <artifactId>wildfly-javaee8-with-tools</artifactId>
+            <version>${version.server.bom}</version>
             <type>pom</type>
             <scope>import</scope>
          </dependency>
@@ -41,21 +42,12 @@
          <type>ejb-client</type>
          <version>${project.version}</version>
       </dependency>
+      <!-- Include the ejb client jars -->
       <dependency>
          <groupId>org.wildfly</groupId>
-         <artifactId>wildfly-naming</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>org.wildfly</groupId>
-         <artifactId>wildfly-naming-client</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>org.wildfly.common</groupId>
-         <artifactId>wildfly-common</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>org.jboss</groupId>
-         <artifactId>jboss-ejb-client</artifactId>
+         <artifactId>wildfly-ejb-client-bom</artifactId>
+         <type>pom</type>
+         <scope>compile</scope>
       </dependency>
    </dependencies>
    <build>
@@ -96,5 +88,3 @@
       </plugins>
    </build>
 </project>
-
-

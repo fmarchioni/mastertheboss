@@ -10,7 +10,7 @@
       <version.ejb.plugin>2.3</version.ejb.plugin>
       <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <version.server.bom>14.0.1.Final</version.server.bom>
+      <version.server.bom>16.0.0.Final</version.server.bom>
    </properties>
    <repositories>
       <repository>
@@ -29,23 +29,18 @@
          </dependency>
       </dependencies>
    </dependencyManagement>
-
    <dependencies>
-
-        <dependency>
-            <groupId>org.jboss.spec.javax.annotation</groupId>
-            <artifactId>jboss-annotations-api_1.3_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jboss.spec.javax.ejb</groupId>
-            <artifactId>jboss-ejb-api_3.2_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
+      <dependency>
+         <groupId>org.jboss.spec.javax.annotation</groupId>
+         <artifactId>jboss-annotations-api_1.3_spec</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.spec.javax.ejb</groupId>
+         <artifactId>jboss-ejb-api_3.2_spec</artifactId>
+         <scope>provided</scope>
+      </dependency>
    </dependencies>
-
    <build>
       <finalName>${project.artifactId}</finalName>
       <plugins>
@@ -81,5 +76,3 @@
       </plugins>
    </build>
 </project>
-
-
