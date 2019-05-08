@@ -398,7 +398,7 @@
         <subsystem xmlns="urn:jboss:domain:jdr:1.0"/>
         <subsystem xmlns="urn:jboss:domain:jgroups:6.0">
             <channels default="ee">
-                <channel name="ee" stack="udp" cluster="ejb"/>
+                <channel name="ee" stack="tcp" cluster="ejb"/>
             </channels>
             <stacks>
                 <stack name="udp">
@@ -416,9 +416,18 @@
                     <protocol type="MFC"/>
                     <protocol type="FRAG3"/>
                 </stack>
-                <stack name="tcp">
-                    <transport type="TCP" socket-binding="jgroups-tcp"/>
-                    <socket-protocol type="MPING" socket-binding="jgroups-mping"/>
+                 <stack name="tcp">
+                    <transport type="TCP" socket-binding="jgroups-tcp">
+                        <property name="external_addr">${env.EXTERNAL_ADDR}</property>
+                    </transport>
+                    <protocol type="dns.DNS_PING">
+                        <property name="dns_query">
+                            jgroups.${env.DNS_NAME}.svc.cluster.local
+                        </property>
+                        <property name="dns_record_type">
+                            SRV
+                        </property>
+                    </protocol>
                     <protocol type="MERGE3"/>
                     <protocol type="FD_SOCK"/>
                     <protocol type="FD_ALL"/>
