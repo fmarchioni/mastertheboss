@@ -14,7 +14,7 @@
     "npm": "*"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node script.js",
     "test": "IP=0.0.0.0 PORT=3030 mocha --timeout 5000 tests/*_test.js"
   },
   "repository": {
