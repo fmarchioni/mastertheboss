@@ -1,0 +1,26 @@
+{
+  "name": "nodejs-basic",
+  "version": "0.0.1",
+  "description": "Node.js HelloWorld app for OpenShift 3",
+  "main": "server.js",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4"
+  },
+  "engine": {
+    "node": "*",
+    "npm": "*"
+  },
+  "scripts": {
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fmarchioni/mastertheboss/tree/master/openshift/express"
+  },
+  "author": "Francesco Marchioni <fmarchio@redhat.com>",
+  "license": "CC-BY-1.0",
+  "homepage": "http://www.mastertheboss.com"
+}
