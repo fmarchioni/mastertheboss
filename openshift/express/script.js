@@ -1,8 +1,10 @@
 var express = require('express'),
     fs = require('fs'),
     app = express();
- 
+
+var cors = require('cors');
 var app = express();
+app.use(cors());
  
 var ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
  
