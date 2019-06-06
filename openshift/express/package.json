@@ -4,6 +4,7 @@
   "description": "Node.js HelloWorld app for OpenShift 3",
   "main": "server.js",
   "dependencies": {
+    "cors": "^2.8.1",
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
     "ejs": "^2.4.1",
