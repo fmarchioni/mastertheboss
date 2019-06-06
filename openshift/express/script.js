@@ -1,27 +1,20 @@
-document.addEventListener('DOMContentLoaded', () => {
+var express = require('express'),
+    fs = require('fs'),
+    app = express();
+ 
+var app = express();
+ 
+var ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+ 
+ 
+app.get('http://quarkus-customer-service:8080/customers', function(req, res) {
+    res.send(res.json());
+});
+ 
+ 
+app.listen(8080, ip);
+ 
+module.exports = app;
 
-  const requests = [
-    { 
-      url: 'http://quarkus-customer-service:8080/customers',
-      container: 'response-one'
-    }
-  ]
 
-  for (const request of requests) {
-    fetch(request.url)
-    .then((response) => {
-      response.json().then((data) => {
-        document.getElementById(request.container)
-                .getElementsByTagName('p')[0]
-                .innerHTML = data.msg
-      })
-    })
-    .catch((err) => {
-      document.getElementById(request.container)
-                .getElementsByTagName('p')[0]
-                .innerHTML = 'CORS Error! 😯'
-    })
-  }
-  
-}, false);
 
