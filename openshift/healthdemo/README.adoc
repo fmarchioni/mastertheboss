@@ -1,0 +1,3 @@
+== Example Microprofile Health check
+
+Based on this tutorial: http://www.mastertheboss.com/soa-cloud/openshift/managing-microprofile-health-checks
