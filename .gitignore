@@ -1,0 +1,12 @@
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.logs
+*.iml
+.idea/
+.eclipse
+.dockerignore
+.pom.xml.swp
+.mvn/*
