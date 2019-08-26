@@ -1,0 +1,3 @@
+== FlyWay migrations example
+
+Source code for this tutorial: http://www.mastertheboss.com/other/flyway/getting-started-with-flyway
