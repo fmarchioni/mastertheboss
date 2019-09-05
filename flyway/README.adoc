@@ -1,3 +1,6 @@
 == FlyWay migrations example
 
-Source code for this tutorial: http://www.mastertheboss.com/other/flyway/getting-started-with-flyway
+Source code for the following tutorials: 
+
+* http://www.mastertheboss.com/other/flyway/getting-started-with-flyway
+* http://www.mastertheboss.com/other/flyway/performing-a-flyway-migration-with-quarkus-and-thorntail
