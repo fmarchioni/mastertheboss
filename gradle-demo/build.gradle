@@ -1,0 +1,24 @@
+plugins {
+    id 'java-library'
+    id 'war'
+}
+
+repositories {
+    maven { url 'https://repository.jboss.org/nexus/content/groups/public-jboss' }
+    maven { url 'https://repository.jboss.org/nexus/content/repositories' }
+    maven { url 'https://repository.jboss.org/nexus/content/repositories/thirdparty-releases' }
+    mavenCentral()
+}
+
+dependencies {
+    providedCompile 'org.wildfly:wildfly-spec-api:16.0.0.Final'
+}
+
+test {
+    // Use junit platform for unit tests
+    useJUnitPlatform()
+}
+
+war {
+    from 'src/webapp' // adds a file-set to the root of the archive
+} 
