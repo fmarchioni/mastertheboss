@@ -1,0 +1,3 @@
+== Building a Maven archetype for a Java Enterprise Project
+
+* Article: http://www.mastertheboss.com/jboss-frameworks/maven-tutorials/jboss-maven/building-a-maven-archetype-for-a-java-enterprise-project
