@@ -5,6 +5,13 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         name="wildfly">
 
+    <requiredProperties>
+        <requiredProperty key="version-wildfly">
+            <defaultValue>17.0.0.Final</defaultValue>
+        </requiredProperty>
+    </requiredProperties>
+
+
     <fileSets>
         <fileSet filtered="true" packaged="true">
             <directory>src/main/java</directory>
