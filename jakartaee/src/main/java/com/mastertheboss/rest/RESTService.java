@@ -1,6 +1,5 @@
 package com.mastertheboss.rest;
 
-
 import com.mastertheboss.ejb.ServiceBean;
 import com.mastertheboss.model.SimpleProperty;
 

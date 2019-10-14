@@ -1,11 +1,8 @@
 package com.mastertheboss.model;
 
-import javax.enterprise.event.Event;
-import javax.inject.Inject;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.PostRemove;
 
 @Entity
 public class SimpleProperty {

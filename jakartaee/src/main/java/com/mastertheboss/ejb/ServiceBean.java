@@ -1,20 +1,12 @@
 package com.mastertheboss.ejb;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.mastertheboss.model.SimpleProperty;
 
-import javax.annotation.PostConstruct;
-import javax.ejb.Singleton;
 import javax.ejb.Stateless;
-import javax.enterprise.event.Event;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
-
-
-import com.mastertheboss.model.SimpleProperty;
+import java.util.List;
 
 
 
