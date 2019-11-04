@@ -1,0 +1,7 @@
+<jboss-deployment-structure>
+  <deployment>
+      <dependencies>
+         <module name="deployment.kafka-rar-0.6.0-SNAPSHOT.rar" export="TRUE"/>
+      </dependencies>
+    </deployment>
+</jboss-deployment-structure>
