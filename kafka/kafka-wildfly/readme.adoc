@@ -1,0 +1,2 @@
+## Apache Kafka and WildFly demo
+Source code for this tutorial: http://www.mastertheboss.com/jboss-frameworks/apache-kafka/getting-started-with-apache-kafka-and-wildfly
