@@ -1,0 +1,3 @@
+== Hibernate and MySQL example
+
+* Tutorial for this example: http://www.mastertheboss.com/jboss-frameworks/maven-tutorials/maven-hibernate-jpa/maven-and-hibernate-4-tutorial

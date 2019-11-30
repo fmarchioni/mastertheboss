@@ -11,13 +11,14 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.2.1.Final</version>
+            <version>5.4.9.Final</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.37</version>
+            <version>5.1.48</version>
         </dependency>
+
     </dependencies>
     <build>
         <plugins>
@@ -33,4 +34,4 @@
         </plugins>
     </build>
 </project>
-</project>
+
