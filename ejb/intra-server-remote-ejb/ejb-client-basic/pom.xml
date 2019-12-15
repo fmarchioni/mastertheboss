@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>com.mastertheboss</groupId>
+   <artifactId>ejb-client-basic</artifactId>
+   <packaging>war</packaging>
+   <version>1.0</version>
+   <name>Remote EJB client</name>
+   <url>http://www.itbuzzpress.com</url>
+   <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <!-- other plugin versions -->
+      <version.compiler.plugin>3.1</version.compiler.plugin>
+      <version.exec.plugin>1.2.1</version.exec.plugin>
+      <version.war.plugin>2.1.1</version.war.plugin>
+      <!-- maven-compiler-plugin -->
+      <maven.compiler.target>1.8</maven.compiler.target>
+      <maven.compiler.source>1.8</maven.compiler.source>
+      <version.server.bom>18.0.0.Final</version.server.bom>
+   </properties>
+   <repositories>
+      <repository>
+         <id>JBoss Repository</id>
+         <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+      </repository>
+   </repositories>
+  <dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.wildfly.bom</groupId>
+            <artifactId>wildfly-jakartaee8-with-tools</artifactId>
+            <version>${version.server.bom}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+   </dependencyManagement>
+   <dependencies>
+      <!-- We depend on the EJB remote business interfaces of this application -->
+      <dependency>
+         <groupId>com.mastertheboss</groupId>
+         <artifactId>ejb-server-basic</artifactId>
+         <type>ejb-client</type>
+         <version>${project.version}</version>
+      </dependency>
+      <!-- Include the ejb client jars -->
+      <dependency>
+         <groupId>org.wildfly</groupId>
+         <artifactId>wildfly-ejb-client-bom</artifactId>
+         <type>pom</type>
+         <scope>compile</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.spec.javax.servlet</groupId>
+         <artifactId>jboss-servlet-api_4.0_spec</artifactId>
+         <scope>provided</scope>
+      </dependency>
+   </dependencies>
+   <build>
+      <finalName>${project.artifactId}</finalName>
+      <plugins>
+         <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>${version.compiler.plugin}</version>
+            <configuration>
+               <source>${maven.compiler.source}</source>
+               <target>${maven.compiler.target}</target>
+            </configuration>
+         </plugin>
+          <plugin>
+              <artifactId>maven-war-plugin</artifactId>
+              <version>2.4</version>
+              <configuration>
+                  <failOnMissingWebXml>false</failOnMissingWebXml>
+              </configuration>
+          </plugin>
+         <!-- Add the maven exec plugin to allow us to run a java program via maven -->
+         <plugin>
+            <groupId>org.wildfly.plugins</groupId>
+            <artifactId>wildfly-maven-plugin</artifactId>
+            <version>2.0.0.Final</version>
+
+         </plugin>
+      </plugins>
+   </build>
+</project>
