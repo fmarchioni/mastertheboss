@@ -10,7 +10,7 @@
       <version.ejb.plugin>2.3</version.ejb.plugin>
       <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <version.server.bom>16.0.0.Final</version.server.bom>
+      <version.server.bom>18.0.0.Final</version.server.bom>
    </properties>
    <repositories>
       <repository>
@@ -18,16 +18,16 @@
          <url>https://repository.jboss.org/nexus/content/groups/public/</url>
       </repository>
    </repositories>
-   <dependencyManagement>
-      <dependencies>
-         <dependency>
+  <dependencyManagement>
+    <dependencies>
+        <dependency>
             <groupId>org.wildfly.bom</groupId>
-            <artifactId>wildfly-javaee8-with-tools</artifactId>
+            <artifactId>wildfly-jakartaee8-with-tools</artifactId>
             <version>${version.server.bom}</version>
             <type>pom</type>
             <scope>import</scope>
-         </dependency>
-      </dependencies>
+        </dependency>
+    </dependencies>
    </dependencyManagement>
    <dependencies>
       <dependency>
