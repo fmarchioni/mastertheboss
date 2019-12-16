@@ -12,22 +12,27 @@ import com.mastertheboss.exception.*;
 
 
 import javax.naming.spi.NamingManager;
-import javax.ejb.Stateless;
+import javax.ejb.*;
 @Stateless
 public class EJBClient {
 
+	@EJB(name="ejb:/ejb-server-basic/CalculatorEJB!com.mastertheboss.ejb.Calculator")
+	Calculator calculator;
+
+	@EJB(name="ejb:/ejb-server-basic/AccountEJB!com.mastertheboss.ejb.Account?stateful")
+	Account account;
+
 	public float callRemoteEJBs(long money) throws Exception {
-		Calculator calculator = lookupCalculatorEJB();
-		Account account = lookupAccountEJB();
+		account.createAccount(money);
 		System.out.println("Create Account with "+money);
 
-		account.createAccount(money);
-		System.out.println("Deposit " +(money/2));
 		account.deposit(money/2);
+		System.out.println("Deposit " +(money/2));
 
 		try {
-			System.out.println("Withdraw "+(money/3));
 			account.withdraw(money/3);
+			System.out.println("Withdraw "+(money/3));
+
 		} catch (InsufficientFundsException e) {
 
 			e.printStackTrace();
@@ -41,6 +46,8 @@ public class EJBClient {
 
 
 	}
+    /*
+    Standard JNDI Lookup still works but it's not needed for intra-server EJB Communication
 
 	private static Calculator lookupCalculatorEJB() throws NamingException {
 	      final Hashtable<String, String> jndiProperties = new Hashtable<>();
@@ -64,4 +71,5 @@ public class EJBClient {
 		return (Account) context
 				.lookup("ejb:/ejb-server-basic/AccountEJB!com.mastertheboss.ejb.Account?stateful");
 	}
+	*/
 }
