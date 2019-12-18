@@ -1,0 +1,3 @@
+<jboss-web>  
+    <context-root>vuejs-demo</context-root>  
+</jboss-web>  
