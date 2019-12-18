@@ -22,7 +22,7 @@
 			<dependency>
 				<groupId>org.wildfly.bom</groupId>
 				<artifactId>wildfly-javaee8-with-tools</artifactId>
-				<version>14.0.1.Final</version>
+				<version>17.0.0.Final</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -86,13 +86,7 @@
 				<artifactId>wildfly-maven-plugin</artifactId>
 				<version>${version.wildfly.maven.plugin}</version>
 			</plugin>
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-dependency-plugin</artifactId> 
-				<version>2.6</version> <executions> <execution> <phase>validate</phase> <goals> 
-				<goal>copy</goal> </goals> <configuration> <outputDirectory>${endorsed.dir}</outputDirectory> 
-				<silent>true</silent> <artifactItems> <artifactItem> <groupId>javax</groupId> 
-				<artifactId>javaee-endorsed-api</artifactId> <version>7.0</version> <type>jar</type> 
-				</artifactItem> </artifactItems> </configuration> </execution> </executions> 
-				</plugin> -->
+			 
 		</plugins>
 	</build>
 
