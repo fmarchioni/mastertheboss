@@ -1,4 +1,4 @@
-Camel Java Router Project
+Camel 3 Example Project
 =========================
 
 To build this project use
@@ -9,7 +9,6 @@ To run this project from within Maven use
 
     mvn exec:java
 
-For more help see the Apache Camel documentation
-
-    http://camel.apache.org/
+To learn more about this project: 
+http://www.mastertheboss.com/other/camel/getting-started-with-camel-3
 
