@@ -13,11 +13,9 @@ public class MainApp {
     public static void main(String... args) throws Exception {
         // use Camels Main class
         Main main = new Main();
-        // lets use a configuration class (you can specify multiple classes)
-        // (properties are automatic loaded from application.properties)
-        main.addConfigurationClass(CustomConfiguration.class);
+
         // and add the routes (you can specify multiple classes)
-        main.addRouteBuilder(MyRouteBuilder.class);
+        main.addRouteBuilder(MyJMSRouteBuilder.class);
         // now keep the application running until the JVM is terminated (ctrl + c or sigterm)
         main.run(args);
 
