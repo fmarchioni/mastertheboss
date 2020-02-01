@@ -16,6 +16,9 @@ docker run --rm  \
    -Djboss.http.port=8180 \
    -Dkeycloak.profile.feature.upload_scripts=enabled  
 ```
+Users available:
+- Admin (admin/test) belonging to "admin" group
+- User (test/test) belonging to "user" group
 
 NOTE: Copy the file quarkus-realm.json in your /tmp path
 
