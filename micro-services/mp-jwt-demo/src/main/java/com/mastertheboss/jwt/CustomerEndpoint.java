@@ -2,46 +2,47 @@ package com.mastertheboss.jwt;
 
 
 import org.eclipse.microprofile.jwt.Claim;
+import org.eclipse.microprofile.jwt.Claims;
 
 
+import javax.annotation.security.DenyAll;
 import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import javax.ws.rs.*;
-import org.eclipse.microprofile.jwt.ClaimValue;
 
 import java.util.Set;
-
 
 @Path("customers")
 @ApplicationScoped
 @Produces("application/json")
 @Consumes("application/json")
-
+@DenyAll
 public class CustomerEndpoint {
 
 
     @Inject
-    @Claim("groups")
+    @Claim(standard = Claims.groups)
     private Set<String> groups;
 
     @Inject
     @Claim("sub")
     private String subject;
-    /*
-    @GET
-    @Path("user")
-    @RolesAllowed({"user"})
-    public String echoUser() {
 
-            return "You are logger with Role User";
-    }
-*/
     @GET
-    @Path("user")
-    @RolesAllowed({"admin"})
-    public String echoRoleAndSubject() {
+    @Path("goadmin")
+    @RolesAllowed("admin")
+    public String adminMethod() {
+        return "You are logged with " +this.subject + ": " + this.groups.toString();
+
+    }
+
+
+    @GET
+    @Path("gouser")
+    @RolesAllowed("user")
+    public String userMethod() {
         return "You are logged with " +this.subject + ": " + this.groups.toString();
 
     }

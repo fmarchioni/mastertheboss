@@ -6,8 +6,8 @@ import javax.ws.rs.core.Application;
 import org.eclipse.microprofile.auth.LoginConfig;
 
 @ApplicationPath("/rest")
-@LoginConfig(authMethod = "MP-JWT", realmName = "quarkus")
-@DeclareRoles({"protected"})
+@LoginConfig(authMethod = "MP-JWT", realmName = "quarkus-realm")
+@DeclareRoles({"admin","user"})
 public class JaxRsActivator extends Application {
     /* class body intentionally left blank */
 }

@@ -1,4 +1,4 @@
-# Quarkus Keycloak Demo
+# WildFly JWT Demo (WIP)
 
 Example of OpenID secured Client with JWT authentication. JWTs are issued by Keycloak and contain
 claims with general user information as well as current user roles.
@@ -19,14 +19,20 @@ docker run --rm  \
 
 NOTE: Replace /tmp/quarkus-realm.json with the actual path in your FS where the quarkus-realm.json is located
 
-## Start Database
+## Start WildFly
 ```
-docker run --ulimit memlock=-1:-1 -it --rm=true --memory-swappiness=0 --name quarkus_test -e POSTGRES_USER=quarkus -e POSTGRES_PASSWORD=quarkus -e POSTGRES_DB=quarkusdb -p 5432:5432 postgres:10.5
-```
-
-## Run the application Tests
-```
-mvn install
+./standalone.sh
 ```
 
+## Deploy the application
+```
+mvn install wildfly:deploy
+```
+
+## Test the application
+```
+./admin.sh   # Should pass
+
+./user.sh    # Should fail
+```
 
