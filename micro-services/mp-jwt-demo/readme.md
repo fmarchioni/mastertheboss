@@ -16,8 +16,11 @@ docker run --rm  \
    -Djboss.http.port=8180 \
    -Dkeycloak.profile.feature.upload_scripts=enabled  
 ```
+Users available:
+- Admin (admin/test) belonging to "admin" group
+- User (test/test) belonging to "user" group
 
-NOTE: Replace /tmp/quarkus-realm.json with the actual path in your FS where the quarkus-realm.json is located
+NOTE: Copy the file quarkus-realm.json in your /tmp path
 
 ## Start WildFly
 ```
@@ -31,8 +34,23 @@ mvn install wildfly:deploy
 
 ## Test the application
 ```
-./admin.sh   # Should pass
+#Get a token for an user belonging to "user" group
+export TOKEN=$(\
+curl -L -X POST 'http://localhost:8180/auth/realms/quarkus-realm/protocol/openid-connect/token' \
+-H 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'client_id=quarkus-client' \
+--data-urlencode 'grant_type=password' \
+--data-urlencode 'client_secret=mysecret' \
+--data-urlencode 'scope=openid' \
+--data-urlencode 'username=test' \
+--data-urlencode 'password=test'  | jq --raw-output '.access_token' \
+ )
 
-./user.sh    # Should fail
+#Display token
+JWT=`echo $TOKEN | sed 's/[^.]*.\([^.]*\).*/\1/'`
+echo $JWT | base64 -d | python -m json.tool
+
+#Test admin method (should fail)
+curl -H "Authorization: Bearer $TOKEN" http://localhost:8080/jwt-demo-1.0.0-SNAPSHOT/rest/customers/goadmin
 ```
 
