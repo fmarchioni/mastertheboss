@@ -1,6 +1,6 @@
 {
-  "id" : "quarkus-realm",
-  "realm" : "quarkus-realm",
+  "id" : "myrealm",
+  "realm" : "myrealm",
   "notBefore" : 0,
   "revokeRefreshToken" : false,
   "refreshTokenMaxReuse" : 0,
@@ -43,14 +43,14 @@
       "description" : "${role_uma_authorization}",
       "composite" : false,
       "clientRole" : false,
-      "containerId" : "quarkus-realm",
+      "containerId" : "myrealm",
       "attributes" : { }
     }, {
       "id" : "ba90acf5-2106-43b5-b7f4-7d815e52bb4d",
       "name" : "user",
       "composite" : false,
       "clientRole" : false,
-      "containerId" : "quarkus-realm",
+      "containerId" : "myrealm",
       "attributes" : { }
     }, {
       "id" : "ff5dccc5-71e7-4d33-8837-2e31bebba7bc",
@@ -58,18 +58,18 @@
       "description" : "${role_offline-access}",
       "composite" : false,
       "clientRole" : false,
-      "containerId" : "quarkus-realm",
+      "containerId" : "myrealm",
       "attributes" : { }
     }, {
       "id" : "c53b0fa3-e342-4821-9a54-8ea27889f3ef",
       "name" : "admin",
       "composite" : false,
       "clientRole" : false,
-      "containerId" : "quarkus-realm",
+      "containerId" : "myrealm",
       "attributes" : { }
     } ],
     "client" : {
-      "quarkus-client" : [ ],
+      "jwt-client" : [ ],
       "realm-management" : [ {
         "id" : "7cb5c26a-eed3-4c7e-a38c-2c46b28fee20",
         "name" : "create-client",
@@ -360,13 +360,13 @@
     "id" : "29d7d4c8-f7a0-48ea-b21f-300f692e6fd9",
     "clientId" : "account",
     "name" : "${client_account}",
-    "baseUrl" : "/auth/realms/quarkus-realm/account",
+    "baseUrl" : "/auth/realms/myrealm/account",
     "surrogateAuthRequired" : false,
     "enabled" : true,
     "clientAuthenticatorType" : "client-secret",
     "secret" : "**********",
     "defaultRoles" : [ "manage-account", "view-profile" ],
-    "redirectUris" : [ "/auth/realms/quarkus-realm/account/*" ],
+    "redirectUris" : [ "/auth/realms/myrealm/account/*" ],
     "webOrigins" : [ ],
     "notBefore" : 0,
     "bearerOnly" : false,
@@ -438,7 +438,7 @@
     "optionalClientScopes" : [ "address", "phone", "offline_access" ]
   },    {
       "id": "f943c108-d8d6-46fe-9c44-a16965fb50ea",
-      "clientId": "quarkus-client",
+      "clientId": "jwt-client",
       "rootUrl": "http://localhost:8080",
       "adminUrl": "http://localhost:8080",
       "surrogateAuthRequired": false,
@@ -556,7 +556,7 @@
         "resources": [
           {
             "name": "Default Resource",
-            "type": "urn:quarkus-client:resources:default",
+            "type": "urn:jwt-client:resources:default",
             "ownerManagedAccess": false,
             "attributes": {},
             "_id": "efd9ba6c-ffe1-49f3-8297-3940a8ba0e51",
@@ -585,7 +585,7 @@
             "logic": "POSITIVE",
             "decisionStrategy": "UNANIMOUS",
             "config": {
-              "defaultResourceType": "urn:quarkus-client:resources:default",
+              "defaultResourceType": "urn:jwt-client:resources:default",
               "applyPolicies": "[\"Default Policy\"]"
             }
           }
@@ -623,12 +623,12 @@
     "id" : "34cd583d-aba1-4421-bd75-0db99c533e0f",
     "clientId" : "security-admin-console",
     "name" : "${client_security-admin-console}",
-    "baseUrl" : "/auth/admin/quarkus-realm/console/index.html",
+    "baseUrl" : "/auth/admin/myrealm/console/index.html",
     "surrogateAuthRequired" : false,
     "enabled" : true,
     "clientAuthenticatorType" : "client-secret",
     "secret" : "**********",
-    "redirectUris" : [ "/auth/admin/quarkus-realm/console/*" ],
+    "redirectUris" : [ "/auth/admin/myrealm/console/*" ],
     "webOrigins" : [ ],
     "notBefore" : 0,
     "bearerOnly" : false,

@@ -1,4 +1,4 @@
-package com.mastertheboss.jwt;
+package com.sample.jwt;
 
 
 import org.eclipse.microprofile.jwt.Claim;
