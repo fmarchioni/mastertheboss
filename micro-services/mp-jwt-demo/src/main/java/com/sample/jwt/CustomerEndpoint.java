@@ -27,7 +27,7 @@ public class CustomerEndpoint {
     private Set<String> groups;
 
     @Inject
-    @Claim("sub")
+    @Claim(standard = Claims.sub)
     private String subject;
 
     @GET
