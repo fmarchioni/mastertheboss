@@ -9,7 +9,7 @@ docker run --rm  \
    --name keycloak \
    -e KEYCLOAK_USER=admin \
    -e KEYCLOAK_PASSWORD=admin \
-   -e KEYCLOAK_IMPORT=/tmp/quarkus-realm.json  -v /tmp/quarkus-realm.json:/tmp/quarkus-realm.json \
+   -e KEYCLOAK_IMPORT=/tmp/myrealm.json  -v /tmp/myrealm.json:/tmp/myrealm.json \
    -p 8180:8180 \
    -it quay.io/keycloak/keycloak:7.0.1 \
    -b 0.0.0.0 \
@@ -49,6 +49,9 @@ curl -L -X POST 'http://localhost:8180/auth/realms/quarkus-realm/protocol/openid
 #Display token
 JWT=`echo $TOKEN | sed 's/[^.]*.\([^.]*\).*/\1/'`
 echo $JWT | base64 -d | python -m json.tool
+
+#Test user method (should pass)
+curl -H "Authorization: Bearer $TOKEN" http://localhost:8080/jwt-demo-1.0.0-SNAPSHOT/rest/customers/gouser
 
 #Test admin method (should fail)
 curl -H "Authorization: Bearer $TOKEN" http://localhost:8080/jwt-demo-1.0.0-SNAPSHOT/rest/customers/goadmin
