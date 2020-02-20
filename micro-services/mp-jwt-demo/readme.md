@@ -38,7 +38,7 @@ mvn install wildfly:deploy
 export TOKEN=$(\
 curl -L -X POST 'http://localhost:8180/auth/realms/myrealm/protocol/openid-connect/token' \
 -H 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode 'client_id=quarkus-client' \
+--data-urlencode 'client_id=jwt-client' \
 --data-urlencode 'grant_type=password' \
 --data-urlencode 'client_secret=mysecret' \
 --data-urlencode 'scope=openid' \
