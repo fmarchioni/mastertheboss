@@ -36,7 +36,7 @@ mvn install wildfly:deploy
 ```
 #Get a token for an user belonging to "user" group
 export TOKEN=$(\
-curl -L -X POST 'http://localhost:8180/auth/realms/quarkus-realm/protocol/openid-connect/token' \
+curl -L -X POST 'http://localhost:8180/auth/realms/myrealm/protocol/openid-connect/token' \
 -H 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'client_id=quarkus-client' \
 --data-urlencode 'grant_type=password' \
