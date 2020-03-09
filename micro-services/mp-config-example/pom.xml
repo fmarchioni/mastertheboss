@@ -25,7 +25,7 @@
 
 		<!-- JBoss dependency versions -->
 		<version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
-		<version.jboss.spec.javaee.7.0>1.0.3.Final</version.jboss.spec.javaee.7.0>
+		<version.server.bom>19.0.0.Beta3</version.server.bom>
 		<!-- other plug-in versions -->
 		<version.war.plugin>3.0.0</version.war.plugin>
 
@@ -39,34 +39,41 @@
 
 	<dependencyManagement>
 		<dependencies>
-
 			<dependency>
-				<groupId>org.jboss.spec</groupId>
-				<artifactId>jboss-javaee-7.0</artifactId>
-				<version>${version.jboss.spec.javaee.7.0}</version>
+				<groupId>org.wildfly.bom</groupId>
+				<artifactId>wildfly-jakartaee8-with-tools</artifactId>
+				<version>${version.server.bom}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+
+			<dependency>
+				<groupId>org.wildfly.bom</groupId>
+				<artifactId>wildfly-microprofile</artifactId>
+				<version>${version.server.bom}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.jboss.spec.javax.servlet</groupId>
-			<artifactId>jboss-servlet-api_3.1_spec</artifactId>
+			<artifactId>jboss-servlet-api_4.0_spec</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>jakarta.enterprise</groupId>
+			<artifactId>jakarta.enterprise.cdi-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.eclipse.microprofile.config</groupId>
 			<artifactId>microprofile-config-api</artifactId>
-			<version>${version.eclipse.microprofile.config}</version>
 		</dependency>
-		<dependency>
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
-			<version>${version.javax.inject}</version>
-		</dependency>
+
 	</dependencies>
 
 	<build>
