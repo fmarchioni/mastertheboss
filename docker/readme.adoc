@@ -1,0 +1,3 @@
+== Dockerfile example with WildFly
+
+Example application for http://www.mastertheboss.com/soa-cloud/docker/deploying-applications-on-your-docker-wildfly-image
