@@ -1,0 +1,22 @@
+
+{@java.util.List<String> data}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Qute - Items</title> 
+</head>
+<body>
+    <h1>Available data formats</h1>
+    <ul>
+        {#for item in data}
+        <li>
+            {item} {item.description}
+        </li>
+        {/for}
+    </ul>
+
+    <br/>
+    <a href="/time">Home</a>
+</body>
+</html>

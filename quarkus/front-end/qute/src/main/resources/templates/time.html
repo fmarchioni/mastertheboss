@@ -1,0 +1,22 @@
+{! This is a comment !}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+</head>
+<body>
+
+    {#if zone != null}
+    <div>{zone}</div>
+    {#else}
+    <p>{inject:time.defaultTime}</p>
+    {/if}
+
+
+    {#include footer}
+
+    {/include}
+
+</body>
+</html>
