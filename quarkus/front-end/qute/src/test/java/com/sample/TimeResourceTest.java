@@ -13,7 +13,7 @@ public class TimeResourceTest {
     @Test
     public void testEndpoint() {
         given()
-                .when().get("/time?zone=CET")
+                .when().get("/time?zoneId=CET")
                 .then()
                 .statusCode(200);
 

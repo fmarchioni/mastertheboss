@@ -8,10 +8,8 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import io.quarkus.qute.Template;
-import io.quarkus.qute.TemplateExtension;
 import io.quarkus.qute.TemplateInstance;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -25,10 +23,10 @@ public class TimeResource {
 
     @GET
     @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance get(@QueryParam("zone") String zone) {
+    public TemplateInstance get(@QueryParam("zoneId") String zoneId) {
         Date date = null;
         try {
-            LocalDateTime localDateTime = LocalDateTime.now(ZoneId.of(zone));
+            LocalDateTime localDateTime = LocalDateTime.now(ZoneId.of(zoneId));
             date = Date.from( localDateTime.atZone( ZoneId.systemDefault()).toInstant());
         } catch (Exception e) {
             e.printStackTrace();

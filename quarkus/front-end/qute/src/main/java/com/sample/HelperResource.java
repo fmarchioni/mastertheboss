@@ -23,22 +23,17 @@ public class HelperResource {
     @GET
     @Produces(MediaType.TEXT_HTML)
     public TemplateInstance get() {
-        List<String> data = new ArrayList<>();
-        data.add("UTC");
-        data.add("GMT");
-        data.add("UT");
+        List<TimeFormat> data = new ArrayList<>();
+        data.add(new TimeFormat("UTC", "Western European Time"));
+        data.add(new TimeFormat("UT", "Universal Time"));
+        data.add(new TimeFormat("GMT", "Greenwich Time"));
         return helper.data("data", data);
     }
 
-    static HashMap<String,String> map = new HashMap();
-    public HelperResource()  {
-        map.put("UTC", "Western European Time");
-        map.put("UT", "Universal Time");
-        map.put("GMT", "Greenwich Time");
-    }
+
     @TemplateExtension
-    static String description(String  time) {
-        return map.get(time);
+    static String wiki(TimeFormat  data) {
+        return "https://en.wikipedia.org/w/index.php?search="+data.getName()+"&fulltext=Search";
     }
 
 }

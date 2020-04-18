@@ -6,11 +6,12 @@
 
 </head>
 <body>
+<h2>Quarkus Qute demo</h2>
 
     {#if zone != null}
-    <div>{zone}</div>
+    <p>Time now: {zone}</p>
     {#else}
-    <p>{inject:time.defaultTime}</p>
+    <p>Time now: {inject:time.defaultTime}</p>
     {/if}
 
 

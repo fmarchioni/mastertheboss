@@ -9,9 +9,6 @@ import java.util.Date;
 @Named
 public class Time {
     public Date defaultTime = new Date();;
-    public String message="hi!";
-
-
 
     public Time() {
 
