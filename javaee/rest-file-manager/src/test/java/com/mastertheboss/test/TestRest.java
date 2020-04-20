@@ -32,6 +32,7 @@ public class TestRest {
     	File filePath = new File(fileNamePath);
     	
     	// Check that file exists
+
     	assertTrue(filePath.exists());
     	
     	mdo.addFormData("attachment", new FileInputStream(new File(fileNamePath)),

@@ -14,7 +14,7 @@
 	<properties>
 		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<version.server.bom>15.0.1.Final</version.server.bom>
+		<version.server.bom>19.0.0.Final</version.server.bom>
 
 	</properties>
 
@@ -22,7 +22,7 @@
 		<dependencies>
 			<dependency>
 				<groupId>org.wildfly.bom</groupId>
-				<artifactId>wildfly-javaee8-with-tools</artifactId>
+				<artifactId>wildfly-jakartaee8-with-tools</artifactId>
 				<version>${version.server.bom}</version>
 				<type>pom</type>
 				<scope>import</scope>
@@ -31,10 +31,30 @@
 	</dependencyManagement>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>org.jboss.spec.javax.servlet</groupId>
+			<artifactId>jboss-servlet-api_4.0_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.spec.javax.servlet</groupId>
+			<artifactId>jboss-servlet-api_4.0_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
 		</dependency>
 
 		<dependency>

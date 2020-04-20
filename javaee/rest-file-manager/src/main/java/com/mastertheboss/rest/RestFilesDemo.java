@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import javax.ws.rs.core.Response.ResponseBuilder;
@@ -17,6 +18,7 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 @Path("/file")
 public class RestFilesDemo {
+
 	@POST
 	@Path("/upload")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
@@ -38,8 +40,8 @@ public class RestFilesDemo {
 
 				byte[] bytes = IOUtils.toByteArray(inputStream);
 
-				String path = System.getProperty("user.home") + File.separator + "uploads";
-				File customDir = new File(path);
+				//String path = System.getProperty("user.home") + File.separator + "uploads";
+				File customDir = new File(Config.UPLOAD_FOLDER);
 
 				if (!customDir.exists()) {
 					customDir.mkdir();

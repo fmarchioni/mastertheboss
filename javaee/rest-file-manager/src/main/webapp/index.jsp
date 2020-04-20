@@ -1,5 +1,5 @@
  
-       <%@page import="java.io.*" %> 
+       <%@page import="java.io.*, com.mastertheboss.rest.Config" %>
         <%@page import="java.util.*" %> 
         <%!        public void GetDirectory(String a_Path, Vector a_files, Vector a_folders) {
                 File l_Directory = new File(a_Path);
@@ -25,7 +25,7 @@
 </head>
 <body>
 	<h2>REST Upload demo</h2>
-	<form method="post" action="rest/demo/upload"
+	<form method="post" action="rest/file/upload"
 		enctype="multipart/form-data">
 		<input type="hidden" name="action" value="upload" /> <label>Load
 			your file:</label> <input type="file" name="attachment" /> <br /> <input
@@ -33,7 +33,7 @@
 	</form>
 
 	<h2>REST Download demo</h2>
-	<form method="POST" action="rest/demo/download">
+	<form method="POST" action="rest/file/download">
 		File name: <input type="text" name="file"> 
 		<input type="submit">
 
@@ -44,7 +44,7 @@
 	<br/>
 	        <%
             Vector l_Files = new Vector(), l_Folders = new Vector();
-            GetDirectory(System.getProperty("user.home") + File.separator + "uploads", l_Files, l_Folders);
+            GetDirectory(Config.UPLOAD_FOLDER, l_Files, l_Folders);
             out.println("<ul>");   
             for (int a = 0; a < l_Files.size(); a++) {
                 out.println("<li>" + l_Files.elementAt(a).toString() + "</li>");
