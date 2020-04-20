@@ -1,6 +1,6 @@
-HelloWorld Servlet example
+HelloWorld log4j example
 =====================================
-Example taken from: http://www.mastertheboss.com/javaee/servlet-30/servlet-hello-world-on-wildfly
+Example taken from: http://www.mastertheboss.com/jboss-server/jboss-log/using-log4j-with-jboss-as-7-and-wildfly
 
 This example demonstrates the usage of a Servlet in a Jakarta EE 8 Environment.
 
@@ -8,7 +8,4 @@ This example demonstrates the usage of a Servlet in a Jakarta EE 8 Environment.
 ```shell
 mvn clean install wildfly:deploy
 ```
-###### Test
-```shell
-http://localhost:8080/helloworld/hello
-```
+ 
