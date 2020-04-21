@@ -39,13 +39,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.jboss.spec.javax.servlet</groupId>
-			<artifactId>jboss-servlet-api_4.0_spec</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-
-		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.6</version>
@@ -90,6 +83,7 @@
 	</dependencies>
 
 	<build>
+
 		<finalName>rest-file-manager</finalName>
 		<plugins>
 			<plugin>
@@ -148,13 +142,26 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<systemPropertyVariables>
-						<fileName>/home/jboss/file.txt</fileName>
-					</systemPropertyVariables>
-				</configuration>
 			</plugin>
 		</plugins>
-	</build>
 
+	</build>
+	<profiles>
+		<profile>
+			<id>install</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<maven.test.skip>true</maven.test.skip>
+			</properties>
+		</profile>
+		<profile>
+			<id>test</id>
+
+			<properties>
+				<maven.test.skip>false</maven.test.skip>
+			</properties>
+		</profile>
+	</profiles>
 </project>

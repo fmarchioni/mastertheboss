@@ -5,13 +5,13 @@ Tutorial for: http://www.mastertheboss.com/jboss-frameworks/resteasy/using-rest-
 * How to deploy it:
 
 ----
-mvn clean install wildfly:deploy -DskipTests=true
+mvn clean install wildfly:deploy 
 ----
 
 Then access the application at: http://localhost:8080/rest-file-manager/
 
-You can also run a test with:
+You can run the JUnit test included with:
 
 ----
-mvn test -DfileName=/tmp/file.txt
+mvn -Ptest test 
 ----

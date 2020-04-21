@@ -1,30 +1,90 @@
- 
-       <%@page import="java.io.*, com.mastertheboss.rest.Config" %>
-        <%@page import="java.util.*" %> 
-        <%!        public void GetDirectory(String a_Path, Vector a_files, Vector a_folders) {
-                File l_Directory = new File(a_Path);
-                File[] l_files = l_Directory.listFiles();
-
-                for (int c = 0; c < l_files.length; c++) {
-                    if (l_files[c].isDirectory()) {
-                        a_folders.add(l_files[c].getName());
-                    } else {
-                        a_files.add(l_files[c].getName());
-                    }
-                }
-
-
-            }
-        %> 
-
 
 <html>
 <head>
-<title>Start Page</title>
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css" media="screen" />
+
+
+<script type = "text/javascript">
+	angular.module('app', [])
+	.controller('ctrl', function ($scope, $http) {
+		$scope.files = [];
+
+		$scope.loadData = function () {
+			$http({
+				method: 'GET',
+				url: '/rest-file-manager/rest/file/list'
+			}).then(function successCallback(response) {
+				$scope.files = response.data;
+			}, function errorCallback(response) {
+				console.log(response.statusText);
+			});
+		}
+
+		$scope.downloadFile = function (filename) {
+
+			$http({
+				method: 'GET',
+				url: '/rest-file-manager/rest/file/download',
+				params: {
+					file: filename
+				},
+				responseType: 'arraybuffer'
+
+			}).success(function (data, status, headers) {
+
+				headers = headers();
+
+				//var filename = headers['Content-Disposition'];
+
+				var contentType = headers['content-type'];
+				var linkElement = document.createElement('a');
+
+				try {
+
+					var blob = new Blob([data], {
+						type: contentType
+					});
+
+					var url = window.URL.createObjectURL(blob);
+
+					linkElement.setAttribute('href', url);
+					linkElement.setAttribute("download", filename);
+
+					var clickEvent = new MouseEvent("click", {
+
+						"view": window,
+						"bubbles": true,
+						"cancelable": false
+
+					});
+
+					linkElement.dispatchEvent(clickEvent);
+
+				} catch (ex) {
+					console.log(ex);
+				}
+
+			}).error(function (data) {
+				console.log(data);
+			});
+
+		};
+
+
+		//call loadData when controller initialized
+		$scope.loadData();
+	})
+</script>
+
+
+
+<title>REST Download demo with AngularJS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
-<body>
-	<h2>REST Upload demo</h2>
+<body ng-app='app' ng-controller='ctrl'>
+    <h1>REST Upload/Download demo using AngularJS</h2>
+	<h2>Upload file</h2>
 	<form method="post" action="rest/file/upload"
 		enctype="multipart/form-data">
 		<input type="hidden" name="action" value="upload" /> <label>Load
@@ -32,26 +92,18 @@
 			type="submit" value="Upload file" />
 	</form>
 
-	<h2>REST Download demo</h2>
-	<form method="POST" action="rest/file/download">
-		File name: <input type="text" name="file"> 
-		<input type="submit">
+	<h2>Download file</h2>
 
-
-	</form>
-	
-	<h2>Current Directory $HOME/uploads:</h2>
-	<br/>
-	        <%
-            Vector l_Files = new Vector(), l_Folders = new Vector();
-            GetDirectory(Config.UPLOAD_FOLDER, l_Files, l_Folders);
-            out.println("<ul>");   
-            for (int a = 0; a < l_Files.size(); a++) {
-                out.println("<li>" + l_Files.elementAt(a).toString() + "</li>");
-            }
-            out.println("</ul>");
-           
-        %> 
+        <div class="divTable blueTable">
+                <div class="divTableHeading">
+                    <div  class="divTableHead">File Name</div>
+                    <div  class="divTableHead">Action</div>
+                </div>
+                <div class="divTableRow" ng-repeat="file in files">
+                    <div class="divTableCell">{{ file }}</div>
+                    <div class="divTableCell"><a ng-click="downloadFile( file )" class="myButton">Download</a> </div>
+                </div>
+            </div>
 </body>
 </html>
 

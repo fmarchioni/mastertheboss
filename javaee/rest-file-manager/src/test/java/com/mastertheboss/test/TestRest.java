@@ -3,8 +3,7 @@ package com.mastertheboss.test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.*;
 
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.GenericEntity;
@@ -19,6 +18,7 @@ import org.junit.Test;
 
 public class TestRest {
 
+	String FILENAME="test-file.txt";
 	@Test
     public void sendFile() throws Exception {
          
@@ -26,16 +26,16 @@ public class TestRest {
     	ResteasyWebTarget target = client.target("http://localhost:8080/rest-file-manager/rest/file/upload");
     	
     	MultipartFormDataOutput mdo = new MultipartFormDataOutput();
-    	
-    	// Specify file name to be uploaded in pom.xml
-    	String fileNamePath = System.getProperty("fileName");
-    	File filePath = new File(fileNamePath);
+
+    	createFile();
+
+    	File filePath = new File(FILENAME);
     	
     	// Check that file exists
 
     	assertTrue(filePath.exists());
     	
-    	mdo.addFormData("attachment", new FileInputStream(new File(fileNamePath)),
+    	mdo.addFormData("attachment", new FileInputStream(filePath),
     		    MediaType.APPLICATION_OCTET_STREAM_TYPE,filePath.getName());
     	
     	GenericEntity<MultipartFormDataOutput> entity = new GenericEntity<MultipartFormDataOutput>(mdo) {};
@@ -47,5 +47,17 @@ public class TestRest {
     	
     	 
 }
+
+	private void createFile() {
+		try {
+			PrintWriter writer = new PrintWriter(FILENAME, "UTF-8");
+			writer.println("Some text");
+			writer.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
