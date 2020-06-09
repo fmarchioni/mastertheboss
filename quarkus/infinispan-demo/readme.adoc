@@ -1,0 +1,3 @@
+== Infinispan demo with Quarkus
+
+Based on this article: http://www.mastertheboss.com/soa-cloud/quarkus/how-to-connect-your-quarkus-application-to-infinispan
