@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.mastertheboss.jaxrs</groupId>
-  <artifactId>jaxrs-basic</artifactId>
+  <artifactId>rest-demo</artifactId>
   <packaging>war</packaging>
   <version>1.0.0</version>
   <name>Demo REST Service</name>
@@ -27,7 +27,6 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-
     </dependencies>
   </dependencyManagement>
   <dependencies>

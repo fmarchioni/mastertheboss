@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Path("/simple")
+@Path("/tutorial")
 public class SimpleRESTService {
 
 
@@ -59,4 +59,20 @@ public class SimpleRESTService {
 
 		return list;
 	}
+
+    @GET
+    @Path("itemListJson")
+    @Produces("application/json")
+    public List<Item>  getJSONItems() {
+        ArrayList list = new ArrayList();
+        Item item1 = new Item("computer",2500);
+        Item item2 = new Item("chair",100);
+        Item item3 = new Item("table",200);
+
+        list.add(item1);
+        list.add(item2);
+        list.add(item3);
+
+        return list;
+    }
 }
