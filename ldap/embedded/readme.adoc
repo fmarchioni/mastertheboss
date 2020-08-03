@@ -1,0 +1,9 @@
+== Apache DS Example LDAP server
+
+This is an example LDAP server that can be used to test your applications
+To run it:
+----
+	mvn exec:java -Pldap
+----
+
+More info: http://www.mastertheboss.com/other/java-stuff/simple-strategies-to-test-your-java-applications-with-ldap
