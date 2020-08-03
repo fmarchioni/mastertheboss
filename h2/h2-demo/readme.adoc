@@ -1,0 +1,3 @@
+== JPA Demo using embedded H2 Database
+
+Article: http://www.mastertheboss.com/jboss-server/jboss-datasource/h2-database-tutorial
