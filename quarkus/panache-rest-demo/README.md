@@ -1,7 +1,7 @@
-# panache-demo project
+# panache-rest-demo project
 
 
-Article discussing this example: http://www.mastertheboss.com/soa-cloud/quarkus/managing-data-persistence-with-quarkus
+Article discussing this example: http://www.mastertheboss.com/soa-cloud/quarkus/how-to-generate-jax-rs-crud-application-in-quarkus-using-panache
 
 ## Running the application in dev mode
 
