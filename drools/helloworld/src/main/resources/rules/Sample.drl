@@ -1,0 +1,9 @@
+package com.sample
+ 
+import com.sample.model.Account
+rule "accountBalanceAtLeast"
+  when
+  $account : Account( balance < 100 )
+  then
+  System.out.println("Warning! money running out!");
+end
