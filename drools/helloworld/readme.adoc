@@ -1,0 +1,3 @@
+== Drools Hello World example
+
+Tutorial for this example: http://www.mastertheboss.com/jboss-jbpm/drools/jboss-drools-tutorial
