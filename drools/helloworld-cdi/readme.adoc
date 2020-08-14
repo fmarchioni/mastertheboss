@@ -1,3 +1,3 @@
-== Drools with Maven example
+== Drools with Maven and CDI example
 
 Tutorial for this example: http://www.mastertheboss.com/jboss-jbpm/drools/drools-and-maven-example-project
