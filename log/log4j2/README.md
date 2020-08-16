@@ -1,8 +1,8 @@
-HelloWorld log4j example
+HelloWorld log4j 2 example
 =====================================
-Example taken from: http://www.mastertheboss.com/jboss-server/jboss-log/using-log4j-with-jboss-as-7-and-wildfly
+Example taken from: http://www.mastertheboss.com/jboss-server/jboss-log/how-to-use-log4j2-in-your-wildfly-applications
 
-This example demonstrates how to use Log4j in a Jakarta application.
+This example demonstrates how to use Log4j2 in a Jakarta EE 8 application.
 
 ###### Deploy
 ```shell
