@@ -1,0 +1,3 @@
+<jboss-web>
+   <context-root>/demods</context-root>
+</jboss-web>
