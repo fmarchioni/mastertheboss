@@ -1,0 +1,11 @@
+import com.sample.Account;
+
+rule "nameRequired"
+   no-loop true
+   ruleflow-group "helloworldgroup"
+       	when 
+	    $account : Account( money <= 0 )
+        then
+        System.out.println( "Account needs to have some money in it!");
+    
+end
