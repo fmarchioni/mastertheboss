@@ -1,0 +1,3 @@
+== Drools Rules in a JBPM Process
+
+Source code for this tutorial: http://www.mastertheboss.com/jboss-jbpm/drools/drools-example-jbpm-5
