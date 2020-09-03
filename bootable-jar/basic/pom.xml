@@ -81,7 +81,7 @@
       <plugin>
           <groupId>org.wildfly.plugins</groupId>
           <artifactId>wildfly-jar-maven-plugin</artifactId>
-          <version>2.0.0.Alpha4</version>
+          <version>2.0.0.Beta1</version>
           <configuration>
             <feature-pack-location>wildfly@maven(org.jboss.universe:community-universe)#${version.server.bom}</feature-pack-location>
             <layers>
