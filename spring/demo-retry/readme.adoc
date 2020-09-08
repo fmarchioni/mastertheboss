@@ -1,0 +1,2 @@
+== Spring Boot with Retry example
+Article for this example: http://www.mastertheboss.com/jboss-frameworks/spring/using-spring-retry-to-consume-rest-services
