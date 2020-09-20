@@ -84,7 +84,7 @@
             <groupId>io.smallrye</groupId>
             <artifactId>smallrye-graphql-ui-graphiql</artifactId>
             <scope>provided</scope>
-            <version>1.0.9</version>
+          
         </dependency>
         <dependency>
             <groupId>org.jboss.spec.javax.servlet</groupId>
@@ -97,7 +97,7 @@
         <dependency>
             <groupId>io.smallrye</groupId>
             <artifactId>smallrye-graphql-client</artifactId>
-            <version>1.0.9</version>
+            <version>1.0.7</version>
 
         </dependency>
 
