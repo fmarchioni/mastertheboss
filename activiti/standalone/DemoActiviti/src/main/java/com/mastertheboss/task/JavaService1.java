@@ -4,7 +4,7 @@ import org.activiti.engine.delegate.DelegateExecution;
 
 public class JavaService1 implements org.activiti.engine.delegate.JavaDelegate {
 
-	public void execute(DelegateExecution arg0) throws Exception {
+	public void execute(DelegateExecution arg0) {
 
 		if (isComplexTask()) {
 			System.out.println("This is a complex task!");
