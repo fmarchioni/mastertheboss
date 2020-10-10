@@ -1,0 +1,23 @@
+connect
+
+if (outcome != success) of /subsystem=elytron/simple-role-decoder=from-roles-attribute:read-resource
+     /subsystem=elytron/simple-role-decoder=from-roles-attribute:add(attribute=Roles)
+end-if
+
+batch
+
+/subsystem=elytron/filesystem-realm=demoFsRealm:add(path=demofs-realm-users,relative-to=jboss.server.config.dir)
+
+/subsystem=elytron/filesystem-realm=demoFsRealm:add-identity(identity=frank)
+/subsystem=elytron/filesystem-realm=demoFsRealm:set-password(identity=frank,clear={password="password123"})
+/subsystem=elytron/filesystem-realm=demoFsRealm:add-identity-attribute(identity=frank,name=Roles, value=["Admin","Guest"])
+
+/subsystem=elytron/security-domain=fsSD:add(realms=[{realm=demoFsRealm,role-decoder=from-roles-attribute}],default-realm=demoFsRealm,permission-mapper=default-permission-mapper)
+
+/subsystem=elytron/http-authentication-factory=example-fs-http-auth:add(http-server-mechanism-factory=global,security-domain=fsSD,mechanism-configurations=[{mechanism-name=BASIC,mechanism-realm-configurations=[{realm-name=RealmUsersRoles}]}])
+
+/subsystem=undertow/application-security-domain=FSSecurityDomain:add(http-authentication-factory=example-fs-http-auth)
+
+run-batch
+
+reload

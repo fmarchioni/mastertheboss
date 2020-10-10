@@ -1,0 +1,3 @@
+== HTTP Basic Authentication with WildFly
+
+Check article: http://www.mastertheboss.com/jboss-server/jboss-security/configuring-http-basic-authentication-with-wildfly
