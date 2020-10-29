@@ -1,0 +1,32 @@
+{
+  "Actors": [
+    {
+      "name": "Tom Cruise",
+      "age": 56,
+      "Born At": "Syracuse, NY",
+      "wife": null,
+      "weight": 67.5,
+      "hasChildren": true,
+      "hasGreyHair": false,
+      "children": [
+        "Suri",
+        "Isabella Jane",
+        "Connor"
+      ]
+    },
+    {
+      "name": "Robert Downey Jr.",
+      "age": 53,
+      "Born At": "New York City, NY",
+      "wife": "Susan Downey",
+      "weight": 77.1,
+      "hasChildren": true,
+      "hasGreyHair": false,
+      "children": [
+        "Indio Falconer",
+        "Avri Roel",
+        "Exton Elias"
+      ]
+    }
+  ]
+}
