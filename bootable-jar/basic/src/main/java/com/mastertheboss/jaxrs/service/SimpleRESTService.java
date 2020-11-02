@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Path("/tutorial")
+@Path("/")
 public class SimpleRESTService {
 
 
