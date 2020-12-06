@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.mastertheboss.archetypes</groupId>
+    <artifactId>jakartaee8-archetype</artifactId>
+    <version>1.0.0</version>
+	<name>jakartaee8-archetype</name>
+    <packaging>maven-archetype</packaging>
+    <description>Archetype used to generate a sample Jakarta EE 8 application</description>
+    <properties>
+
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <archetype-packaging.version>3.0.1</archetype-packaging.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+    </properties>
+
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.archetype</groupId>
+                <artifactId>archetype-packaging</artifactId>
+                <version>3.2.0</version>
+            </extension>
+        </extensions>
+    <finalName>${project.artifactId}</finalName>
+
+    </build>
+</project>

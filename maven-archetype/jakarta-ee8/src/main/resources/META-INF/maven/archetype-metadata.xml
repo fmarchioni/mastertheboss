@@ -7,7 +7,7 @@
 
     <requiredProperties>
         <requiredProperty key="version-wildfly">
-            <defaultValue>17.0.0.Final</defaultValue>
+            <defaultValue>21.0.1.Final</defaultValue>
         </requiredProperty>
     </requiredProperties>
 
