@@ -1,0 +1,21 @@
+spec:
+  template:
+    spec:
+      containers:
+      - env:
+        - name: POSTGRESQL_USER
+          value: user
+        - name: POSTGRESQL_PASSWORD
+          value: password
+        - name: POSTGRESQL_DATABASE
+          value: wildflydb
+        - name: POSTGRESQL_SERVICE_HOST
+          value: postgres
+        - name: POSTGRESQL_SERVICE_PORT
+          value: 5432
+        - name: JAVA_OPTIONS
+          value: '-Xms128m -Xmx1024m'
+        - name: GC_MAX_METASPACE_SIZE
+          value: 256
+        - name: GC_METASPACE_SIZE
+          value: 96
