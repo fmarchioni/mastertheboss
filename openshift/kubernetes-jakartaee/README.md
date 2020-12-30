@@ -1,7 +1,6 @@
-openshift-jee-sample
+Jakarta EE Demo on Kubernetes
 ====================
 
-A sample app to be deployed on openshift environments
+A sample app to be deployed on Kubernetes
 
-Note: to build this repository with maven you must specify "-Popenshift", eg "mvn clean package -Popenshift"
-
+Check out the following article: http://www.mastertheboss.com/javaee/jakarta-ee/how-to-deploy-wildfly-microservices-on-kubernetes
