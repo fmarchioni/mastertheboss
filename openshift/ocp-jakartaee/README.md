@@ -1,6 +1,6 @@
-Jakarta EE Demo on Kubernetes
+Jakarta EE Demo on OpenShift
 ====================
 
-A sample app to be deployed on Kubernetes
+A sample app to be deployed on OpenShift
 
-Check out the following article: http://www.mastertheboss.com/javaee/jakarta-ee/how-to-deploy-wildfly-microservices-on-kubernetes
+Check out the following article: http://www.mastertheboss.com/javaee/jakarta-ee/building-and-deploying-a-jakarta-ee-application-on-openshift
