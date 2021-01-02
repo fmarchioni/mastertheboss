@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>CRUD Mission - Quarkus</title>
+
+
+    <link rel="stylesheet" type="text/css" href="stylesheet.css" media="screen"/>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+
+    <script type="text/javascript">
+ var app = angular.module("orderManagement", []);
+angular.module('orderManagement').constant('SERVER_URL', '/orders');
+
+//Controller Part
+app.controller("orderManagementController", function($scope, $http, SERVER_URL) {
+
+    var customerId = getParameterByName('customerId');
+    var customerName = getParameterByName('customerName');
+    var customerSurname = getParameterByName('customerSurname');
+
+    document.getElementById("info").innerHTML = customerName + " " + customerSurname;
+
+    $scope.orders = [];
+
+    $scope.form = {
+        customerId: customerId,
+        isNew: true,
+        item: "",
+        price: 0
+    };
+
+    //Now load the data from server
+    reloadData();
+
+    //HTTP POST/PUT methods for add/edit orders
+    $scope.update = function() {
+
+        var method = "";
+        var url = "";
+        var data = {};
+        if ($scope.form.isNew == true) {
+            // add orders - POST operation
+            method = "POST";
+            url = SERVER_URL + "/" + customerId;
+            data.item = $scope.form.item;
+            data.price = $scope.form.price;
+
+        } else {
+            // it's edit operation - PUT operation
+            method = "PUT";
+            url = SERVER_URL;
+            data.id = $scope.form.id;
+            data.item = $scope.form.item;
+            data.price = $scope.form.price;
+
+        }
+
+        if (isNaN(data.price)) {
+            alert('Price must be a Number!');
+            return false;
+        }
+
+        $http({
+            method: method,
+            url: url,
+            data: angular.toJson(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(_success, _error);
+    };
+
+
+    //HTTP DELETE- delete order by id
+    $scope.remove = function(order) {
+        $http({
+            method: 'DELETE',
+            url: SERVER_URL + "/" + order.id
+        }).then(_success, _error);
+    };
+
+    //In case of edit orders, populate form with order data
+    $scope.edit = function(order) {
+        $scope.form.item = order.item;
+        $scope.form.price = order.price;
+        $scope.form.isNew = false;
+        $scope.form.id = order.id;
+    };
+    /* Private Methods */
+    //HTTP GET- get all orders collection
+    function reloadData() {
+        $http({
+            method: 'GET',
+            url: SERVER_URL,
+            params: {
+                customerId: customerId
+            }
+        }).then(function successCallback(response) {
+            $scope.orders = response.data;
+        }, function errorCallback(response) {
+            console.log(response.statusText);
+        });
+    }
+
+    function _success(response) {
+        reloadData();
+        clearForm()
+    }
+
+    function _error(response) {
+        alert(response.data.message || response.statusText);
+    }
+    //Clear the form
+    function clearForm() {
+        $scope.form.item = "";
+        $scope.form.price = "";
+        $scope.form.isNew = true;
+    }
+});
+
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+    </script>
+</head>
+<body ng-app="orderManagement" ng-controller="orderManagementController">
+
+
+<h1>Orders for Customer: <span id="info"></span></h1>
+
+<div class="divTable blueTable">
+    <h2>Enter order:</h2>
+    <form ng-submit="update()">
+        <div class="divTableRow">
+
+                        <div class="divTableCell">Item:</div>
+                        <div class="divTableCell"><input type="text" placeholder="Item" ng-model="form.item" size="60"/></div>
+                    </div>
+                    <div class="divTableRow">
+                        <div class="divTableCell">Price:</div>
+                        <div class="divTableCell"><input type="text"  placeholder="0" ng-model="form.price" /></div>
+
+                    </div>
+
+                    <input type="submit" value="Save"/>
+                </form>
+                <div class="divTable blueTable">
+                    <div class="divTableHeading">
+
+                        <div class="divTableHead">Item</div>
+                        <div class="divTableHead">Price</div>
+                        <div class="divTableHead">Action</div>
+                    </div>
+                    <div class="divTableRow" ng-repeat="order in orders">
+                        <div class="divTableCell">{{ order.item }}</div>
+                        <div class="divTableCell">{{ order.price }}</div>
+                        <div class="divTableCell">
+                            <a ng-click="edit( order )" class="myButton">Edit</a>
+                            <a ng-click="remove( order )" class="myButton">Remove</a>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <input type="button" class="myButton" onclick="location.href='/';" value="Home" />
+
+</body>
+</html>
