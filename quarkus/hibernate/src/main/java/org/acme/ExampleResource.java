@@ -1,7 +1,5 @@
 package org.acme;
 
-import org.jboss.resteasy.annotations.jaxrs.PathParam;
-
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
