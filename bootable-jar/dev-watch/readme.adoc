@@ -1,0 +1,3 @@
+== RESTEasy application using WildFly bootable jar
+
+Article: http://www.mastertheboss.com/javaee/eclipse-microservices/turn-your-wildfly-applications-in-bootable-jars
