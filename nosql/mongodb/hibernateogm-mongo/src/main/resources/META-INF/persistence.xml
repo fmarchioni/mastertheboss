@@ -8,9 +8,10 @@
     <properties>
       <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/>
       <!--  <property name="hibernate.ogm.datastore.provider" value="mongodb" />-->
-      <property name="hibernate.ogm.datastore.database" value="javaee7"/>
+      <property name="hibernate.ogm.datastore.database" value="wildfly"/>
       <property name="hibernate.ogm.datastore.host" value="localhost"/>
       <property name="hibernate.ogm.datastore.provider" value="MONGODB"/>
+      <property name="hibernate.ogm.datastore.create_database" value="true" />
       <!--
             <property name="hibernate.ogm.datastore.username" value="db_user" />
             <property name="hibernate.ogm.datastore.password" value="top_secret!" />
