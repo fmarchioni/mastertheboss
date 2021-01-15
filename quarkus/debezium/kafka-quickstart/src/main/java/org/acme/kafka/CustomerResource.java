@@ -11,7 +11,7 @@ import org.reactivestreams.Publisher;
 
 import org.eclipse.microprofile.reactive.messaging.Channel;
 
-@Path("/prices")
+@Path("/customers")
 public class CustomerResource {
 
     @Inject

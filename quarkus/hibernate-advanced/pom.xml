@@ -3,9 +3,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-  <groupId>com.packt.quarkus.chapter5</groupId>
-  <artifactId>hibernate-demo</artifactId>
-  <version>1.0-SNAPSHOT</version>
+    <groupId>com.packt.quarkus.chapter5</groupId>
+    <artifactId>hibernate-advanced</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
     <properties>
         <quarkus-plugin.version>1.10.5.Final</quarkus-plugin.version>
@@ -109,16 +109,8 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.eclipse.jkube</groupId>
-                <artifactId>kubernetes-maven-plugin</artifactId>
-                <version>${jkube.version}</version>
-            </plugin>
-            <plugin>
-                <groupId>org.eclipse.jkube</groupId>
-                <artifactId>openshift-maven-plugin</artifactId>
-                <version>${jkube.version}</version>
-            </plugin>
+
+
         </plugins>
     </build>
 
@@ -126,9 +118,11 @@
         <profile>
             <!-- Optionally activate this profile to compile the demo into native! -->
             <id>native</id>
+
             <activation>
                 <property>
                     <name>native</name>
+
                 </property>
             </activation>
             <build>
@@ -144,6 +138,7 @@
                                 </goals>
                                 <configuration>
                                     <enableHttpUrlHandler>true</enableHttpUrlHandler>
+                                    <dockerBuild>true</dockerBuild>
                                 </configuration>
                             </execution>
                         </executions>
@@ -160,7 +155,9 @@
                                 </goals>
                                 <configuration>
                                     <systemProperties>
-                                        <native.image.path>${project.build.directory}/${project.build.finalName}-runner</native.image.path>
+                                        <native.image.path>
+                                            ${project.build.directory}/${project.build.finalName}-runner
+                                        </native.image.path>
                                     </systemProperties>
                                 </configuration>
                             </execution>
@@ -180,10 +177,48 @@
             <build>
                 <pluginManagement>
                     <plugins>
-                       
+
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+        <profile>
+            <id>openshift</id>
+            <properties>
+                <jkube.generator.quarkus.nativeImage>
+                    true
+                </jkube.generator.quarkus.nativeImage>
+            </properties>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.eclipse.jkube</groupId>
+                            <artifactId>openshift-maven-plugin</artifactId>
+                            <version>${jkube.version}</version>
+                            <executions>
+                                <execution>
+                                    <goals>
+                                        <goal>resource</goal>
+                                        <goal>build</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                            <configuration>
+                                <enricher>
+                                    <config>
+                                        <jkube-service>
+                                            <type>NodePort</type>
+                                        </jkube-service>
+                                    </config>
+                                </enricher>
+                            </configuration>
+                        </plugin>
                     </plugins>
                 </pluginManagement>
             </build>
         </profile>
     </profiles>
 </project>
+
+

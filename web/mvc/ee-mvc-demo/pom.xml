@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+       <groupId>com.itbuzzpress.root</groupId>
+       <artifactId>ee-root</artifactId>
+       <version>1.0</version>
+       <relativePath>../..</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.itbuzzpress.mvc</groupId>
+    <artifactId>mvc-sample</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <name>jakartaee-mvc-sample</name>
+    <description>A Jakarta EE MVC sample project</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+
+        <!-- Jakarta EE API -->
+        <jakartaee-api.version>8.0.0</jakartaee-api.version>
+        
+        <!-- Eclipse Krazo -->
+        <krazo.version>1.0.0</krazo.version>
+
+        <!-- Maven Plugins
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <cargo-maven2-plugin.version>1.7.7</cargo-maven2-plugin.version>
+        <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
+        <maven-failsafe-plugin.version>3.0.0-M4</maven-failsafe-plugin.version>
+        <maven-surefire-report-plugin.version>3.0.0-M4</maven-surefire-report-plugin.version>
+
+ 
+ 
+        <glassfish.version>5.1.0</glassfish.version>
+        <arquillian-glassfish.version>1.0.2</arquillian-glassfish.version>
+        <jersey.version>2.28</jersey.version>
+        <eclipselink.version>2.7.4</eclipselink.version>
+
+ 
+
+ 
+        <wildfly.version>19.0.0.Beta1</wildfly.version>
+        <wildfly-maven-plugin.version>2.1.0.Beta1</wildfly-maven-plugin.version>
+        <wildfly-arquillian.version>2.2.0.Final</wildfly-arquillian.version>
+
+        <undertow-websockets-jsr.version>2.0.26.Final</undertow-websockets-jsr.version>
+        <resteasy.version>3.9.0.Final</resteasy.version>
+        
+
+        <liberty.runtime.version>20.0.0.1</liberty.runtime.version>     
+
+        <derby.version>10.14.2.0</derby.version>
+        <liberty-maven-plugin.version>3.1</liberty-maven-plugin.version>
+        
+
+        <skipTests>true</skipTests>
+        
+
+        <browser>phantomjs</browser>
+        -->
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>org.eclipse.krazo</groupId>
+                <artifactId>krazo-core</artifactId>
+                <version>${krazo.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.eclipse.krazo</groupId>
+                <artifactId>krazo-cxf</artifactId>
+                <version>${krazo.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+    <dependencies>
+
+        <!--
+
+               <dependency>
+                   <groupId>jakarta.platform</groupId>
+                   <artifactId>jakarta.jakartaee-api</artifactId>
+                   <version>8.0.0</version>
+                   <scope>provided</scope>
+               </dependency>
+
+
+               <dependency>
+                   <groupId>javax.mvc</groupId>
+                   <artifactId>javax.mvc-api</artifactId>
+                   <version>1.0.0</version>
+               </dependency>
+-->
+               <dependency>
+                   <groupId>org.eclipse.krazo</groupId>
+                   <artifactId>krazo-core</artifactId>
+                   <version>${krazo.version}</version>
+               </dependency>
+<!--               <dependency>
+                   <groupId>org.eclipse.krazo</groupId>
+                   <artifactId>krazo-jersey</artifactId>
+                   <version>${krazo.version}</version>
+               </dependency>-->
+
+               <dependency>
+                   <groupId>org.eclipse.krazo</groupId>
+                   <artifactId>krazo-cxf</artifactId>
+                   <version>${krazo.version}</version>
+               </dependency>
+
+                <dependency>
+                    <groupId>jakarta.platform</groupId>
+                    <artifactId>jakarta.jakartaee-api</artifactId>
+                    <scope>provided</scope>
+                    <version>8.0.0</version>
+                </dependency>
+
+               <dependency>
+                   <groupId>org.eclipse.krazo</groupId>
+                   <artifactId>krazo-resteasy</artifactId>
+                   <version>${krazo.version}</version>
+               </dependency>
+           </dependencies>
+         <build>
+           <finalName>${project.artifactId}</finalName>
+         </build>
+
+
+
+       </project>

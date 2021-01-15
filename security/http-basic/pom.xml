@@ -64,6 +64,11 @@
       <artifactId>jboss-servlet-api_4.0_spec</artifactId>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>javax.security.enterprise</groupId>
+      <artifactId>javax.security.enterprise-api</artifactId>
+      <version>1.0</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>${project.artifactId}</finalName>

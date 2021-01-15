@@ -1,5 +1,7 @@
 package org.acme;
 
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
@@ -57,5 +59,15 @@ public class CustomerResource {
         }
         entityManager.remove(entity);
         return Response.status(204).build();
+    }
+
+    @Inject
+    @ConfigProperty(name="message")
+    String message;
+
+    @GET
+    @Path("/hello")
+    public String hello() {
+        return message;
     }
 }

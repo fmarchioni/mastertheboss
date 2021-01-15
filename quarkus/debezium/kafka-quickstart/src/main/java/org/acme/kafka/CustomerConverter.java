@@ -13,7 +13,6 @@ public class CustomerConverter {
 
     private static final double CONVERSION_RATE = 0.88;
 
-    // Consume from the `prices` channel and produce to the `my-data-stream` channel
     @Incoming("debezium-connector")
     @Outgoing("my-data-stream")
     // Send to all subscribers

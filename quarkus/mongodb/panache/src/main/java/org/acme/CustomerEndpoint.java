@@ -1,5 +1,7 @@
 package org.acme;
 
+import io.quarkus.mongodb.panache.PanacheQuery;
+import io.quarkus.panache.common.Page;
 import org.bson.types.ObjectId;
 
 import javax.inject.Inject;
@@ -20,6 +22,15 @@ public class CustomerEndpoint {
         return Customer.listAll();
     }
 
+    // Get first page of 20 entries
+    @Path("/page1")
+    @GET
+    public List<Customer> pageList() {
+        PanacheQuery<Customer> customers = Customer.find("name","John");
+        customers.page(Page.ofSize(20));
+        return customers.list();
+    }
+
     @POST
     public Response create(Customer customer) {
         customer.persist();
@@ -28,7 +39,6 @@ public class CustomerEndpoint {
 
     @PUT
     public void update(Customer customer) {
-        System.out.println("------ customer "+customer);
         customer.update();
     }
 

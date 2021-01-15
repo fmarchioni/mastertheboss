@@ -12,6 +12,7 @@ import static org.hamcrest.CoreMatchers.is;
 
 @QuarkusTest
 @TestHTTPEndpoint(CustomerResource.class)
+
 public class CustomerEndpointAdvancedTest {
 
     @Test
@@ -49,7 +50,7 @@ public class CustomerEndpointAdvancedTest {
                 );
 
 
-        Response response = RestAssured.given().when().get();
+        Response response = RestAssured.given().when().get("/hello");
 
         // Retrieve the body of the Response
         ResponseBody body = response.getBody();
