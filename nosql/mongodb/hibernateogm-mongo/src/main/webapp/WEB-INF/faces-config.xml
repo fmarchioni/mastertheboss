@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config version="2.2" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://java.sun.com/xml/ns/javaee
+        http://java.sun.com/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+	<!-- This descriptor activates the JSF 2.0 Servlet -->
+
+
+	<application>
+		<resource-library-contracts>
+			<contract-mapping>
+				<url-pattern>/admin/*</url-pattern>
+				<contracts>black</contracts>
+			</contract-mapping>
+
+			<contract-mapping>
+				<url-pattern>/user/*</url-pattern>
+				<contracts>color</contracts>
+			</contract-mapping>
+		</resource-library-contracts>
+	</application>
+
+	<navigation-rule>
+		<from-view-id>/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>report</from-outcome>
+			<to-view-id>/report.xhtml</to-view-id>
+			<if>#{userList.size() &gt; 0}</if>
+		</navigation-case>
+	</navigation-rule>
+</faces-config>

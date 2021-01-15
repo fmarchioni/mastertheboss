@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <style type="text/css">  
+            @import url("css/store.css");
+        </style>
+    </h:head>
+    <h:body>
+
+        <h:form id="jsfexample">
+            <h:panelGrid columns="2" styleClass="tablestyle"> 
+                <h:outputText value="Hibernate OGM example on WildFly" />
+                <br/>
+                <h:outputText value="Enter key:" />
+                <h:inputText value="#{controller.key}" />
+
+                <h:outputText value="Enter value:" />
+                <h:inputText value="#{controller.value}" />
+
+                <h:commandButton actionListener="#{controller.save}"
+                                 value="Save key/value" />
+            
+
+                <h:messages />
+
+
+            </h:panelGrid>
+
+            <h:outputText value="No orders yet!" rendered="#{empty controller.propertyList}" />
+            <br/>
+
+            <h:dataTable value="#{controller.propertyList}" var="item" styleClass="tablestyle" rendered="#{not empty controller.propertyList}">
+                <h:column>
+                    <f:facet name="header">Key</f:facet>
+                    <h:outputText value="#{item.key}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Value</f:facet>
+                    <h:outputText value="#{item.value}" />
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
