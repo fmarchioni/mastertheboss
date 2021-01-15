@@ -1,0 +1,8 @@
+Optionally, you can install MongoDB as a module and reference it from here:
+<jboss-deployment-structure>
+    <deployment>
+        <dependencies>
+            <module name="com.mongodb" export="TRUE"/> />
+        </dependencies>
+    </deployment>
+</jboss-deployment-structure>

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.acme</groupId>
+  <artifactId>mongoclient-wildfly</artifactId>
+  <packaging>war</packaging>
+  <version>1.0.0</version>
+  <properties>
+
+  <version.wildfly>21.0.0.Final</version.wildfly>
+
+  <plugin.fork.embedded>true</plugin.fork.embedded>
+  <maven.compiler.source>1.8</maven.compiler.source>
+  <maven.compiler.target>1.8</maven.compiler.target>
+  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  <failOnMissingWebXml>false</failOnMissingWebXml>
+  <version.server.bom>${version.wildfly}</version.server.bom>
+  <mongodb.driver.version>3.12.7</mongodb.driver.version>
+  <jakartaee.version>8.0.0</jakartaee.version>
+</properties>
+
+
+<dependencies>
+  <dependency>
+    <groupId>jakarta.platform</groupId>
+    <artifactId>jakarta.jakartaee-api</artifactId>
+    <scope>provided</scope>
+    <version>${jakartaee.version}</version>
+  </dependency>
+  <dependency>
+    <groupId>org.mongodb</groupId>
+    <artifactId>mongo-java-driver</artifactId>
+    <version>${mongodb.driver.version}</version>
+
+  </dependency>
+</dependencies>
+<build>
+  <finalName>${project.artifactId}</finalName>
+
+<plugins>
+  <plugin>
+    <groupId>org.wildfly.plugins</groupId>
+    <artifactId>wildfly-maven-plugin</artifactId>
+    <version>2.0.0.Final</version>
+  </plugin>
+ <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-war-plugin</artifactId>
+    <version>3.2.3</version>
+    <configuration>
+      <failOnMissingWebXml>false</failOnMissingWebXml>
+    </configuration>
+  </plugin>
+</plugins>
+</build>
+</project>
