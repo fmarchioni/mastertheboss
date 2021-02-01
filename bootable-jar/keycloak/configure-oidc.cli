@@ -1,0 +1,1 @@
+/subsystem=keycloak/secure-deployment=simple-webapp.war:add(realm=wildfly-realm, resource=simple-webapp, public-client=true, auth-server-url=http://localhost:8180/auth/, ssl-required=EXTERNAL)
