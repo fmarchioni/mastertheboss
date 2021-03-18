@@ -27,8 +27,8 @@ public class HelloWorldServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter writer = response.getWriter();
 		writer.println("<h1>Hello World Servlet on WildFly</h1>");
-		logger.info("Hello world Log4j2 on WildFly");
-		logger.info("Request URI {} - Session Id {}.", request.getRequestURI(), request.getSession().getId());
+		logger.warn("Hello world Log4j2 on WildFly");
+		logger.warn("Request URI {} - Session Id {}.", request.getRequestURI(), request.getSession().getId());
 
 		writer.close();
     }

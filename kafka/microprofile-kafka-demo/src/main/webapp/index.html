@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WildFly Reactive - Kafka messaging</title>
+    <style>
+       div.blueTable {
+  border: 1px solid #1C6EA4;
+  background-color: #EEEEEE;
+  width: 50%;
+  text-align: left;
+  border-collapse: collapse;
+}
+.divTable.blueTable .divTableCell, .divTable.blueTable .divTableHead {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
+}
+.divTable.blueTable .divTableBody .divTableCell {
+  font-size: 13px;
+}
+.divTable.blueTable .divTableRow:nth-child(even) {
+  background: #D0E4F5;
+}
+.divTable.blueTable .divTableHeading {
+  background: #1C6EA4;
+  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  border-bottom: 2px solid #444444;
+}
+.divTable.blueTable .divTableHeading .divTableHead {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-left: 2px solid #D0E4F5;
+}
+.divTable.blueTable .divTableHeading .divTableHead:first-child {
+  border-left: none;
+}
+
+.blueTable .tableFootStyle {
+  font-size: 14px;
+}
+.blueTable .tableFootStyle .links {
+	 text-align: right;
+}
+.blueTable .tableFootStyle .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+.blueTable.outerTableFooter {
+  border-top: none;
+}
+.blueTable.outerTableFooter .tableFootStyle {
+  padding: 3px 5px;
+}
+/* DivTable.com */
+.divTable{ display: table; }
+.divTableRow { display: table-row; }
+.divTableHeading { display: table-header-group;}
+.divTableCell, .divTableHead { display: table-cell;}
+.divTableHeading { display: table-header-group;}
+.divTableFoot { display: table-footer-group;}
+.divTableBody { display: table-row-group;}
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>WildFly Reactive - Kafka messaging</h2>
+    <h3>Stock Quotes</h3>
+
+    <div class="divTable blueTable">
+        <div class="divTableHeading">
+            <div class="divTableRow">
+                <div class="divTableHead">Company</div>
+                <div class="divTableHead">Stock Quote</div>
+
+            </div>
+        </div>
+        <div class="divTableBody">
+            <div class="divTableRow">
+                <div class="divTableCell">Acme</div>
+                <div class="divTableCell"><span id="Acme">N/A</span></div>
+
+            </div>
+            <div class="divTableRow">
+                <div class="divTableCell">Globex</div>
+                <div class="divTableCell"><span id="Globex">N/A</span></div>
+
+            </div>
+            <div class="divTableRow">
+                <div class="divTableCell">Umbrella</div>
+                <div class="divTableCell"><span id="Umbrella">N/A</span></div>
+
+            </div>
+            <div class="divTableRow">
+                <div class="divTableCell">Soylent</div>
+                <div class="divTableCell"><span id="Soylent">N/A</span></div>
+
+            </div>
+            <div class="divTableRow">
+                <div class="divTableCell">Initech</div>
+                <div class="divTableCell"><span id="Initech">N/A</span></div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    var source = new EventSource("/reactive/rest/quotes/stream");
+    source.onmessage = function (event) {
+    var data = JSON.parse(event.data);
+    var company = data['company'];
+    var value = data['value'];
+        document.getElementById(company).innerHTML = value;
+    };
+</script>
+</html>

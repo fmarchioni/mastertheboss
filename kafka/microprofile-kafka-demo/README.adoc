@@ -1,0 +1,22 @@
+== WildFly Reactive Demo
+
+Sample Reactive Application using WildFly 23 with Kafka
+
+=== How to run the demo
+
+Start Docker:
+----
+service docker start
+----
+
+Start Kafka
+----
+docker-compose up
+----
+
+Deploy the application
+----
+mvn clean install wildfly:deploy
+----
+
+Test the application at: http://www.localhost:8080/reactive/index.html

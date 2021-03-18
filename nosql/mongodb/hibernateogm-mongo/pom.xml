@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.packtpub.mongo.chapter4</groupId>
@@ -16,17 +17,16 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <jakartaee.version>8.0.0</jakartaee.version>
     </properties>
-    
-   <repositories>
-		<repository>
-			<id>JBoss Repository</id>
-			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
-		</repository>
-	</repositories>
 
-	<dependencyManagement>
-		<dependencies>
+    <repositories>
+        <repository>
+            <id>JBoss Repository</id>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
 
+    <dependencyManagement>
+        <dependencies>
             <dependency>
                 <groupId>org.hibernate.ogm</groupId>
                 <artifactId>hibernate-ogm-bom</artifactId>
@@ -34,29 +34,19 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
-
-		</dependencies>
-	</dependencyManagement>
-	<dependencies>
-
+        </dependencies>
+    </dependencyManagement>
+    <dependencies>
         <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-api</artifactId>
             <scope>provided</scope>
             <version>${jakartaee.version}</version>
         </dependency>
-
-<dependency>
-    <groupId>org.hibernate.ogm</groupId>
-    <artifactId>hibernate-ogm-mongodb</artifactId>
-</dependency>
-
- 
-
-
-		 
-
+        <dependency>
+            <groupId>org.hibernate.ogm</groupId>
+            <artifactId>hibernate-ogm-mongodb</artifactId>
+        </dependency>
     </dependencies>
     <build>
 
