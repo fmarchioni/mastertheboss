@@ -32,13 +32,13 @@ public class AppTest extends JbpmJUnitBaseTestCase {
 		 * ksession.startProcess("com.mastertheboss.bpmn.hello");
 		 */
 
-        final RuntimeManager runtimeManager = createRuntimeManager("com/mastertheboss/sample.bpmn");
+        final RuntimeManager runtimeManager = createRuntimeManager("com/mastertheboss/LicenseDemo.bpmn");
         final RuntimeEngine engine = getRuntimeEngine(null);
         final KieSession ksession = engine.getKieSession();
 
        
 
-        final ProcessInstance processInstance = ksession.startProcess("com.mastertheboss.bpmn.hello");
+        final ProcessInstance processInstance = ksession.startProcess("com.mastertheboss.LicenseDemo");
         TaskService taskService = engine.getTaskService();
 		assertProcessInstanceActive(processInstance.getId(), ksession);
 		assertNodeTriggered(processInstance.getId(), "CheckLicense");

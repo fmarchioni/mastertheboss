@@ -4,7 +4,7 @@
   <bpmn2:itemDefinition id="ItemDefinition_1" isCollection="false" structureRef="java.lang.Boolean"/>
   <bpmn2:itemDefinition id="ItemDefinition_1377" isCollection="false" structureRef="java.lang.String"/>
   <bpmn2:itemDefinition id="ItemDefinition_645" isCollection="false" structureRef="java.lang.Integer"/>
-  <bpmn2:process id="com.mastertheboss.bpmn.hello" tns:packageName="defaultPackage" name="Hello World" isExecutable="true" processType="Private">
+  <bpmn2:process id="com.mastertheboss.LicenseDemo" tns:packageName="defaultPackage" name="LicenseDemo" isExecutable="true" processType="Private">
     <bpmn2:property id="age" itemSubjectRef="ItemDefinition_645" name="age"/>
     <bpmn2:startEvent id="_1">
       <bpmn2:extensionElements>
@@ -177,7 +177,7 @@
     <bpmn2:sequenceFlow id="SequenceFlow_4" tns:priority="1" sourceRef="ScriptTask_1" targetRef="EndEvent_1"/>
   </bpmn2:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_Process_1" bpmnElement="com.mastertheboss.bpmn.hello">
+    <bpmndi:BPMNPlane id="BPMNPlane_Process_1" bpmnElement="com.mastertheboss.LicenseDemo">
       <bpmndi:BPMNShape id="BPMNShape_StartEvent_1" bpmnElement="_1">
         <dc:Bounds height="36.0" width="36.0" x="140.0" y="110.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_1"/>
