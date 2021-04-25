@@ -1,0 +1,7 @@
+#!/bin/sh
+/usr/local/s2i/assemble
+echo "executed assemble!"
+
+mkdir /opt/wildfly/standalone/deployments/hello.war
+echo "Hello world" > /opt/wildfly/standalone/deployments/hello.war/index.jsp
+touch /opt/wildfly/standalone/deployments/hello.war.dodeploy
