@@ -655,3 +655,4 @@
             <remote-destination host="${env.OPENSHIFT_SMTP_HOST:localhost}" port="${jboss.mail.server.port:25}"/>
         </outbound-socket-binding>
     </socket-binding-group>
+  </server> 
