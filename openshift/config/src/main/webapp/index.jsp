@@ -15,9 +15,9 @@
   </table>
 
   <br />
-  <p>Prints System Property from configuration</p>
+  <p>Prints System Property from configuration: <%= System.getProperty("foo") %></p>
 
-  <%= System.getProperty("foo"); %>
+  
 
   </body>
 </html> 
