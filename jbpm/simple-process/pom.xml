@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.codelikethewind</groupId>
+	<artifactId>simple-process</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>kjar</packaging>
+
+	<name>simple-process</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<jbpm.version>7.51.0.Final</jbpm.version>
+	</properties>
+
+	<dependencies>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.kie</groupId>
+				<artifactId>kie-maven-plugin</artifactId>
+				<version>${jbpm.version}</version>
+				<extensions>true</extensions>
+				<dependencies>
+					<dependency>
+						<groupId>org.jbpm</groupId>
+						<artifactId>jbpm-bpmn2</artifactId>
+						<version>${jbpm.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+ 
+	</build>
+</project>
