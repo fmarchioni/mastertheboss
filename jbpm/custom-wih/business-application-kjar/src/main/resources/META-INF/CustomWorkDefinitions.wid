@@ -1,0 +1,12 @@
+import org.drools.core.process.core.datatype.impl.type.StringDataType;
+
+[
+ [
+ "name" : "HelloWIH",
+ "parameters" : [
+ "Message" : new StringDataType(),
+ ],
+ "displayName" : "HelloWIH",
+ "icon" : "icon-info.gif"
+ ]
+]
