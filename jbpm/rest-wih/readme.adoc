@@ -1,0 +1,31 @@
+== JBPM 7 using REST WorkItemHandler
+
+Tutorial for this application: http://www.mastertheboss.com/jboss-jbpm/jbpm6/how-to-use-a-rest-workitem-handler-in-jbpm
+
+=== How to run the application:
+
+* Install the KJAR in the local repository:
+
+----
+$ cd business-application-kjar
+
+$ mvn clean install
+
+----
+
+* Start the application:
+
+----
+$ cd business-application-service
+
+$ mvn clean install spring-boot:run
+
+----
+
+* Test the application:
+
+Use the "hello" endpoint to trigger the Process.
+
+----
+curl http://localhost:8090/hello?age=21
+----
