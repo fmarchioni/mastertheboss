@@ -1,27 +1,3 @@
 = Quarkus and Hibernate example
 
-An example application featuring a One-To-Many relation between the table Customer and Orders
-
-== How to run it
-
-* Start the Database:
-
-[source,shell]
-----
-$ ./db.sh
-----
-
-* Launch the application:
-
-[source,shell]
-----
-$ mvn install quarkus:dev
-----
-
-* Deploy on Openshift:
-
-[source,shell]
-----
-./deploy-openshift.sh
-----
-
+Tutorial for this application: http://www.mastertheboss.com/soa-cloud/quarkus/deploying-quarkus-applications-on-openshift

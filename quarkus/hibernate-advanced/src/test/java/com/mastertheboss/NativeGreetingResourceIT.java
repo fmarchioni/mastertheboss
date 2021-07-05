@@ -1,11 +1,9 @@
-package com.packt.quarkus.chapter5;
-
+package com.mastertheboss;
 
 import io.quarkus.test.junit.NativeImageTest;
 
-
 @NativeImageTest
-public class NativeCustomerEndpointIT extends CustomerEndpointTest {
+public class NativeGreetingResourceIT extends GreetingResourceTest {
 
     // Execute the same tests but in native mode.
 }

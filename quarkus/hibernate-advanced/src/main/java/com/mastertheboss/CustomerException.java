@@ -1,4 +1,4 @@
-package com.packt.quarkus.chapter5;
+package com.mastertheboss;
 
 public class CustomerException extends RuntimeException{
 

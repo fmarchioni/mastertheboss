@@ -1,4 +1,4 @@
-package com.packt.quarkus.chapter5;
+package com.mastertheboss;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

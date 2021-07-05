@@ -1,4 +1,4 @@
-package com.packt.quarkus.chapter5;
+package com.mastertheboss;
 
 import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
