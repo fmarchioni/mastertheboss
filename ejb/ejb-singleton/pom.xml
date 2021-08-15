@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>com.mastertheboss.ejb</groupId>
+   <artifactId>ejb-singleton</artifactId>
+   <version>1.0</version>
+   <packaging>war</packaging>
+   <name>EJB 3.2 example application</name>
+   <properties>
+      <version.compiler.plugin>3.1</version.compiler.plugin>
+      <version.ejb.plugin>2.3</version.ejb.plugin>
+      <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+   </properties>
+
+ 
+    <dependencies>
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <version>8.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+   <build>
+      <finalName>${project.artifactId}</finalName>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.1</version>
+            <configuration>
+               <source>1.8</source>
+               <target>1.8</target>
+               <compilerArguments>
+                  <endorseddirs>${endorsed.dir}</endorseddirs>
+               </compilerArguments>
+            </configuration>
+         </plugin>
+        <plugin>
+    <artifactId>maven-war-plugin</artifactId>
+    <version>2.4</version>
+    <configuration>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+    </configuration>
+</plugin>
+        
+         <plugin>
+            <groupId>org.wildfly.plugins</groupId>
+            <artifactId>wildfly-maven-plugin</artifactId>
+            <version>2.0.0.Final</version>
+            <configuration>
+               <filename>${project.build.finalName}.war</filename>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
+</project>
