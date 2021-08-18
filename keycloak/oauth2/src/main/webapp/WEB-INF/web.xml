@@ -1,0 +1,21 @@
+<web-app>
+    <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>customer-manager</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-role>
+        <role-name>customer-manager</role-name>
+    </security-role>
+    <context-param>
+        <param-name>resteasy.role.based.security</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <login-config>
+        <auth-method>KEYCLOAK</auth-method>
+        <realm-name>Keycloak Realm</realm-name>
+    </login-config>
+</web-app>

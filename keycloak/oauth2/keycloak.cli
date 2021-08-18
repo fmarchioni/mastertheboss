@@ -1,0 +1,8 @@
+/subsystem=keycloak/secure-deployment="simple-webapp.war"/:add( \
+    realm="demo-realm", \
+    resource="customer-manager-client", \
+    auth-server-url=http://localhost:8180/auth/, \
+    ssl-required=EXTERNAL)
+
+/subsystem=keycloak/secure-deployment="simple-webapp.war"/credential=secret:add(value=mysecret)
+
