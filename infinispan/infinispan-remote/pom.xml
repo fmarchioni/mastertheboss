@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>infinispan-simple-tutorials-remote</artifactId>
+
+	<version>1.0.0-SNAPSHOT</version>
+	<groupId>org.infinispan.tutorial.simple</groupId>
+
+	<name>Infinispan Simple Tutorials: Remote</name>
+	<properties>
+		<version.infinispan>12.1.7.Final</version.infinispan>
+		<version.protostream>4.4.1.Final</version.protostream>
+
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<executable>java</executable>
+					<arguments>
+						<argument>-Djava.net.preferIPv4Stack=true</argument>
+						<argument>-Djava.util.logging.config.file=src/main/resources/logging.properties</argument>
+						<argument>-classpath</argument>
+						<classpath />
+						<argument>infinispan.demoremote.InfinispanRemoteCache</argument>
+					</arguments>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.infinispan</groupId>
+				<artifactId>infinispan-bom</artifactId>
+				<version>${version.infinispan}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.infinispan</groupId>
+			<artifactId>infinispan-client-hotrod</artifactId>
+		</dependency>
+	</dependencies>
+</project>
