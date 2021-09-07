@@ -12,7 +12,7 @@ public class App
         DefaultCacheManager cacheManager = new DefaultCacheManager("config.xml");
         Cache cache = cacheManager.getCache();
         cache.put("key", "value");
-        System.out.printf("key = %s\n", cache.get("key"));
+        System.out.printf("=============> key = %s\n", cache.get("key"));
         cacheManager.stop();
     }
 }
