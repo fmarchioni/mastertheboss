@@ -1,0 +1,3 @@
+== Infinispan remote cache demo
+
+Source code for this tutorial: http://www.mastertheboss.com/jboss-frameworks/infinispan/clustering-infinispan-a-complete-example/
