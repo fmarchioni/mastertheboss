@@ -1,9 +1,9 @@
-Primefaces Example
+Primefaces Chart Example
 ===============================
 Author: Francesco Marchioni  
 Level: Beginner  
 Technologies: JSF  
-Summary: This project demonstrates the usage of Primefaces.  
+Summary: This project demonstrates the usage of Primefaces Charts.  
 Target Product: WildFly  
 
  
@@ -22,7 +22,7 @@ Build and Deploy the Quickstart
 Access the application 
 ---------------------
 
-The application will be running at the following URL: <http://localhost:8080/primefaces>. 
+The application will be running at the following URL: <http://localhost:8080/primefaces-chart>. 
 
 
 Undeploy the Archive
