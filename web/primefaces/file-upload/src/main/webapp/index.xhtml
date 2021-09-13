@@ -7,7 +7,7 @@
  <h:body>
  
  <h:form>
-    <p:fileUpload fileUploadListener="#{fileUploadController.upload}" mode="advanced" dragDropSupport="false"
+    <p:fileUpload listener="#{fileUploadController.upload}" mode="advanced" dragDropSupport="false"
            update="messages" sizeLimit="1000000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
  
     <p:growl id="messages" showDetail="true" />

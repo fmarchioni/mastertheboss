@@ -11,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.file.UploadedFile;
 
 @ManagedBean(name = "fileUploadController")
 public class FileUploadController {
@@ -19,9 +20,11 @@ public class FileUploadController {
     public void upload(FileUploadEvent event) {
         FacesMessage msg = new FacesMessage("Success! ", event.getFile().getFileName() + " is uploaded.");
         FacesContext.getCurrentInstance().addMessage(null, msg);
+        
+        UploadedFile file = event.getFile();
         // Do what you want with the file
         try {
-            copyFile(event.getFile().getFileName(), event.getFile().getInputstream());
+            copyFile(event.getFile().getFileName(), file.getInputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -45,7 +48,7 @@ public class FileUploadController {
             out.flush();
             out.close();
 
-            System.out.println("New file created!");
+            System.out.println("New file uploaded: " + (destination + fileName));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
