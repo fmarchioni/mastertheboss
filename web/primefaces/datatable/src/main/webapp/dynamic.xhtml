@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+
+<h:body>
+    <h:form id="form" prependId="false">
+
+        <h3>Dynamic Data table example</h3>
+        <p:dataTable var="data" value="#{tableBean.people}">
+            <p:columns value="#{tableBean.columns}" var="column"
+                columnIndexVar="colIndex">
+                <f:facet name="header">
+                #{column.header}
+                </f:facet>
+
+            #{data[column.property]}
+            </p:columns>
+        </p:dataTable>
+
+    </h:form>
+</h:body>
+</html>
