@@ -1,0 +1,7 @@
+{
+  "provider-url": "http://localhost:8180/auth/realms/wildfly-realm",
+  "ssl-required": "external",
+  "client-id": "customer-manager-client",
+  "public-client": true,
+  "confidential-port": 0
+}
