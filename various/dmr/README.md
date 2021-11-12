@@ -1,8 +1,8 @@
-HelloWorld Servlet example
+WildFly Management API
 =====================================
-Example taken from: http://www.mastertheboss.com/javaee/servlet-30/servlet-hello-world-on-wildfly
+Example taken from: http://www.mastertheboss.com/jbossas/jboss-as-7/using-jboss-management-api-programmatically/
 
-This example demonstrates the usage of a Servlet in a Jakarta EE 8 Environment.
+This example demonstrates the usage of Management API programmatically
 
 ###### Deploy
 ```shell
@@ -10,5 +10,5 @@ mvn clean install wildfly:deploy
 ```
 ###### Test
 ```shell
-http://localhost:8080/helloworld/hello
+http://localhost:8080/dmr/jndi
 ```
