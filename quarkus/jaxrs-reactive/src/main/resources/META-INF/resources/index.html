@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>CRUD Mission - Quarkus</title>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/wingcss/0.1.8/wing.min.css" />
+<style>
+input[type=number] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	-webkit-transition: .5s;
+	transition: .5s;
+	outline: 0;
+	font-family: 'Open Sans', serif;
+}
+</style>
+<!-- Load AngularJS -->
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script type="text/javascript">
+      var app = angular.module("RESTManagement", []);
+
+      //Controller Part
+      app.controller("RESTController", function ($scope, $http) {
+
+         $scope.callrest = function () {
+
+       
+           var url =  "hello/stream/" + $scope.form.events + "/" + $scope.form.name;
+           var eventSource = new EventSource(url);
+           eventSource.onmessage = function (event) {
+           var container = document.getElementById("divcontainer");
+           var paragraph = document.createElement("p");
+           paragraph.innerHTML = event.data;
+           container.appendChild(paragraph);
+           };
+
+         }
+
+
+      });
+    </script>
+</head>
+<body ng-app="RESTManagement" ng-controller="RESTController">
+
+    <form ng-submit="callrest()">
+        <div>
+            <div >Name:</div>
+            <div ><input type="text" placeholder="Name" ng-model="form.name" size="60"/></div>
+        </div>
+        <div>
+            <div >Surname:</div>
+            <div ><input type="text" placeholder="Events" ng-model="form.events" size="60"/></div>
+        </div>
+
+        <input type="submit" value="Call REST"/>
+    </form>
+  <div id="divcontainer" style="width: 800px; height: 200px; overflow-y: scroll;" />
+
+
+</body>
+</html>
