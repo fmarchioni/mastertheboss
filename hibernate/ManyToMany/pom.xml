@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>ManyToMany</artifactId>
+    <version>1.1</version>
+    <packaging>war</packaging>
+
+    <name>jpa-basic</name>
+
+    <properties>
+        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    
+	<dependencies>
+		<dependency>
+		    <groupId>jakarta.platform</groupId>
+		    <artifactId>jakarta.jakartaee-api</artifactId>
+		    <version>8.0.0</version>
+		    <scope>provided</scope>
+		</dependency>
+        </dependencies>
+
+	<build>
+		<finalName>jpa-demo</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.3</version>
+			</plugin>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>2.0.0.Final</version>
+			</plugin>
+		</plugins>
+	</build>
+	<profiles>
+		<profile>
+			<!-- The default profile skips all tests, though you can tune it to run
+                   just unit tests based on a custom pattern -->
+			<!-- Seperate profiles are provided for running all tests, including Arquillian
+                   tests that execute in the specified container -->
+			<id>default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.4.3</version>
+						<configuration>
+							<skip>true</skip>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>
