@@ -1,0 +1,3 @@
+== Netty basic example
+
+Source code for tutorial: http://www.mastertheboss.com/jboss-frameworks/netty/jboss-netty-tutorial/
