@@ -1,0 +1,3 @@
+== Netty HTTP Proxy example
+
+http://www.mastertheboss.com/jboss-frameworks/netty/use-netty-to-proxy-your-requests/
