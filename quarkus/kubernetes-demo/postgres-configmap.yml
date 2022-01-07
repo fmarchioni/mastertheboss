@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  labels:
+    app: postgres
+data:
+  POSTGRESQL_USER: quarkus_test
+  POSTGRESQL_PASSWORD: quarkus_test
+  POSTGRESQL_DATABASE: quarkus_test
