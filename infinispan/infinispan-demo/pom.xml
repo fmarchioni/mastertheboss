@@ -16,7 +16,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <infinispan.version>12.1.7.Final</infinispan.version>
+    <infinispan.version>13.0.5.Final</infinispan.version>
   </properties>
 
   <dependencies>

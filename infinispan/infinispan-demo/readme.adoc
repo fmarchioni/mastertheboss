@@ -1,0 +1,3 @@
+== Infinispan Basic example
+
+Source code for this tutorial: http://www.mastertheboss.com/jboss-frameworks/infinispan/infinispan-tutorial-part-1/
