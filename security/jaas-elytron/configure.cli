@@ -1,0 +1,20 @@
+set projectpath=/home/francesco/git/mastertheboss/security/jaas-elytron
+
+batch
+
+module add --name=lm --resources=$projectpath/target/custom-login-modules-1.0.jar --dependencies=org.wildfly.security.elytron
+
+/subsystem=elytron/jaas-realm=myRealm:add(entry=test,path=$projectpath/JAAS-login-modules.conf,module=lm,callback-handler=loginmodules.CustomCallbackHandler)
+
+/subsystem=elytron/security-domain=mySD:add(default-realm=myRealm,realms=[{realm=myRealm}],permission-mapper=default-permission-mapper)
+
+/subsystem=elytron/http-authentication-factory=example-loginconfig-http-auth:add(http-server-mechanism-factory="global",mechanism-configurations=[{mechanism-name="BASIC",mechanism-realm-configurations=[{realm-name="FSRealmUsers"}]}],security-domain=mySD)
+
+/subsystem=ejb3/application-security-domain=other:write-attribute(name=security-domain,value=mySD)
+
+/subsystem=undertow/application-security-domain=other:write-attribute(name=http-authentication-factory,value=example-loginconfig-http-auth)
+/subsystem=undertow/application-security-domain=other:undefine-attribute(name=security-domain)
+
+run-batch
+reload
+
