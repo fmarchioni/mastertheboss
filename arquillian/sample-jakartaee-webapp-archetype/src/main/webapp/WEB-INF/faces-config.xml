@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- This file is not required if you don't need any extra configuration. -->
+<!--
+
+Note: upgrading to JSF 2.3 will cause currently deployment errors if the web project is empty 
+      (does not contain any injection annotations and no beans.xml).
+      Error message is: "java.lang.NullPointerException at com.sun.faces.facelets.impl.DefaultResourceResolver.resolveUrl..."
+      The error does not occur with JSF 2.2.
+-->
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="
+        http://xmlns.jcp.org/xml/ns/javaee
+        http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+   <!-- This descriptor activates the JSF Servlet -->
+
+   <!-- Write your navigation rules here. You are encouraged to use CDI for
+      creating @Named managed beans. -->
+
+</faces-config>
