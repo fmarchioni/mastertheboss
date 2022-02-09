@@ -19,7 +19,7 @@
 	</licenses>
 
 	<properties>
-		<infinispan.version>8.2.2.Final</infinispan.version>
+		<infinispan.version>11.0.6.Final</infinispan.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
