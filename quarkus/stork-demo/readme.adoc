@@ -1,0 +1,32 @@
+== Quarkus Demo with Stork Service Discovery
+
+Start Service1
+----
+jbang httpd@jbangdev -p 8090 -d service1
+----
+
+Start Service2
+----
+jbang httpd@jbangdev -p 8091 -d service2
+----
+
+Start the Consul instance using:
+
+----
+docker run \
+    -d \
+    -p 8500:8500 \
+    -p 8600:8600/udp \
+    consul agent -server -ui -node=server-1 -bootstrap-expect=1 -client=0.0.0.0
+----
+
+Start Quarkus:
+----
+mvn install quarkus:dev
+----
+
+Test the application:
+
+http://localhost:8080/api
+
+
