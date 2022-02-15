@@ -1,0 +1,9 @@
+
+{
+  "realm": "wildfly-realm",
+  "auth-server-url": "http://localhost:8180/",
+  "ssl-required": "external",
+  "resource": "customer-manager-client",
+  "public-client": true,
+  "confidential-port": 0
+}

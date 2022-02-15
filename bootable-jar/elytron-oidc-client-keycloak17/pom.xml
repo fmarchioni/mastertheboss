@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!--
+    <parent>
+        <groupId>org.wildfly.plugins</groupId>
+        <artifactId>wildfly-jar-examples-parent</artifactId>
+        <version>6.0.0.Final</version>
+    </parent>-->
+    <groupId>com.mastertheboss</groupId>
+    <artifactId>elytron-oidc-client</artifactId>
+    <packaging>war</packaging>
+    <version>1.0.0.Final</version>
+    <name>WildFly Bootable JAR - Elytron OIDC client</name>
+  <properties>
+    <version.bootable.jar>6.0.0.Final</version.bootable.jar>
+    <version.wildfly>26.0.0.Final</version.wildfly>
+    <plugin.fork.embedded>true</plugin.fork.embedded>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <failOnMissingWebXml>false</failOnMissingWebXml>
+    
+  </properties>
+     <dependencies>
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <version>8.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>keycloak-demo</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-jar-maven-plugin</artifactId>
+                <configuration>
+                    <feature-packs>
+                        <feature-pack>
+                            <location>wildfly@maven(org.jboss.universe:community-universe)#${version.wildfly}</location>
+                        </feature-pack>
+                    </feature-packs>
+                    <layers>
+                        <layer>web-server</layer>
+                        <layer>elytron-oidc-client</layer>
+                    </layers>
+                    <context-root>false</context-root>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
