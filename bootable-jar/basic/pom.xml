@@ -10,7 +10,7 @@
   <url>http://www.mastertheboss.com</url>
   <properties>
     <version.bootable.jar>2.0.0.Final</version.bootable.jar>
-    <version.wildfly>21.0.0.Final</version.wildfly>
+    <version.wildfly>26.0.0.Final</version.wildfly>
     <plugin.fork.embedded>true</plugin.fork.embedded>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -48,7 +48,7 @@
       <plugin>
         <groupId>org.wildfly.plugins</groupId>
         <artifactId>wildfly-jar-maven-plugin</artifactId>
-        <version>2.0.0.Final</version>
+         <version>6.1.2.Final</version>
         <configuration>
           <feature-pack-location>wildfly@maven(org.jboss.universe:community-universe)#${version.server.bom}</feature-pack-location>
           <layers>
