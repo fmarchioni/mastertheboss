@@ -54,9 +54,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * @author <a href="mailto:jperkins@redhat.com">James R. Perkins</a>
- */
 @WebServlet("/json2")
 public class HelloWorldJson2 extends HttpServlet {
 
