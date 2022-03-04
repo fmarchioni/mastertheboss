@@ -52,13 +52,14 @@
         <configuration>
           <feature-pack-location>wildfly@maven(org.jboss.universe:community-universe)#${version.server.bom}</feature-pack-location>
           <layers>
-            <layer>jaxrs</layer>
-            <layer>management</layer>
-          </layers>
-          <excluded-layers>
-            <layer>deployment-scanner</layer>
-          </excluded-layers>
-        </configuration>
+                              <layer>jaxrs-server</layer>
+                    
+                          </layers>
+                          <plugin-options>
+                              <jboss-fork-embedded>true</jboss-fork-embedded>
+                          </plugin-options>
+                          <cloud/>
+                      </configuration>
         <executions>
           <execution>
             <goals>
