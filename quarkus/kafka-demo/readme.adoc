@@ -1,0 +1,12 @@
+== Kafka with Quarkus demo
+
+To run:
+----
+docker-compose up
+----
+
+----
+mvn install quarkus:dev
+----
+
+Test at: http://localhost:8080
