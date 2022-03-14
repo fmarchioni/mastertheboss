@@ -15,8 +15,7 @@ public class MessageTransformer {
     @Incoming("queueA")
     @Outgoing("queueA-transformed")
     public PublisherBuilder<Long> filter(PublisherBuilder<Long> input) {
-        System.out.println("Filtering message with "+input);
-        return input.filter(item -> item.longValue() > 5 && item.longValue() < 15);
+        return input.filter(item -> item.longValue() > 3);
     }
 
     @Incoming("queueB")
