@@ -14,8 +14,6 @@ public class EmployeeService {
     @PersistenceContext
     private EntityManager em;
 
-    @PersistenceContext Session session;
-    
     @Transactional
     public void saveEmployee(Employee e)  {
         em.persist(e);
@@ -31,7 +29,7 @@ public class EmployeeService {
     public void saveEmployeeHibernate(Employee e) throws Exception {
         
         // using Hibernate session(Native API) and JPA entitymanager
-        //Session session = (Session) em.getDelegate();       
+        Session session = (Session) em.getDelegate();       
         session.persist(e);
          
     }
