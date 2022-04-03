@@ -1,0 +1,3 @@
+== JPA Criteria Example
+
+Check this article: http://www.mastertheboss.com/hibernate-jpa/criteria-query/hibernate-criteria-example-code/
