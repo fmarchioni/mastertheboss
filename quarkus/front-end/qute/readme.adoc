@@ -1,0 +1,3 @@
+== Qute example for Quarkus REST Application
+
+Article for this example: http://www.mastertheboss.com/soa-cloud/quarkus/qute-a-template-for-quarkus-web-applications/

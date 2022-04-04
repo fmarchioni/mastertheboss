@@ -1,23 +1,32 @@
-{! This is a comment !}
+
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-
-</head>
+{#include base.html}
+{/include}
 <body>
-<h2>Quarkus Qute demo</h2>
+    <h2>Available data formats</h2>
 
-    {#if zone != null}
-    <p>Time now: {zone}</p>
-    {#else}
-    <p>Time now: {inject:time.defaultTime}</p>
-    {/if}
+    <table class="blueTable">
+        <thead>
+        <tr>
 
-
-    {#include footer}
-
-    {/include}
-
+            <th>Name</th>
+            <th>Description</th>
+            <th>Wiki link</th>
+        </tr>
+        </thead>
+        <tbody>
+        {#for item in data}
+        <tr>
+            <td>{item.name}</td>
+            <td>{item.description}</td>
+            <td><a href="{item.wiki}">{item.wiki}</a></td>
+        </tr>
+        {/for}
+        </tbody>
+    </table>
+{#include footer.html}
+{/include}    
 </body>
 </html>
+

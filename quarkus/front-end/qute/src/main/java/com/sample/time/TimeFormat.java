@@ -1,4 +1,4 @@
-package com.sample;
+package com.sample.time;
 
 public class TimeFormat {
     String name;

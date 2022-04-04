@@ -1,4 +1,4 @@
-package com.sample;
+package com.sample.time;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,11 +14,11 @@ import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateExtension;
 import io.quarkus.qute.TemplateInstance;
 
-@Path("help")
-public class HelperResource {
+@Path("/time")
+public class TimeResource {
 
     @Inject
-    Template helper;
+    Template time;
 
     @GET
     @Produces(MediaType.TEXT_HTML)
@@ -27,7 +27,7 @@ public class HelperResource {
         data.add(new TimeFormat("UTC", "Western European Time"));
         data.add(new TimeFormat("UT", "Universal Time"));
         data.add(new TimeFormat("GMT", "Greenwich Time"));
-        return helper.data("data", data);
+        return time.data("data", data);
     }
 
 
