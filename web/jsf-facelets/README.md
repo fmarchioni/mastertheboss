@@ -1,8 +1,8 @@
-JSF application using Composite components
+JSF application using Facelets
 =====================================
 Example taken from [Practical Enterprise Application Development](http://www.itbuzzpress.com/ebooks/java-ee-7-development-on-wildfly.html)
 
-This example demonstrates a basic JSF application using Facelets and Composite components
+This example demonstrates a basic JSF application using Facelets 
 
 ###### Build and Deploy
 ```shell
