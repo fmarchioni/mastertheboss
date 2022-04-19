@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="name"/>
+        <cc:attribute name="surname"/>
+        <cc:attribute name="email"/>        
+        <cc:attribute name="actionListener"
+                      method-signature="void action(javax.faces.event.Event)"
+                      targets="signup:saveButton"/>  
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <div  style="border: thin solid orange">
+        <h:form id="signup" >
+        <h2>JSF Composite component Demo</h2>
+            <h:panelGrid columns="3" >
+                <h:outputText value="Name:" />
+                <h:inputText value="#{cc.attrs.name}" id="name"/> 
+                <h:message for="name" style="color: red" /> 
+                <h:outputText value="Surname:" /> 
+                <h:inputText value="#{cc.attrs.surname}" id="surname"/>
+                <h:message for="surname" style="color: red" />
+                <h:outputText value="Email:" /> 
+                <h:inputText value="#{cc.attrs.email}" id="email"/>
+                <h:message for="email" style="color: red" />
+            </h:panelGrid>
+             <h:commandButton id="saveButton" value="Save"/> 
+        </h:form>
+        </div>
+    </cc:implementation>
+</html>

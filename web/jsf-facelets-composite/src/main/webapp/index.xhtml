@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:mc="http://xmlns.jcp.org/jsf/composite/mycomponents">
+
+<body>
+
+	<ui:composition template="/templates/template.xhtml">
+
+		<ui:define name="content">
+
+			<h:form id="jsfexample">
+			
+			 <mc:signup name="#{user.name}"
+                          surname="#{user.surname}"
+                          email="#{user.email}"
+                          actionListener="#{manager.save()}"/>
+                          
+				<h:dataTable value="#{userList}" var="item" styleClass="table"
+					headerClass="table-header"
+					rowClasses="table-odd-row,table-even-row">
+					<h:column>
+						<f:facet name="header">Name</f:facet>
+						<h:outputText value="#{item.name}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Surname</f:facet>
+						<h:outputText value="#{item.surname}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Email</f:facet>
+						<h:outputText value="#{item.email}" />
+					</h:column>
+
+				</h:dataTable>
+			</h:form>
+		</ui:define>
+
+	</ui:composition>
+
+</body>
+</html>
