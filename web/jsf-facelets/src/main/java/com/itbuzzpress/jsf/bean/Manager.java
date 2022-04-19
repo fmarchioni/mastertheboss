@@ -11,11 +11,9 @@ import javax.enterprise.inject.Produces;
 import javax.inject.Named;
 
 import com.itbuzzpress.jsf.model.User;
-
  
 @Model
 public class Manager {
-
 
 	List<User> userList;
 	
@@ -28,10 +26,7 @@ public class Manager {
 	    userList.add(new User("Fiona","Middleton","fmiddleton@gmail.com"));
 	}
 	
-	@Produces
-	@Named
-	User user;
-	
+
 	@Produces
 	@Named
 	public List<User> getUserList() {
