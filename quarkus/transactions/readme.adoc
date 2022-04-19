@@ -1,0 +1,23 @@
+== Quarkus Transaction Example
+
+Tutorial for this example: http://www.mastertheboss.com/soa-cloud/quarkus/how-to-manage-transactions-in-quarkus/
+
+You can test it as follows:
+
+Start the application:
+----
+mvn quarkus:dev
+----
+
+Run some curl commands:
+
+----
+curl -X POST http://localhost:8080/tickets/buy1 -H 'Content-Type: application/json' -d '{"name":"john","seat":"abc"}'
+
+curl -X POST http://localhost:8080/tickets/buy2 -H 'Content-Type: application/json' -d '{"name":"frank","seat":"def"}'
+
+curl -X POST http://localhost:8080/tickets/buy2 -H 'Content-Type: application/json' -d '{"name":"scam","seat":"def"}'
+
+curl http://localhost:8080/tickets 
+----
+
