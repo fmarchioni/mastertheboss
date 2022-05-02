@@ -12,7 +12,7 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.server.bom>19.0.0.Final</version.server.bom>
-        <spring.version>5.1.17.RELEASE</spring.version>
+        <spring.version>5.3.19</spring.version>
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
         <aspectj.version>1.6.8</aspectj.version>
