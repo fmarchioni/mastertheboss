@@ -44,7 +44,7 @@
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-core</artifactId>
-            <version>11.0.0</version>
+            <version>17.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.keycloak</groupId>
