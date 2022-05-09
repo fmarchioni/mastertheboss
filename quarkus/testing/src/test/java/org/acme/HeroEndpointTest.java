@@ -11,9 +11,9 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 
 @QuarkusTest
-@TestHTTPEndpoint(CustomerResource.class)
+@TestHTTPEndpoint(HeroResource.class)
 
-public class CustomerEndpointAdvancedTest {
+public class HeroEndpointTest {
 
     @Test
     public void testCustomerService() {
@@ -34,7 +34,7 @@ public class CustomerEndpointAdvancedTest {
 
         given()
                 .contentType("application/json")
-                .body(new Customer("Iron man"))
+                .body(new Hero("Iron man"))
                 .when()
                 .post()
                 .then()
@@ -48,16 +48,6 @@ public class CustomerEndpointAdvancedTest {
                 .body("$.size()", is(4),
                         "[3].name", is("Iron man")
                 );
-
-
-        Response response = RestAssured.given().when().get("/hello");
-
-        // Retrieve the body of the Response
-        ResponseBody body = response.getBody();
-
-        // By using the ResponseBody.asString() method, we can convert the  body
-        // into the string representation.
-        System.out.println("Response Body is: " + body.asString());
 
 
     }
