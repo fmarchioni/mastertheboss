@@ -1,4 +1,4 @@
-# quarkus-hibernate project
+# Quarkus Test Database
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
