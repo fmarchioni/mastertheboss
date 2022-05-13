@@ -1,0 +1,3 @@
+== JBoss Fuse Hello World example
+
+Article for this example: http://www.mastertheboss.com/jboss-frameworks/jboss-fuse/helloworld-fuse-tutorial/
