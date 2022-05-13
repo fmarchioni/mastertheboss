@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans              http://www.springframework.org/schema/beans/spring-beans-3.0.xsd                     http://camel.apache.org/schema/spring              http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+ <bean id="properties" class="org.apache.camel.component.properties.PropertiesComponent">
+    <property name="location" value="classpath:application.properties"/>
+ </bean>
+
+    <camelContext id="demofuse" xmlns="http://camel.apache.org/schema/spring">
+        <route id="simpletimer">
+              <from uri="timer://simpleTimer?period=1000"/>   
+                <setBody>
+                    <simple>${header.firedTime}</simple>
+                </setBody>
+              <convertBodyTo type="java.lang.String" />
+              <log message="{{message}} - ${body}"/>
+        </route>
+    </camelContext>
+
+ 
+
+</beans>

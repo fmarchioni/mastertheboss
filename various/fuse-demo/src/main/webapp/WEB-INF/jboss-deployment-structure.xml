@@ -1,0 +1,9 @@
+<jboss-deployment-structure>
+
+  <deployment>
+    <dependencies>
+      <module name="org.jboss.security.negotiation"/>
+    </dependencies>
+  </deployment>
+ 
+</jboss-deployment-structure>
