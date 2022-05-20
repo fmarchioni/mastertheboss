@@ -1,0 +1,3 @@
+== RestEasy client demo
+
+Tutorial for this example: http://www.mastertheboss.com/jboss-frameworks/resteasy/resteasy-client-example/
