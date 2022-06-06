@@ -3,7 +3,7 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
-	<!-- 
+ 
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>HtmlAuth</web-resource-name>
@@ -23,5 +23,5 @@
 	<security-role>
 		<role-name>Manager</role-name>
 	</security-role>
-	 -->
+ 
 </web-app>
