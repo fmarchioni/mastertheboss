@@ -1,0 +1,3 @@
+== Jakarta REST Validation example
+
+Tutorial for this example: http://www.mastertheboss.com/jboss-frameworks/resteasy/how-to-validate-jakarta-rest-endpoint-values/
