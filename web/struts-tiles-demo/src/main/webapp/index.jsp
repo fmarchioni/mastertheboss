@@ -2,10 +2,10 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <head>
-<title>Struts 2 - Login Application</title>
+<title>Struts 2 & Tiles Example Application</title>
 </head>
 <body>
-<h2>Struts 2 - Login Application</h2>
+<h2>Struts 2 & Tiles Example Application</h2>
 
 <s:form action="login.action" method="post">
     <s:textfield name="username" label="Username" size="20" />
