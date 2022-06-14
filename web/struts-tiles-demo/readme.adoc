@@ -1,0 +1,3 @@
+== Struts2 and tiles example
+
+Tutorial for this example: http://www.mastertheboss.com/web/struts-and-tiles/struts2-and-tiles-tutorial/
