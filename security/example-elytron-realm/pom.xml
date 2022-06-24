@@ -12,7 +12,7 @@
         <dependency>
             <groupId>org.wildfly.security</groupId>
             <artifactId>wildfly-elytron</artifactId>
-            <version>1.1.7.Final-redhat-1</version>
+            <version>1.15.5.Final</version>
         </dependency>
         <dependency>
             <groupId>org.wildfly.core</groupId>
