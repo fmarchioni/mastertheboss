@@ -13,7 +13,7 @@ import javax.ws.rs.Path;
 import org.eclipse.microprofile.graphql.Name;
 
 import com.mastertheboss.graphql.model.Country;
- 
+
 import com.mastertheboss.graphql.model.Person;
 
 import io.smallrye.common.annotation.Blocking;
@@ -34,14 +34,14 @@ public class ClientResource {
     public List<Person> getAllPersons() {
         return typesafeClient.getAllPersons();
     }
-    
+
     @GET
     @Path("/person/{id}")
     @Blocking
     public Person getPerson(int id) {
 		return typesafeClient.getPerson(id);
 	}
- 
+
     @GET
     @Path("/country/{id}")
     @Blocking
@@ -49,14 +49,14 @@ public class ClientResource {
 		return typesafeClient.getCountry(id);
 	}
 
-    
+
     @GET
     @Path("/countries")
     @Blocking
     public List<Country> getAllCountries() {
         return typesafeClient.getAllCountries();
     }
-    
+
     @Inject
     @GraphQLClient("query-dynamic")
     DynamicGraphQLClient dynamicClient;
@@ -65,16 +65,16 @@ public class ClientResource {
     @Path("/dynamic")
     @Blocking
     public List<Person> getAllPersonsUsingDynamicClient() throws Exception {
-    	  Document document = document(   // <1>
-    	            operation(field("allPersons",    	                
+    	  Document document = document(
+    	            operation(field("allPersons",
     	                field("name"))));
-    	        Response response = dynamicClient.executeSync(document); // <2>
-                 
-    	        JsonArray heroesArray = response.getData().getJsonArray("allPersons"); 
-    	    
-    	        List<Person> heroes = response.getList(Person.class, "allPersons"); 
-    	        return heroes;
-    	        
-    	
+    	        Response response = dynamicClient.executeSync(document);  
+
+    	        JsonArray personsArray = response.getData().getJsonArray("allPersons");
+
+    	        List<Person> persons = response.getList(Person.class, "allPersons");
+    	        return persons;
+
+
     }
 }
