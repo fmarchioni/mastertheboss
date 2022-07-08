@@ -1,5 +1,7 @@
 package com.sample;
 
+import io.github.serpro69.kfaker.Faker;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -10,8 +12,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.github.javafaker.Faker;
 
 @SuppressWarnings("serial")
 @WebServlet("/HelloWorld")
@@ -26,8 +26,8 @@ public class DemoServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
- 
-        
+
+
 		resp.setContentType("text/html");
 		PrintWriter writer = resp.getWriter();
 		writer.println(PAGE_HEADER);
@@ -48,9 +48,9 @@ public class DemoServlet extends HttpServlet {
 	Employee randomEmployee() {
 		Faker fake = new Faker();
 		Employee employee = new Employee();
-		employee.setFirstName(fake.name().firstName());
-		employee.setLastName(fake.name().lastName());
-		employee.setDept(fake.job().position());
+		employee.setFirstName(fake.getName().firstName());
+		employee.setLastName(fake.getName().lastName());
+		employee.setDept(fake.getJob().position());
 		return employee;
 	}
 }

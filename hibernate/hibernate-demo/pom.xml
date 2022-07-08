@@ -17,20 +17,19 @@
 			<version>8.0.0</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
 		<dependency>
-			<groupId>com.github.javafaker</groupId>
-			<artifactId>javafaker</artifactId>
-			<version>1.0.2</version>
+			<groupId>io.github.serpro69</groupId>
+			<artifactId>kotlin-faker</artifactId>
+			<version>1.11.0</version>
 		</dependency>
- 
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<scope>provided</scope>
 			<version>6.0.0.Final</version>
 		</dependency>
- 
+
 
 	</dependencies>
 	<build>
