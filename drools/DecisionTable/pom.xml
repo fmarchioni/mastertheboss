@@ -11,7 +11,7 @@
   <url>http://www.mastertheboss.com</url>
 
   <properties>
-   <apache-poi-version>3.13</apache-poi-version>
+   <apache-poi-version>4.1.1</apache-poi-version>
     <drools-version>7.4.1.Final</drools-version>
     <slf4j-version>1.7.25</slf4j-version>
     <junit-version>4.12</junit-version>
