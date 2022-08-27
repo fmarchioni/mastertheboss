@@ -6,12 +6,13 @@ import java.util.Hashtable;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.naming.spi.NamingManager;
 
 import com.itbuzzpress.chapter4.ejb.Account;
 import com.itbuzzpress.chapter4.ejb.Calculator;
 import com.itbuzzpress.chapter4.exception.InsufficientFundsException;
 
-import javax.naming.spi.NamingManager;
+
 public class RemoteEJBClient {
 
 	public static void main(String[] args) throws Exception {

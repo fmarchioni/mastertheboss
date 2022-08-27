@@ -1,6 +1,6 @@
 package com.itbuzzpress.chapter4.exception;
 
-import javax.ejb.EJBException;
+import jakarta.ejb.EJBException;
 
 public class InsufficientFundsException extends Exception {
    public InsufficientFundsException(String mess){

@@ -8,32 +8,11 @@
    <url>http://www.itbuzzpress.com</url>
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <!-- other plugin versions -->
-      <version.compiler.plugin>3.1</version.compiler.plugin>
       <version.exec.plugin>1.2.1</version.exec.plugin>
-      <version.war.plugin>2.1.1</version.war.plugin>
-      <!-- maven-compiler-plugin -->
-      <maven.compiler.target>1.8</maven.compiler.target>
-      <maven.compiler.source>1.8</maven.compiler.source>
-      <version.server.bom>18.0.0.Final</version.server.bom>
+      <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+      <version.wildfly>26.1.1.Final</version.wildfly>
    </properties>
-   <repositories>
-      <repository>
-         <id>JBoss Repository</id>
-         <url>https://repository.jboss.org/nexus/content/groups/public/</url>
-      </repository>
-   </repositories>
-  <dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>org.wildfly.bom</groupId>
-            <artifactId>wildfly-jakartaee8-with-tools</artifactId>
-            <version>${version.server.bom}</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-    </dependencies>
-   </dependencyManagement>
+
    <dependencies>
       <!-- We depend on the EJB remote business interfaces of this application -->
       <dependency>
@@ -42,23 +21,28 @@
          <type>ejb-client</type>
          <version>${project.version}</version>
       </dependency>
-      <!-- Include the ejb client jars -->
+
       <dependency>
          <groupId>org.wildfly</groupId>
          <artifactId>wildfly-ejb-client-bom</artifactId>
          <type>pom</type>
          <scope>compile</scope>
+         <version>${version.wildfly}</version>
       </dependency>
+
    </dependencies>
    <build>
       <finalName>${project.artifactId}</finalName>
       <plugins>
          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
-            <version>${version.compiler.plugin}</version>
+            <version>3.8.1</version>
             <configuration>
-               <source>${maven.compiler.source}</source>
-               <target>${maven.compiler.target}</target>
+               <release>11</release>
+               <compilerArguments>
+                  <endorseddirs>${endorsed.dir}</endorseddirs>
+               </compilerArguments>
             </configuration>
          </plugin>
          <!-- Add the maven exec plugin to allow us to run a java program via maven -->
