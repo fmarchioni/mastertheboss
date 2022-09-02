@@ -5,7 +5,10 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.*;
 
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -22,8 +25,9 @@ public class TestRest {
 	@Test
     public void sendFile() throws Exception {
          
-    	ResteasyClient client = new ResteasyClientBuilder().build();
-    	ResteasyWebTarget target = client.target("http://localhost:8080/rest-file-manager/rest/file/upload");
+	    Client client = ClientBuilder.newClient();
+
+    	WebTarget target = client.target("http://localhost:8080/rest-file-manager/rest/file/upload");
     	
     	MultipartFormDataOutput mdo = new MultipartFormDataOutput();
 
