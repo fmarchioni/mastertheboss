@@ -1,0 +1,3 @@
+== Mapping REST date/time fields
+
+Read more here: http://www.mastertheboss.com/jboss-frameworks/resteasy/how-to-map-date-and-time-fields-in-rest-applications/
