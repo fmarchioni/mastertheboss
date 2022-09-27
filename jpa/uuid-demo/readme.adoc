@@ -1,0 +1,3 @@
+== Jakarta Persistence 3.1 demo
+
+Read this article to learn more: http://www.mastertheboss.com/java-ee/jakarta-ee/jakarta-persistence-3-1-new-features/
