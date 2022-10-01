@@ -1,4 +1,4 @@
-package com.sample.jaxws_bootstrap;
+package com.itbuzzpress.jaxrs.bootstrap;
 
 import java.util.Collections;
 import java.util.Set;
@@ -6,9 +6,12 @@ import java.util.Set;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.Application;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
-
-@Path("greet")
+@Path("/")
 public class HelloWorld extends Application {
 
     /**
@@ -19,12 +22,11 @@ public class HelloWorld extends Application {
         return Collections.singleton(HelloWorld.class);
     }
 
-    /**
-     * @return {@code "Hello, World!"}
-     */
     @GET
-    public String greeting() {
-        return "Hello World!";
+    @Path("/{name}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response greet(@PathParam("name") final String name) {
+        return Response.ok("Hello " +name).build();
     }
 
 }
