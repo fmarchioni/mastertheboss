@@ -1,24 +1,24 @@
 plugins {
-    id 'java-library'
-    id 'war'
+   id 'java'
+   id 'war'
 }
 
+group = 'gradle.demo.wildfly'
+version = '1.0'
+
 repositories {
-    maven { url 'https://repository.jboss.org/nexus/content/groups/public-jboss' }
-    maven { url 'https://repository.jboss.org/nexus/content/repositories' }
-    maven { url 'https://repository.jboss.org/nexus/content/repositories/thirdparty-releases' }
-    mavenCentral()
+   mavenCentral()
 }
 
 dependencies {
-    providedCompile 'org.wildfly:wildfly-spec-api:16.0.0.Final'
+   providedCompile 'jakarta.platform:jakarta.jakartaee-api:10.0.0'
 }
 
-test {
-    // Use junit platform for unit tests
-    useJUnitPlatform()
+compileJava {
+   targetCompatibility = '11'
+   sourceCompatibility = '11'
 }
 
 war {
-    from 'src/webapp' // adds a file-set to the root of the archive
-} 
+   archiveName 'demoservlet.war'
+}

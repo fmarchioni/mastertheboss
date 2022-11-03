@@ -1,0 +1,2 @@
+gradle/demo/wildfly/HelloServlet.java
+ gradle.demo.wildfly.HelloServlet
