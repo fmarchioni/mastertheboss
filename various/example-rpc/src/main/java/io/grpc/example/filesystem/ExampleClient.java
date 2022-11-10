@@ -21,7 +21,6 @@ public class ExampleClient {
 
   private final FileManagerGrpc.FileManagerBlockingStub blockingStub;
 
-  /** Construct client for accessing HelloWorld server using the existing channel. */
   public ExampleClient(Channel channel) {
 
     blockingStub = FileManagerGrpc.newBlockingStub(channel);
@@ -38,26 +37,27 @@ public class ExampleClient {
       logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
       return;
     }
-    logger.info("Greeting: " + response.getList());
+    logger.info("Response: " + response.getList());
   }
 
 
   public static void main(String[] args) throws Exception {
-    String dir =  "/home/francesco/";
+    if (args.length == 0) {
+       System.out.println("Proper Usage is: java ExampleClient directory");
+       System.exit(0);
+    }
     // Access a service running on the local machine on port 50051
     String target = "localhost:50051";
 
 
-    // Create a communication channel to the server, known as a Channel. Channels are thread-safe
-    // and reusable. It is common to create channels at the beginning of your application and reuse
-    // them until the application shuts down.
+
     ManagedChannel channel = ManagedChannelBuilder.forTarget(target)
 
         .usePlaintext()
         .build();
     try {
       ExampleClient client = new ExampleClient(channel);
-      client.getFileList(dir);
+      client.getFileList(args[0]);
     } finally {
       channel.shutdownNow().awaitTermination(5, TimeUnit.SECONDS);
     }
