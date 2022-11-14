@@ -1,0 +1,24 @@
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.mastertheboss.filesystem";
+option objc_class_prefix = "HLW";
+
+package filesystem;
+
+service FileManager {
+  rpc ReadDir (Directory) returns (FileList) {}
+   
+}
+
+
+message Directory {
+  string name = 1;
+}
+
+
+message FileList {
+
+string list = 1;
+}
