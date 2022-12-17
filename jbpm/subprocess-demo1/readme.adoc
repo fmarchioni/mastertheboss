@@ -1,6 +1,6 @@
-== JBPM 7 with Spring Boot example application
+== JBPM 7 with Spring Boot embedded & reusable subprocesses
 
-Tutorial for this application: http://www.mastertheboss.com/jboss-jbpm/jbpm6/jbpm-6-web-application-example
+Tutorial for this application: http://www.mastertheboss.com/bpm/jbpm6/how-to-use-subprocesses-in-jbpm/
 
 === How to run the application:
 
@@ -24,8 +24,6 @@ $ mvn clean install spring-boot:run
 
 * Test the application:
 
-Use the "hello" endpoint to trigger the Process.
-
 ----
-curl http://localhost:8090/hello?age=21
+curl http://localhost:8090/start
 ----
