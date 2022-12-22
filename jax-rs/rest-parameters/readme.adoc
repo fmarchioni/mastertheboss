@@ -1,3 +1,15 @@
 == RESTEasy Parameters example
 
 Article: http://www.mastertheboss.com/jboss-frameworks/resteasy/resteasy-tutorial-part-two-web-parameters/
+
+Deploy it:
+----
+mvn install wildfly:deploy
+----
+
+Example test:
+----
+curl -X POST http://localhost:8080/rest-parameters/rest/form -H "Content-Type: application/x-www-form-urlencoded" -d "email=user@email.com&password=mypassword"
+----
+
+
