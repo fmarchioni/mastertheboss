@@ -1,0 +1,3 @@
+== RESTEasy Parameters example
+
+Article: http://www.mastertheboss.com/jboss-frameworks/resteasy/resteasy-tutorial-part-two-web-parameters/
