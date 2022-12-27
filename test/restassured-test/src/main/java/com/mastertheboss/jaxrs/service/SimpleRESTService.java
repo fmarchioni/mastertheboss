@@ -9,13 +9,6 @@ import jakarta.ws.rs.*;
 public class SimpleRESTService {
 
 
-	@Path("form")
-	@POST
-	@Consumes("application/x-www-form-urlencoded")
-	public String login(@FormParam("email") String email, @FormParam("password") String password) {
-		return "Logged with "+email+"/"+password;
-	}
-
 	@POST
 	@Produces("application/json")
 	@Consumes("application/json")
@@ -23,6 +16,13 @@ public class SimpleRESTService {
 	public Data calculate(Data data) {
 		data.setResult(data.getX()+data.getY());
 		return data;
+	}
+
+	@Path("form")
+	@POST
+	@Consumes("application/x-www-form-urlencoded")
+	public String login(@FormParam("email") String email, @FormParam("password") String password) {
+		return "Logged with "+email+"/"+password;
 	}
 
 	@GET

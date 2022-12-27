@@ -12,6 +12,8 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <junit.version>5.9.1</junit.version>
+        <restassured.version>4.4.0</restassured.version>
     </properties>
     <dependencies>
 
@@ -25,7 +27,7 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>4.4.0</version>
+            <version>${restassured.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -36,13 +38,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.9.1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.9.1</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 

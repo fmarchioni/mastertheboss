@@ -5,7 +5,6 @@ import io.restassured.RestAssured;
 import io.restassured.parsing.Parser;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
@@ -25,7 +24,7 @@ public class RestAssuredTest  {
 	public void testWithQueryParam() {
 
 		RestAssured.given()
-				.param("id", "2")
+				.queryParam("id", "2")
 				.when().get("/query")
 				.then()
 				.statusCode(200)
@@ -66,7 +65,7 @@ public class RestAssuredTest  {
 	RestAssured.defaultParser = Parser.JSON;
 
 	String data = "{\"x\": \"5\",\"y\": \"10\"}";
- 
+
 		RestAssured.given().urlEncodingEnabled(true)
 				.contentType("application/json")
 				.body(data)
