@@ -1,4 +1,3 @@
-
 {
   "realm": "wildfly-realm",
   "auth-server-url": "http://localhost:8180/",
