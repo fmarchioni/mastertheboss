@@ -1,0 +1,6 @@
+{
+  "themes": [{
+    "name" : "acme",
+    "types": [ "login" ]
+  }]
+}
