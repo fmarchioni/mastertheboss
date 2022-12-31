@@ -1,0 +1,3 @@
+== Custom Keycloak Theme
+
+Check this article: http://www.mastertheboss.com/keycloak/how-to-create-a-custom-keycloak-theme/
