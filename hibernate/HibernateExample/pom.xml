@@ -7,11 +7,42 @@
   <version>1.0.0</version>
   <name>HibernateExample</name>
   <url>http://maven.apache.org</url>
+    <properties>
+     <hibernate-version>6.1.6.Final</hibernate-version>
+    </properties>
     <dependencies>
+      <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>${hibernate-version}</version>
+
+</dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>5.0.1</version>
+        </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>5.4.9.Final</version>
+            <artifactId>hibernate-hikaricp</artifactId>
+            <version>${hibernate-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.4.5</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -34,4 +65,3 @@
         </plugins>
     </build>
 </project>
-

@@ -2,23 +2,24 @@ package com.mastertheboss.domain;
 
 import java.util.ArrayList;
 import java.util.List;
- 
-import javax.persistence.*;
- 
+
+
+import jakarta.persistence.*;
+
 @Entity
 @Table
 public class Department {
- 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
- 
-     
+
+
     private String name;
-     
+
     @OneToMany(mappedBy="department",cascade=CascadeType.PERSIST)
     private List<Employee> employees = new ArrayList<Employee>();
-      
+
     public Department() {
         super();
     }
