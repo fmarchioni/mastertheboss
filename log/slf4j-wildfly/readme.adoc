@@ -1,0 +1,3 @@
+== JSample project using SLF4J on WildFly
+
+Tutorial for this example: http://www.mastertheboss.com/jbossas/jboss-log/how-to-configure-slf4j-in-wildfly-applications/
