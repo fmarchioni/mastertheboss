@@ -93,7 +93,7 @@ table.blueTable tfoot .links a{
         <form name="form" >
             <input type="text" placeholder="Name" v-model="name" size="60"/><br/>
             <input type="text" placeholder="Surname" v-model="surname" size="60"/><br/>
-            <input type="submit" value="Save" @click="createUser"/><br/>
+            <input type="button" value="Save" @click="createUser"/>
         </form>
     </div>
 </div>
@@ -105,11 +105,13 @@ table.blueTable tfoot .links a{
 
 new Vue({
     el: "#app",
-    data() {
-        return {
-            users: []
-        }
-    },
+   data() {
+    return {
+        name: '',
+        surname: '',
+        users: []
+    }
+},
     methods: {
 
 
@@ -140,10 +142,13 @@ new Vue({
               };
 
 
-            axios.post("/customers",  user)
-                .then(response => {
-                    this.listUsers()
-                })
+         axios.post("/customers", JSON.stringify(user), {headers: {'Content-Type': 'application/json'}})
+    .then(response => {
+        this.listUsers();
+    })
+    .catch(error => {
+        console.log(error);
+    });
 
 
         },

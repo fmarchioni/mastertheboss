@@ -1,5 +1,5 @@
 package com.mastertheboss.jaxrs;
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 
 @Entity
