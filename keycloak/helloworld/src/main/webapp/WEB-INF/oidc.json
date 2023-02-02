@@ -1,0 +1,10 @@
+{
+  "realm": "MyRealm",
+  "auth-server-url": "http://localhost:8180/",
+  "ssl-required": "external",
+  "resource": "demo-keycloak",
+  "credentials": {
+    "secret": "kohvqbTlY5nnTRxeHrhTSwoFGtf9W43H"
+  },
+  "confidential-port": 0
+}
