@@ -1,0 +1,7 @@
+[leaks]
+confidence_level = 99
+
+[[leaks.exclude]]
+type = "path"
+regex = ".*\.json$"
+
