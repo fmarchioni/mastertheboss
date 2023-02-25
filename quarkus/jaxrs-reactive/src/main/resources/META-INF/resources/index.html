@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>CRUD Mission - Quarkus</title>
+<title>Quarkus Reactive Demo</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/wingcss/0.1.8/wing.min.css" />
 <style>
@@ -51,12 +51,12 @@ input[type=number] {
 
     <form ng-submit="callrest()">
         <div>
-            <div >Name:</div>
+            <div >Nome:</div>
             <div ><input type="text" placeholder="Name" ng-model="form.name" size="60"/></div>
         </div>
         <div>
-            <div >Surname:</div>
-            <div ><input type="text" placeholder="Events" ng-model="form.events" size="60"/></div>
+            <div >Numero Eventi:</div>
+            <div ><input type="text" placeholder="Events" ng-model="form.events" size="60"/ pattern="\d+"></div>
         </div>
 
         <input type="submit" value="Call REST"/>

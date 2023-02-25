@@ -31,9 +31,14 @@ public class ReactiveGreetingResource {
     @RestSseElementType(MediaType.TEXT_PLAIN)
     @Path("/stream/{count}/{name}")
     public Multi<String> greetingsAsStream(int count, String name) {
-    	 return Multi.createFrom().ticks().every(Duration.ofSeconds(1))
-                 .onItem().transform(n -> String.format("hello %s - %d", name, n))
-                 .transform().byTakingFirstItems(count);
+
+              return Multi.createFrom().ticks().every(Duration.ofSeconds(1))
+                .onItem()
+                .transform(n -> String.format("hello %s - %d", name, n))
+                .select()
+                .first(count);
+
+    
     }
 
     @GET
