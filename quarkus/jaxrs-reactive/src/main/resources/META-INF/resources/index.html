@@ -1,68 +1,48 @@
 <!doctype html>
-<html>
+<html ng-app="myApp">
+
 <head>
-<meta charset="utf-8" />
-<title>Quarkus Reactive Demo</title>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/wingcss/0.1.8/wing.min.css" />
-<style>
-input[type=number] {
-	width: 100%;
-	padding: 12px 20px;
-	margin: 8px 0;
-	display: inline-block;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	box-sizing: border-box;
-	-webkit-transition: .5s;
-	transition: .5s;
-	outline: 0;
-	font-family: 'Open Sans', serif;
-}
-</style>
-<!-- Load AngularJS -->
-<script
-	src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script type="text/javascript">
-      var app = angular.module("RESTManagement", []);
-
-      //Controller Part
-      app.controller("RESTController", function ($scope, $http) {
-
-         $scope.callrest = function () {
-
-       
-           var url =  "hello/stream/" + $scope.form.events + "/" + $scope.form.name;
-           var eventSource = new EventSource(url);
-           eventSource.onmessage = function (event) {
-           var container = document.getElementById("divcontainer");
-           var paragraph = document.createElement("p");
-           paragraph.innerHTML = event.data;
-           container.appendChild(paragraph);
-           };
-
-         }
-
-
-      });
-    </script>
+  <meta charset="utf-8">
+  <title>Server-Sent Events with Quarkus and AngularJS</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 </head>
-<body ng-app="RESTManagement" ng-controller="RESTController">
 
-    <form ng-submit="callrest()">
-        <div>
-            <div >Name:</div>
-            <div ><input type="text" placeholder="Name" ng-model="form.name" size="60"/></div>
-        </div>
-        <div>
-            <div >Number of Events:</div>
-            <div ><input type="text" placeholder="Events" ng-model="form.events" size="60"/ pattern="\d+"></div>
-        </div>
+<body ng-controller="myController">
+  <form ng-submit="startEventStream()">
+    <label for="countInput">Number of events:</label>
+    <input type="number" id="countInput" ng-model="count" min="1" max="10" required>
+    <br>
+    <label for="nameInput">Name:</label>
+    <input type="text" id="nameInput" ng-model="name" required>
+    <br><br>
+    <button type="submit">Start Event Stream</button>
+  </form>
 
-        <input type="submit" value="Call REST"/>
-    </form>
-  <div id="divcontainer" style="width: 800px; height: 200px; overflow-y: scroll;" />
+  <div id="eventContainer"></div>
 
+  <script type="text/javascript">
+    angular.module('myApp', [])
+      .controller('myController', ['$scope', '$http', function($scope, $http) {
+        $scope.startEventStream = function() {
+          var count = $scope.count;
+          var name = $scope.name;
+          var eventSource = new EventSource('/stream/' + count + '/' + name);
+          var container = document.getElementById('eventContainer');
+          var eventCount = 0;
 
+          eventSource.addEventListener('message', function(event) {
+            if (eventCount < count) {
+              var p = document.createElement('p');
+              p.textContent = event.data;
+              container.appendChild(p);
+              eventCount++;
+            } else {
+              eventSource.close();
+            }
+          });
+        }
+      }]);
+  </script>
 </body>
+
 </html>

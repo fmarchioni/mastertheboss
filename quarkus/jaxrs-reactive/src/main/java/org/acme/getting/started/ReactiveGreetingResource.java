@@ -12,7 +12,7 @@ import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 import org.jboss.resteasy.reactive.RestSseElementType;
 
-@Path("/hello")
+@Path("/")
 public class ReactiveGreetingResource {
 
  
