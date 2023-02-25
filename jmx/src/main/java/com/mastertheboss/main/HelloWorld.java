@@ -28,6 +28,11 @@ public class HelloWorld {
 		JMXConnector jmxConnector = JMXConnectorFactory.connect(serviceURL, map);
 
 		MBeanServerConnection connection = jmxConnector.getMBeanServerConnection();
+		ObjectName mbeanName = new ObjectName("jboss.as:management-root=server");
+		connection.invoke(mbeanName, "shutdown", null, null);
+	//	connector.close();
+
+		/*
 
         Set<ObjectInstance> instances = connection.queryMBeans(null, null);
         Iterator<ObjectInstance> iterator = instances.iterator();
@@ -39,11 +44,9 @@ public class HelloWorld {
             System.out.println("Object Name:" + instance.getObjectName());
 
         }
+				*/
 		jmxConnector.close();
 
 	}
 
 }
-
-
-
