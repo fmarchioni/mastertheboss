@@ -1,0 +1,14 @@
+services:
+  auth:
+    image: quay.io/keycloak/keycloak:20.0
+    ports:
+      - "8180:8180"
+    environment:
+      KEYCLOAK_ADMIN: admin 
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    command: 
+      - start-dev 
+      - --http-port=8180
+      - --import-realm
+    volumes:
+      - ./demorealm-realm.json:/opt/keycloak/data/import/realm.json
