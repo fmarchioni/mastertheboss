@@ -1,5 +1,5 @@
 #Authenticate with the Admin Server    
-./kcadm.sh config credentials --server http://localhost:8180/auth --realm master --user admin --password admin
+./kcadm.sh config credentials --server http://localhost:8180 --realm master --user admin --password admin
 #Create Realm Demo-Realm
 ./kcadm.sh create realms -s realm=demo-realm -s enabled=true -o
 #Create User customer-admin
