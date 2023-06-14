@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Management</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Customer Management</h1>
+    
+    <div id="customerList">
+        <h2>Customers:</h2>
+        <ul id="customerItems"></ul>
+    </div>
+    
+    <h2>Add Customer:</h2>
+    <form id="addCustomerForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" name="surname">
+        <button type="submit">Add</button>
+    </form>
+    
+    <script>
+        $(document).ready(function() {
+            // Get all customers on page load
+            getAllCustomers();
+            
+            // Handle form submission
+            $("#addCustomerForm").submit(function(event) {
+                event.preventDefault();
+                
+                var name = $("#name").val();
+                var surname = $("#surname").val();
+                
+                // Create customer
+                createCustomer(name, surname);
+                
+                // Clear form inputs
+                $("#name").val("");
+                $("#surname").val("");
+            });
+        });
+        
+        function getAllCustomers() {
+            $.ajax({
+                url: "rest/customers",
+                type: "GET",
+                dataType: "json",
+                success: function(customers) {
+                    displayCustomers(customers);
+                },
+                error: function() {
+                    console.log("Error occurred while retrieving customers.");
+                }
+            });
+        }
+        
+        function createCustomer(name, surname) {
+          var customer = {
+          name: name,
+          surname: surname
+    };
+
+    $.ajax({
+        url: "rest/customers",
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(customer),
+        success: function () {
+            console.log("Customer created successfully.");
+            getAllCustomers(); // Refresh the customer list
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error occurred while creating a customer: " + errorThrown);
+        }
+    });
+}
+
+        
+        function displayCustomers(customers) {
+            var customerList = $("#customerItems");
+            customerList.empty();
+            
+            customers.forEach(function(customer) {
+                var listItem = $("<li>").text("ID: " + customer.id + ", Name: " + customer.name + ", Surname: " + customer.surname);
+                customerList.append(listItem);
+            });
+        }
+    </script>
+</body>
+</html>
