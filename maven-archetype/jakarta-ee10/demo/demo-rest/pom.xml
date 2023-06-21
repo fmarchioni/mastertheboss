@@ -11,7 +11,7 @@
         <jakartaee.version>10.0.0</jakartaee.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
-        <version.server.bom>27.0.0.Beta1</version.server.bom>
+        <version.server.bom>28.0.0.Final</version.server.bom>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
     </properties>
 
