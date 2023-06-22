@@ -9,12 +9,12 @@
     <property name="connection.username">root</property>
     <property name="connection.password">my-secret-pw</property>
     <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-    <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+    <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 
     <property name="show_sql">false</property>
 
     <property name="format_sql">true</property>
-    <property name="hbm2ddl.auto">create</property>
+    <property name="hbm2ddl.auto">create-drop</property>
 
 
     <property name="current_session_context_class">thread</property>

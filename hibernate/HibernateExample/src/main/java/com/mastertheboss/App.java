@@ -21,19 +21,19 @@ public static void main(String[] args) {
         session.beginTransaction();
 
         Department department = new Department("java");
-        session.save(department);
+        session.persist(department);
 
-        session.save(new Employee("Jakab Gipsz",department));
-        session.save(new Employee("Captain Nemo",department));
+        session.persist(new Employee("Jakab Gipsz",department));
+        session.persist(new Employee("Captain Nemo",department));
 
         session.getTransaction().commit();
 
-        Query q = session.createQuery("From Employee ");
+        Query q = session.createQuery("From Employee ", Employee.class);
 
         List<Employee> resultList = q.list();
-        logger.debug("num of employess:" + resultList.size());
+        System.out.println("num of employees:" + resultList.size());
         for (Employee next : resultList) {
-                logger.debug("next employee: " + next);
+                System.out.println("next employee: " + next);
         }
 
     }

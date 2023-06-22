@@ -1,24 +1,23 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.mastertheboss</groupId>
-  <artifactId>HibernateExample</artifactId>
-  <packaging>jar</packaging>
-  <version>1.0.0</version>
-  <name>HibernateExample</name>
-  <url>http://maven.apache.org</url>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.mastertheboss</groupId>
+    <artifactId>HibernateExample</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0.0</version>
+    <name>HibernateExample</name>
+    <url>http://maven.apache.org</url>
     <properties>
-     <hibernate-version>6.1.6.Final</hibernate-version>
+        <hibernate-version>6.2.5.Final</hibernate-version>
     </properties>
     <dependencies>
-      <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 
-<dependency>
-    <groupId>org.hibernate</groupId>
-    <artifactId>hibernate-core</artifactId>
-    <version>${hibernate-version}</version>
-
-</dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate-version}</version>
+        </dependency>
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
@@ -53,10 +52,21 @@
     </dependencies>
     <build>
         <plugins>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <release>11</release>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.4.0</version>
+                <version>3.1.0</version>
                 <configuration>
                     <mainClass>com.mastertheboss.App</mainClass>
                     <cleanupDaemonThreads>false</cleanupDaemonThreads>
