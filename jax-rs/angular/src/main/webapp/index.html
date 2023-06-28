@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Management</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="CustomerController">
+
+    <h1>Customer Management</h1>
+
+    <form ng-submit="createCustomer()">
+        <input type="text" ng-model="newCustomer.name" placeholder="Name" required>
+        <input type="text" ng-model="newCustomer.surname" placeholder="Surname" required>
+        <button type="submit">Create</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Actions</th>
+        </tr>
+        <tr ng-repeat="customer in customers">
+            <td>{{customer.id}}</td>
+            <td>{{customer.name}}</td>
+            <td>{{customer.surname}}</td>
+            <td>
+                <button ng-click="editCustomer(customer)">Edit</button>
+                <button ng-click="deleteCustomer(customer.id)">Delete</button>
+            </td>
+        </tr>
+    </table>
+
+    <form ng-show="isEditing" ng-submit="updateCustomer()">
+        <input type="text" ng-model="editedCustomer.name" required>
+        <input type="text" ng-model="editedCustomer.surname" required>
+        <button type="submit">Update</button>
+        <button ng-click="cancelEditing()">Cancel</button>
+    </form>
+
+    <script>
+        var app = angular.module('myApp', []);
+
+        app.controller('CustomerController', function($scope, $http) {
+            $scope.customers = [];
+            $scope.newCustomer = {};
+            $scope.editedCustomer = {};
+            $scope.isEditing = false;
+
+            // Fetch all customers
+            $http.get('rest/customers')
+                .then(function(response) {
+                    $scope.customers = response.data;
+                });
+
+            // Create a new customer
+            $scope.createCustomer = function() {
+            $http.post('rest/customers', $scope.newCustomer)
+                .then(function(response) {
+                    $scope.customers.push(response.data);
+                    $scope.newCustomer = {};
+                });
+        };
+
+
+            // Edit a customer
+            $scope.editCustomer = function(customer) {
+                $scope.isEditing = true;
+                $scope.editedCustomer = angular.copy(customer);
+            };
+
+            // Update a customer
+            $scope.updateCustomer = function() {
+            $http.put('rest/customers', $scope.editedCustomer)
+                .then(function(response) {
+                    $scope.isEditing = false;
+                    // Reload all customers
+                    $http.get('rest/customers')
+                        .then(function(response) {
+                            $scope.customers = response.data;
+                        });
+                });
+};
+
+
+            // Delete a customer
+            $scope.deleteCustomer = function(customerId) {
+                $http.delete('rest/customers?id=' + customerId)
+                    .then(function(response) {
+                        var index = $scope.customers.findIndex(function(customer) {
+                            return customer.id === customerId;
+                        });
+                        $scope.customers.splice(index, 1);
+                    });
+            };
+
+            // Cancel editing
+            $scope.cancelEditing = function() {
+                $scope.isEditing = false;
+            };
+        });
+    </script>
+
+</body>
+</html>
