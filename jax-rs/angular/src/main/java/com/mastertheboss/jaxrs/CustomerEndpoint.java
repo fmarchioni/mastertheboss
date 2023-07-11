@@ -29,6 +29,7 @@ public class CustomerEndpoint {
     
     @PUT
     public Response update(Customer customer) {
+        System.out.println("Called update for "+customer);
         customerRepository.updateCustomer(customer);         
         return Response.status(204).build();
     }

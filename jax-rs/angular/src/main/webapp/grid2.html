@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-grid/4.10.0/ui-grid.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-grid/4.10.0/ui-grid.min.css" type="text/css" />
+</head>
+
+<body>
+  <div ng-controller="CustomerController">
+    <div>
+      <input type="text" ng-model="newName" placeholder="Name">
+      <input type="text" ng-model="newSurname" placeholder="Surname">
+      <button class="btn btn-primary" ng-click="addCustomer()">Add Customer</button>
+    </div>
+    <div ui-grid="gridOptions" class="grid"></div>
+  </div>
+ 
+  
+
+    <script>
+
+// Define your AngularJS app module
+var app = angular.module('myApp', ['ui.grid']);
+
+// Create a controller for the customer data
+app.controller('CustomerController', function($scope, $http) {
+  $scope.gridOptions = {
+    columnDefs: [
+      { name: 'id', displayName: 'ID' },
+      { name: 'name', displayName: 'Name' },
+      { name: 'surname', displayName: 'Surname' },
+      {
+        name: 'actions',
+        displayName: 'Actions',
+        cellTemplate:
+          '<div class="ui-grid-cell-contents">' +
+          '  <button class="btn btn-primary btn-xs" ng-click="grid.appScope.deleteCustomer(row.entity.id)">Delete</button>' +
+          '</div>'
+      }
+    ],
+    enableGridMenu: true,
+    enableSorting: true,
+    enableFiltering: true
+  };
+
+  // Fetch customer data from the REST service
+  $http.get('rest/customers')
+    .then(function(response) {
+      $scope.gridOptions.data = response.data;
+    })
+    .catch(function(error) {
+      console.error('Error retrieving customer data:', error);
+    });
+
+  // Function to add a new customer
+  $scope.addCustomer = function() {
+    var newCustomer = {
+      name: $scope.newName,
+      surname: $scope.newSurname
+    };
+
+    $http.post('rest/customers', newCustomer)
+      .then(function(response) {
+        $scope.gridOptions.data.push(response.data);
+        $scope.newName = '';
+        $scope.newSurname = '';
+      })
+      .catch(function(error) {
+        console.error('Error adding customer:', error);
+      });
+  };
+
+  // Function to delete a customer
+  $scope.deleteCustomer = function(customerId) {
+    $http.delete('rest/customers?id=' + customerId)
+      .then(function() {
+        var index = $scope.gridOptions.data.findIndex(function(customer) {
+          return customer.id === customerId;
+        });
+
+        if (index !== -1) {
+          $scope.gridOptions.data.splice(index, 1);
+        }
+      })
+      .catch(function(error) {
+        console.error('Error deleting customer:', error);
+      });
+  };
+});
+
+
+
+    </script>
+
+</body>
+</html>
