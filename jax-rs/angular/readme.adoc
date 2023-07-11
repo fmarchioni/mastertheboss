@@ -1,7 +1,16 @@
-== Jakarta EE 10 REST CRUD Example with AngularJS
+== Jakarta EE 10 REST CRUD Example with AngularJS and UI Grid
 
-This example shows how to build and test a REST Application using Jakarta EE 10 with an AngularJS frontend
+This project contains some example on how to use a REST Application with an AngularJS frontend
 
-Source: https://www.mastertheboss.com/web/angularjs/develop-a-rest-application-using-wildfly-and-angularjs/
+* Basic AngularJS view: http://localhost:8080/jaxrs-demo
 
+* AngularJS with UI Grid: http://localhost:8080/jaxrs-demo/grid.html
+
+* AngularJS with UI Grid: http://localhost:8080/jaxrs-demo/grid2.html
+
+Source: 
+
+* https://www.mastertheboss.com/web/angularjs/develop-a-rest-application-using-wildfly-and-angularjs/
+
+* https://www.mastertheboss.com/web/angularjs/displaying-data-using-the-angularjs-ng-grid
 
