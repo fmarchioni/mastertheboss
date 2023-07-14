@@ -19,14 +19,12 @@ import org.jberet.runtime.JobExecutionImpl;
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- * Tests using {@code arrayItemReader} and {@code mockItemWriter} in jberet-support.
- */
+ 
 public class SimpleIT {
     private static final String simpleJob = "simplebatchlet.xml";
     private static final JobOperator jobOperator = BatchRuntime.getJobOperator();
     @Test
-    public void readArrayWriteToConsole() throws Exception {
+    public void testBatchExecution() throws Exception {
         final long jobExecutionId = jobOperator.start(simpleJob, null);
         final JobExecutionImpl jobExecution = (JobExecutionImpl) jobOperator.getJobExecution(jobExecutionId);
         jobExecution.awaitTermination(5, TimeUnit.MINUTES);
