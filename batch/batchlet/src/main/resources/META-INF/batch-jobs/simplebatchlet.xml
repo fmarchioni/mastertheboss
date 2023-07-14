@@ -1,0 +1,12 @@
+<job id="simplebatchlet" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	version="1.0">
+
+	<step id="step1">
+		<properties>
+			<property name="user" value="user1" />
+			<property name="password" value="password1" />
+		</properties>
+		<batchlet ref="databaseBatchlet" />
+	</step>
+</job>
+
