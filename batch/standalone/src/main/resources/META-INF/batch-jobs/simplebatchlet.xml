@@ -1,0 +1,9 @@
+<job id="helloworldjob" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    version="1.0">
+    <step id="step1">
+        <properties>
+            <property name="say" value="Hello World!" />
+        </properties>
+        <batchlet ref="com.sample.jberet.HelloWorldBatchlet" />
+    </step>
+</job>

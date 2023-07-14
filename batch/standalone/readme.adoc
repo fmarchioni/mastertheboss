@@ -1,0 +1,3 @@
+== Jakarta Batch Standalone example
+
+Read more: https://www.mastertheboss.com/java-ee/batch-api/running-batch-jobs-in-j2se-applications
