@@ -1,0 +1,87 @@
+#!/bin/bash 
+
+# restore maven dependencies downloaded in a previous build,
+# so they do not have to be downloaded again.  
+# /tmp/artifacts will only be present in the incremental build scenario
+# in which the target image name is an existing docker image which contains
+# dependencies from a prior build execution.
+function restore_saved_artifacts() {
+  if [ -f /tmp/artifacts/maven.tar.gz ]; then
+    pushd / &> /dev/null
+    echo -n "Restoring saved artifacts from prior build..."
+    tar zxf /tmp/artifacts/maven.tar.gz
+    echo "...done"
+    popd &> /dev/null
+  fi
+}
+
+# Source code provided to STI will be bind-mounted at /tmp/src
+# and then copied into /opt/wildfly/source for building.
+local_source_dir=/opt/wildfly/source
+mkdir -p $local_source_dir
+
+# Resulting WAR files will be deployed to /wildfly/standalone/deployments
+deploy_dir=/wildfly/standalone/deployments
+mkdir -p $deploy_dir
+
+# Copy the source from the bind mount in preparation for compilation
+cp -ad /tmp/src/* $local_source_dir
+
+# If a pom.xml is present, this is a normal build scenario 
+# so run maven.
+if [ -f "$local_source_dir/pom.xml" ]; then
+  # restore any maven dependencies which will be present if this is an
+  # incremental build
+  restore_saved_artifacts
+  
+  pushd $local_source_dir &> /dev/null
+  JAVA_HOME=/etc/alternatives/java_sdk_1.7.0  
+  mvn clean package -Popenshift -DskipTests
+  err=$?
+  if [ $err -ne 0 ]; then
+    echo "Aborting due to error code $err from mvn package"
+    exit $err
+  fi
+
+  echo "Copying built war files into $deploy_dir for later deployment..."
+  if [ -d $local_source_dir/target ]; then
+    cp $local_source_dir/target/*.war $deploy_dir >& /dev/null
+  fi
+  if [ -d $local_source_dir/deployments ]; then
+    cp $local_source_dir/deployments/*.war $deploy_dir >& /dev/null
+  fi
+  
+  if [ -d $local_source_dir/cfg ]; then
+    echo "Copying config files from project..."
+    cp cfg/* /wildfly/standalone/configuration
+  fi
+
+  if [ -d $local_source_dir/modules ]; then
+    echo "Copying modules from project..."
+    mkdir /wildfly/provided_modules
+    cp -r modules/* /wildfly/provided_modules
+  fi
+
+  echo "...done"
+
+  popd &> /dev/null
+else
+  echo "Copying binaries in source directory into $deploy_dir for later deployment..."
+  if [ -d $local_source_dir/target ]; then
+    cp $local_source_dir/target/*.war $deploy_dir >& /dev/null
+  fi
+  if [ -d $local_source_dir/deployments ]; then
+    cp $local_source_dir/deployments/*.war $deploy_dir >& /dev/null
+  fi
+  if [ -d $local_source_dir/cfg ]; then
+    echo "Copying config files from project..."
+    cp cfg/* /wildfly/standalone/configuration
+  fi
+
+  if [ -d $local_source_dir/modules ]; then
+    echo "Copying modules from project..."
+    mkdir /wildfly/provided_modules
+    cp -r modules/* /wildfly/provided_modules
+  fi
+  echo "...done"
+fi
