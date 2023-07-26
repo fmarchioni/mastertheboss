@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="jakarta.faces.core" xmlns:ui="jakarta.faces.facelets"
+		xmlns:h="jakarta.faces.html" >
+<h:head>
+	<h:outputStylesheet name="style.css" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+</h:head>
+
+<h:body>
+	<h2>JSF Converter demo</h2>
+    <h3>Enter an ID</h3>
+
+
+	<br/>
+    <h:form id="sampleform">
+        <h:messages id="version" errorStyle="color: red" infoStyle="color: green"  />
+        <h:inputText value="#{manager.name}" converter="myConverter" />
+        <h:commandButton value="Submit" action="#{manager.update}"></h:commandButton>
+    </h:form>
+
+</h:body>
+</html>
