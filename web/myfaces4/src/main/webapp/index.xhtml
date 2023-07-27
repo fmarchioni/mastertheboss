@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="jakarta.faces.core" xmlns:ui="jakarta.faces.facelets"
+		xmlns:h="jakarta.faces.html" >
+<h:head>
+	<h:outputStylesheet name="style.css" />
+</h:head>
+
+<h:body>
+	<h2>JSF Basic demo</h2>
+
+	<h:form id="formpanel">
+		<ui:debug/>
+		<h:panelGrid columns="2" styleClass="default">
+			<h:outputLabel for="version" value="version: " />
+			<h:messages id="version" errorStyle="color: red" infoStyle="color: green"  />
+
+		  
+			<h:outputLabel for="name" value="Name: " />
+			<h:inputText id="name" value="#{user.name}" />
+
+			<h:outputLabel for="name" value="Surname: " />
+			<h:inputText id="surname" value="#{user.surname}" />
+
+			<h:outputLabel for="name" value="Email: " />
+			<h:inputText id="email" value="#{user.email}" />
+
+
+
+			<h:commandButton id="submit" actionListener="#{manager.save}"
+							 styleClass="buttons" value="Save" />
+			
+			<br/>
+		
+			
+		</h:panelGrid>
+	</h:form>
+	<br/>
+	<h:form id="datatableform" >
+		<h:dataTable id="mytable" name="mytable" value="#{userList}" var="item" styleClass="table"
+					 headerClass="table-header"
+					 rowClasses="table-odd-row,table-even-row">
+			<h:column>
+				<f:facet name="header">Name</f:facet>
+				<h:outputText value="#{item.name}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Surname</f:facet>
+				<h:outputText value="#{item.surname}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Email</f:facet>
+				<h:outputText value="#{item.email}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Delete</f:facet>
+				<h:commandButton actionListener="#{manager.delete(item)}"
+								 styleClass="buttons" value="Delete" />
+			</h:column>
+
+		</h:dataTable>
+
+	</h:form>
+
+</h:body>
+</html>

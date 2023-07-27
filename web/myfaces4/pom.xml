@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+ 
+    <groupId>com.mastertheboss</groupId>
+    <artifactId>jsf-demo</artifactId>
+    <version>1.0</version>
+ 
+ 
+  <packaging>war</packaging>
+  <name>JSF basic</name>
+  <description>JSF Basic</description>
+ 
+
+
+  <properties>
+ 
+        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+ 
+  </properties>
+<dependencyManagement>
+    <dependencies>
+
+      <dependency>
+        <groupId>org.wildfly.bom</groupId>
+        <artifactId>wildfly-ee-with-tools</artifactId>
+        <version>27.0.0.Final</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+</dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>jakarta.platform</groupId>
+      <artifactId>jakarta.jakartaee-api</artifactId>
+      <version>10.0.0</version>
+      <scope>provided</scope>
+    </dependency>
+  <dependency>
+            <groupId>net.sourceforge.htmlunit</groupId>
+            <artifactId>htmlunit</artifactId>
+            <version>2.58.0</version>
+            <scope>test</scope>
+        </dependency>
+   <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+ <dependency>
+      <groupId>org.jboss.arquillian.junit</groupId>
+      <artifactId>arquillian-junit-container</artifactId>
+
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.arquillian.protocol</groupId>
+      <artifactId>arquillian-protocol-servlet</artifactId>
+
+      <scope>test</scope>
+    </dependency>
+ <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.7.36</version>
+    </dependency>
+  </dependencies>
+<profiles>
+    <profile>
+      <!-- The default profile skips all tests, though you can tune it to run 
+				just unit tests based on a custom pattern -->
+      <!-- Seperate profiles are provided for running all tests, including Arquillian 
+				tests that execute in the specified container -->
+      <id>default</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.0.0-M7</version>
+            <configuration>
+              <skip>true</skip>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <!-- An optional Arquillian testing profile that executes tests in your JBoss EAP instance.
+           This profile will start a new JBoss EAP instance, and execute the test, shutting it down when done.
+           Run with: mvn clean verify -Parq-wildfly-managed -->
+      <id>arq-wildfly-managed</id>
+      <dependencies>
+        <dependency>
+          <groupId>org.wildfly.arquillian</groupId>
+          <artifactId>wildfly-arquillian-container-managed</artifactId>
+          <scope>test</scope>
+        </dependency>
+      </dependencies>
+      <build>
+
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <version>2.22.2</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>integration-test</goal>
+                  <goal>verify</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+        </plugins>
+
+      </build>
+    </profile>
+    <profile>
+      <!-- An optional Arquillian testing profile that executes tests in a remote 
+				WildFly instance -->
+      <!-- Run with: mvn clean test -Parq-wildfly-remote -->
+      <id>arq-wildfly-remote</id>
+      <dependencies>
+        <dependency>
+          <groupId>org.wildfly.arquillian</groupId>
+          <artifactId>wildfly-arquillian-container-remote</artifactId>
+          <scope>test</scope>
+        </dependency>
+      </dependencies>
+      <build>
+
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <version>2.22.2</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>integration-test</goal>
+                  <goal>verify</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+        </plugins>
+
+      </build>
+    </profile>
+  </profiles>
+  <build>
+    <finalName>${project.artifactId}</finalName>
+<plugins>
+      <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                    <compilerArguments>
+                        <endorseddirs>${endorsed.dir}</endorseddirs>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+      <plugin>
+             <groupId>org.wildfly.plugins</groupId>
+             <artifactId>wildfly-maven-plugin</artifactId>
+             <version>4.0.0.Final</version>
+            </plugin>
+
+</plugins>
+  </build>
+</project>

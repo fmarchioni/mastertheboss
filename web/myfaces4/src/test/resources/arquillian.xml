@@ -1,0 +1,16 @@
+<arquillian xmlns="http://jboss.org/schema/arquillian" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="http://jboss.org/schema/arquillian
+    http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+
+
+	<container qualifier="jboss" default="true">
+		<configuration>
+			<!-- By default it uses JBOSS_HOME
+                          <property name="jbossHome">/path/wildlfy/</property>
+                         -->
+			<property name="jbossHome">/home/francesco/jboss/wildfly-27.0.0.Final</property>
+			<property name="managementPort">9990</property>
+			<property name="managementAddress">localhost</property>
+		</configuration>
+	</container>
+</arquillian>
