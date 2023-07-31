@@ -10,3 +10,4 @@ target/
 .dockerignore
 .pom.xml.swp
 .mvn/*
+.vscode/*

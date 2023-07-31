@@ -4,5 +4,16 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     <display-name>service</display-name>
- 
+   <context-param>
+        <param-name>resteasy.providers</param-name>
+        <param-value>
+           <!-- com.wordnik.swagger.jaxrs.json.JacksonJsonProvider,-->
+            io.swagger.jaxrs.listing.ApiListingResource,
+            io.swagger.jaxrs.listing.SwaggerSerializers
+        </param-value>
+    </context-param>
+    <context-param>
+        <param-name>resteasy.scan</param-name>
+        <param-value>true</param-value>
+    </context-param>
 </web-app>

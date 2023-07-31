@@ -18,6 +18,7 @@
             <property name="jakarta.persistence.schema-generation.drop-source"
                       value="metadata"/>
 
+            <property name="hibernate.show_sql" value="true"/>
 
         </properties>
     </persistence-unit>

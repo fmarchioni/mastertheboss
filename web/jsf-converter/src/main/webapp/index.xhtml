@@ -8,14 +8,28 @@
 
 <h:body>
 	<h2>JSF Converter demo</h2>
-    <h3>Enter an ID</h3>
+ 
 
 
 	<br/>
-    <h:form id="sampleform">
-        <h:messages id="version" errorStyle="color: red" infoStyle="color: green"  />
-        <h:inputText value="#{manager.name}" converter="myConverter" />
-        <h:commandButton value="Submit" action="#{manager.update}"></h:commandButton>
+    <h:form>
+        <h:outputLabel for="intValue" value="Integer Value:" />
+        <h:inputText id="intValue" value="#{converterBean.intValue}" />
+        <br />
+
+        <h:outputLabel for="doubleValue" value="Double Value:" />
+        <h:inputText id="doubleValue" value="#{converterBean.doubleValue}" />
+        <br />
+
+        <h:outputLabel for="dateValue" value="Date Value:" />
+        <h:inputText id="dateValue" value="#{converterBean.dateValue}">
+            <!-- Built-in date converter with a custom pattern -->
+            <f:convertDateTime pattern="yyyy-MM-dd" />
+        </h:inputText>
+        <h:message for="dateValue" style="color: red;" />
+        <br />
+
+        <h:commandButton value="Submit" action="#{converterBean.submit}" />
     </h:form>
 
 </h:body>

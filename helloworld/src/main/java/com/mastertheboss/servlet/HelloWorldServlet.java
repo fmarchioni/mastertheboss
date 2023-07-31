@@ -23,7 +23,7 @@ public class HelloWorldServlet extends HttpServlet {
 
 		response.setContentType("text/html");
 		PrintWriter writer = response.getWriter();
-		writer.println("<h1>Hello World Servlet on WildFly</h1>");
+		writer.println("<h1>Live reload on WildFly</h1>");
 		writer.close();
     }
  
