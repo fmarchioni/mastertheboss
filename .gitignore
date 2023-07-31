@@ -11,3 +11,8 @@ target/
 .pom.xml.swp
 .mvn/*
 .vscode/*
+.idea/
+.project/
+.settings/
+.classpath/
+
