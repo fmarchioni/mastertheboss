@@ -16,7 +16,7 @@ import com.sample.model.Item;
 import com.sample.service.ItemService;
 
 @Named("dtBasicView")
-@RequestScoped
+@ViewScoped
 public class ItemView implements Serializable {
 
     private List<Item> items;
@@ -38,18 +38,27 @@ public class ItemView implements Serializable {
         this.service = service;
     }
     
-    public void addRandom() {
-        service.addRandomItem();
-    }
+   
     
     public void onRowEdit(RowEditEvent<Item> event) {
         FacesMessage msg = new FacesMessage("Product Edited", String.valueOf(event.getObject().getName()));
         FacesContext.getCurrentInstance().addMessage(null, msg);
-        service.save(event.getObject());
+        service.update(event.getObject());
     }
 
     public void onRowCancel(RowEditEvent<Item> event) {
         FacesMessage msg = new FacesMessage("Edit Cancelled", String.valueOf(event.getObject().getName()));
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public void onAddNew() {
+
+        Item item = service.generateRandomItem();  
+        items.add(item);
+        System.out.println(item);
+        service.save(item);
+
+        FacesMessage msg = new FacesMessage("Item Product added", String.valueOf(item.getId()));
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 }
