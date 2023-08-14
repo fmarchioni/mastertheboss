@@ -1,0 +1,78 @@
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:f="jakarta.faces.core"
+    xmlns:h="jakarta.faces.html"
+    xmlns:ui="jakarta.faces.facelets" 
+    xmlns:p="http://primefaces.org/ui">
+	<f:view contentType="text/html">
+		<h:head>
+        </h:head>
+		 <h:body>
+            <p:growl>
+                <p:autoUpdate />
+            </p:growl>
+
+            <h:form id="form">
+                <p:dataTable var="car" value="#{dtLazyView.lazyModel}" paginator="true" rows="10"
+                             paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                             rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{dtLazyView.selectedCar}" id="carTable" lazy="true">
+                    <p:ajax event="rowSelect" listener="#{dtLazyView.onRowSelect}" update=":form:carDetail" oncomplete="PF('carDialog').show()" />
+                    <p:column headerText="Id" sortBy="#{car.id}" filterBy="#{car.id}">
+                        <h:outputText value="#{car.id}" />
+                    </p:column>
+                    <p:column headerText="Year" sortBy="#{car.year}" filterBy="#{car.year}">
+                        <h:outputText value="#{car.year}" />
+                    </p:column>
+                    <p:column headerText="Brand" sortBy="#{car.brand}" filterBy="#{car.brand}">
+                        <h:outputText value="#{car.brand}" />
+                    </p:column>
+                    <p:column headerText="Color" sortBy="#{car.color}" filterBy="#{car.color}">
+                        <h:outputText value="#{car.color}" />
+                    </p:column>
+                </p:dataTable>
+
+                <p:dialog header="Car Detail" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                    <p:outputPanel id="carDetail" style="text-align:center;">
+                        <p:panelGrid  columns="2" rendered="#{not empty dtLazyView.selectedCar}" columnClasses="label,value">
+                            <f:facet name="header">
+                                <p:graphicImage name="demo/images/car/#{dtLazyView.selectedCar.brand}-big.gif"/>
+                            </f:facet>
+
+                            <h:outputText value="Id:" />
+                            <h:outputText value="#{dtLazyView.selectedCar.id}" />
+
+                            <h:outputText value="Year" />
+                            <h:outputText value="#{dtLazyView.selectedCar.year}" />
+
+                            <h:outputText value="Color:" />
+                            <h:outputText value="#{dtLazyView.selectedCar.color}" style="color:#{dtLazyView.selectedCar.color}"/>
+
+                            <h:outputText value="Price:" />
+                            <h:outputText value="#{dtLazyView.selectedCar.price}">
+                                <f:convertNumber type="currency" currencySymbol="$" />
+                            </h:outputText>
+                        </p:panelGrid>
+                    </p:outputPanel>
+                </p:dialog>
+            </h:form>
+        </h:body>
+	</f:view>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="jakarta.faces.core"
+    xmlns:h="jakarta.faces.html"
+    xmlns:ui="jakarta.faces.facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="jakarta.faces.passthrough"
+      xmlns:sc="http://primefaces.org/ui/showcase"
+      lang="#{p:language()}" xml:lang="#{p:language()}">
+
+    <h:head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <title><ui:insert name="title">Template Test</ui:insert></title>
+
+        <ui:insert name="head"/>
+        
+    </h:head>
+
+    <h:body>
+        <f:view locale="en">
+
+        <ui:insert name="body"></ui:insert>
+
+        <h:outputScript name="jquery/jquery.js" library="primefaces" target="head"/>
+        <h:outputScript name="jquery/jquery-plugins.js" library="primefaces" target="head"/>
+        </f:view>
+    </h:body>
+
+</html>
