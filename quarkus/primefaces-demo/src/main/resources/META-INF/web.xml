@@ -43,7 +43,7 @@
 
     <context-param>
         <param-name>primefaces.THEME</param-name>
-        <param-value>luna-amber</param-value>
+        <param-value>luna-blue</param-value>
     </context-param>
 
     <!-- Context parameters - MyFaces -->

@@ -25,54 +25,61 @@
 	<f:view contentType="text/html">
 		<h:head>
         </h:head>
-		 <h:body>
-            <p:growl>
-                <p:autoUpdate />
-            </p:growl>
-
-            <h:form id="form">
-                <p:dataTable var="car" value="#{dtLazyView.lazyModel}" paginator="true" rows="10"
-                             paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                             rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{dtLazyView.selectedCar}" id="carTable" lazy="true">
-                    <p:ajax event="rowSelect" listener="#{dtLazyView.onRowSelect}" update=":form:carDetail" oncomplete="PF('carDialog').show()" />
-                    <p:column headerText="Id" sortBy="#{car.id}" filterBy="#{car.id}">
-                        <h:outputText value="#{car.id}" />
-                    </p:column>
-                    <p:column headerText="Year" sortBy="#{car.year}" filterBy="#{car.year}">
-                        <h:outputText value="#{car.year}" />
-                    </p:column>
-                    <p:column headerText="Brand" sortBy="#{car.brand}" filterBy="#{car.brand}">
-                        <h:outputText value="#{car.brand}" />
-                    </p:column>
-                    <p:column headerText="Color" sortBy="#{car.color}" filterBy="#{car.color}">
-                        <h:outputText value="#{car.color}" />
-                    </p:column>
-                </p:dataTable>
-
-                <p:dialog header="Car Detail" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-                    <p:outputPanel id="carDetail" style="text-align:center;">
-                        <p:panelGrid  columns="2" rendered="#{not empty dtLazyView.selectedCar}" columnClasses="label,value">
-                            <f:facet name="header">
-                                <p:graphicImage name="demo/images/car/#{dtLazyView.selectedCar.brand}-big.gif"/>
-                            </f:facet>
-
-                            <h:outputText value="Id:" />
-                            <h:outputText value="#{dtLazyView.selectedCar.id}" />
-
-                            <h:outputText value="Year" />
-                            <h:outputText value="#{dtLazyView.selectedCar.year}" />
-
-                            <h:outputText value="Color:" />
-                            <h:outputText value="#{dtLazyView.selectedCar.color}" style="color:#{dtLazyView.selectedCar.color}"/>
-
-                            <h:outputText value="Price:" />
-                            <h:outputText value="#{dtLazyView.selectedCar.price}">
-                                <f:convertNumber type="currency" currencySymbol="$" />
-                            </h:outputText>
-                        </p:panelGrid>
-                    </p:outputPanel>
-                </p:dialog>
-            </h:form>
-        </h:body>
+	
+<h:body>
+    <div class="card">
+        <h:form id="form">
+            <p:growl id="msgs" showDetail="true"/>
+    
+            <p:dataTable id="items" widgetVar="items" var="item" value="#{dtBasicView.items}"
+                         editable="true">
+                <f:facet name="header">
+                    Jakarta EE 10 demo with Primefaces
+                </f:facet>
+    
+                <p:ajax event="rowEdit" listener="#{dtBasicView.onRowEdit}" update=":form:msgs"/>
+                <p:ajax event="rowEditCancel" listener="#{dtBasicView.onRowCancel}" update=":form:msgs"/>
+    
+                <p:column headerText="Name">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.name}"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.name}" style="width:100%"
+                                                           label="Name"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+    
+                <p:column headerText="Code">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.category}"/></f:facet>
+                        <f:facet name="input"><p:inputText id="modelInput" value="#{item.category}"
+                                                           style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+    
+                <p:column headerText="Price">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.price}"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.price}" style="width:100%"
+                                                           label="Price"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+    
+    
+                <p:column style="width:6rem">
+                    <p:rowEditor/>
+                </p:column>
+            </p:dataTable>
+    
+            <div class="grid mt-3">
+                <div class="col-12">
+                    <p:commandButton value="Add new row" process="@this" update=":form:msgs"
+                                     action="#{dtBasicView.onAddNew()}" oncomplete="PF('items').addRow();"/>
+                </div>
+            </div>
+    
+        </h:form>
+    </div>
+    
+    </h:body>
 	</f:view>
 </html>
