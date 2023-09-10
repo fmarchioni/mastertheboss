@@ -1,24 +1,30 @@
 package com.mastertheboss;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.TableGenerator;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 @Entity
-public class Ticket extends PanacheEntity {
+public class Ticket  {
 
-    @Column(length = 20, unique = true)
+    @Id
+    @GeneratedValue()
+    Long id;
+
+    @Column(length = 20)
     public String name;
 
-    @Column(length = 3, unique = true)
+    @Column(length = 3)
     public String seat;
 
-    public Ticket() {
+    @Override
+    public String toString() {
+        return "Ticket [id=" + id + ", name=" + name + ", seat=" + seat + "]";
     }
 
-    public Ticket(String name, String seat) {
-        this.name = name;
-        this.seat = seat;
-    }
+    
 }

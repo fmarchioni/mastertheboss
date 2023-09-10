@@ -13,7 +13,7 @@ public class MyServiceTest {
     public void testListAllTickets() {
 
         given()
-                .when().get("/my-service")
+                .when().get("/ticket-resource-panache")
                 .then()
                 .statusCode(200)
                 .body(
