@@ -1,6 +1,6 @@
 This project was created from the archetype "wildfly-subsystem-archetype".
 
-Documentation on Subsystems can be found here: https://docs.wildfly.org/29/Extending_WildFly.html
+More details here: https://www.mastertheboss.com/jbossas/jboss-configuration/creating-a-new-subsystem-in-wildfly-made-simple/
 
 To deploy it:
 
