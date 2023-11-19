@@ -1,0 +1,15 @@
+wildfly:
+    build:
+      uri: https://github.com/wildfly/quickstart.git
+      ref: main
+      contextDir: helloworld
+    deploy:
+      replicas: 1
+      env:
+        - name: SUBSYSTEM_TRANSACTIONS__DEFAULT_TIMEOUT
+          value: "450"
+        - name: GC_MAX_METASPACE_SIZE
+          value: "256"
+        - name: GC_METASPACE_SIZE
+          value: "96"
+      

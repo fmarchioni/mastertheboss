@@ -1,0 +1,6 @@
+dependencies:
+- name: wildfly
+  repository: http://docs.wildfly.org/wildfly-charts/
+  version: 2.3.2
+digest: sha256:a3ee909987cbc151d5fc3fdb5266df22ded9c89b11f593ccef521e57733ffcce
+generated: "2023-11-19T10:07:48.522931477+01:00"
