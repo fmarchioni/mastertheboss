@@ -1,0 +1,9 @@
+dependencies:
+- name: postgresql
+  repository: https://charts.bitnami.com/bitnami
+  version: 12.9.0
+- name: wildfly
+  repository: http://docs.wildfly.org/wildfly-charts/
+  version: 2.3.2
+digest: sha256:2304923b8fa8292e00633d03ebc9355a1b5fa8d26c888f3bc60cfea00b4cf651
+generated: "2023-11-19T11:37:26.687128654+01:00"

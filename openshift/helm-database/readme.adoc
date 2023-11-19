@@ -1,0 +1,5 @@
+
+
+helm dependency update charts/
+
+helm install helm-database charts/

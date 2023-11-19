@@ -34,7 +34,7 @@ postgresql:
 
 wildfly:
     build:
-      uri: https://github.com/fmarchioni/mastertheboss
+      uri: https://github.com/fmarchioni/mastertheboss.git
       ref: master
       contextDir: openshift/helm-database
     deploy:
@@ -53,4 +53,3 @@ wildfly:
           value: todo-backend-postgresql
         - name: POSTGRESQL_SERVICE_PORT
           value: "5432"
-        # Env vars to configure CORS filter
