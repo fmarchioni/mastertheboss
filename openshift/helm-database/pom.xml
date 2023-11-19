@@ -190,6 +190,9 @@
         </dependency>
     </dependencies>
   -->
+  <profiles>
+  <profile>
+          <id>openshift</id>
 
             <build>
                 <!-- Set the name of the WAR, used as the context root when the app is deployed -->
@@ -247,5 +250,6 @@
                     </plugin>
                 </plugins>
             </build>
-
+          </profile>
+          </profiles>
 </project>
