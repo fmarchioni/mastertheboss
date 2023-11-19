@@ -44,7 +44,7 @@
         <version.wildfly.maven.plugin>4.2.0.Final</version.wildfly.maven.plugin>
         <version.cloud.fp>5.0.0.Final</version.cloud.fp>
 
-        <failOnMissingWebXml>false</failOnMissingWebXml>   
+        <failOnMissingWebXml>false</failOnMissingWebXml>
 
 
     </properties>
@@ -175,6 +175,11 @@
                 <!-- Set the name of the WAR, used as the context root when the app is deployed -->
                 <finalName>${project.artifactId}</finalName>
                 <plugins>
+                  <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-war-plugin</artifactId>
+                  <version>3.4.0</version>
+                </plugin>
                 <plugin>
                   <groupId>org.apache.maven.plugins</groupId>
                   <artifactId>maven-compiler-plugin</artifactId>
