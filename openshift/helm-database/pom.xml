@@ -104,9 +104,29 @@
         </pluginRepository>
     </pluginRepositories>
 
+
+    <dependencyManagement>
+      <dependencies>
+        <dependency>
+          <groupId>jakarta.platform</groupId>
+          <artifactId>jakarta.jakartaee-api</artifactId>
+          <version>10.0.0</version>
+          <scope>provided</scope>
+        </dependency>
+      </dependencies>
+    </dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>jakarta.platform</groupId>
+        <artifactId>jakarta.jakartaee-api</artifactId>
+        <scope>provided</scope>
+      </dependency>
+    </dependencies>
+
+    <!--
     <dependencyManagement>
         <dependencies>
-            <!-- importing the ee-with-tools BOM adds specs and other useful artifacts as managed dependencies -->
+
             <dependency>
                 <groupId>org.wildfly.bom</groupId>
                 <artifactId>wildfly-ee-with-tools</artifactId>
@@ -169,7 +189,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
+  -->
 
             <build>
                 <!-- Set the name of the WAR, used as the context root when the app is deployed -->
