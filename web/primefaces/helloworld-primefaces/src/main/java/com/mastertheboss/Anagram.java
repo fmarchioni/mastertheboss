@@ -1,18 +1,32 @@
 package com.mastertheboss;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import javax.enterprise.inject.Model;
+ 
 
-@Model
-public class Bean {
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
+
+@Named("bean")
+@ViewScoped
+public class Anagram implements Serializable  {
     private String word;
  
     private String anagram;
  
+
+    public void addMessage(FacesMessage.Severity severity, String summary, String detail) {
+        FacesContext.getCurrentInstance().
+                addMessage(null, new FacesMessage(severity, summary, detail));
+    }
+
+ 
+    
     public void generateAnagram() {
-        Random rand = new Random();
+         
  
         List<Character> characters = new ArrayList<Character>();
         for (char c : word.toCharArray()) {
@@ -24,6 +38,7 @@ public class Bean {
             output.append(characters.remove(randPicker));
         }
         this.anagram = output.toString();
+        addMessage(FacesMessage.SEVERITY_INFO, "Info Message", "Anagram generated!");
     }
  
     public String getAnagram() {
