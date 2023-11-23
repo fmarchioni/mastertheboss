@@ -1,3 +1,5 @@
 == Export your dataTable to Excel and PDF using Primefaces 
 
+This example shows how to export a DataTable using Jakarta EE 8 version
+
 Tutorial for this demo: http://www.mastertheboss.com/jboss-web/primefaces/export-your-datatable-to-excel-and-pdf-using-primefaces
