@@ -1,4 +1,4 @@
-== Export your dataTable to Excel and PDF using Primefaces 
+== Export your dataTable to Excel, PDF, CSV and XML using Primefaces 
 
 This example shows how to export a DataTable using Jakarta EE 8 version
 
