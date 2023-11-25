@@ -1,11 +1,11 @@
-Primefaces Example
+Primefaces Dialog Example
 ===============================
 Author: Francesco Marchioni  
 Level: Beginner  
 Technologies: JSF  
-Summary: This project demonstrates the usage of Primefaces.  
+Summary: This project demonstrates the usage of Primefaces Dialog.  
 Target Product: WildFly  
-Read more: https://www.mastertheboss.com/web/primefaces/primefaces-tutorial/
+Read more: https://www.mastertheboss.com/web/primefaces/primefaces-dialog-example/
 
  
 Build and Deploy the Quickstart
@@ -25,7 +25,7 @@ Build and Deploy the Quickstart
 Access the application 
 ---------------------
 
-The application will be running at the following URL: <http://localhost:8080/primefaces-demo>. 
+The application will be running at the following URL: <http://localhost:8080/primefaces>. 
 
 
 Using WildFly bootable JAR
