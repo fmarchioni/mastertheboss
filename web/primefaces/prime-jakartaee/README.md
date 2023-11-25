@@ -1,9 +1,9 @@
-Primefaces Datatable Example
+Primefaces Jakarta EE Demo
 ===============================
 Author: Francesco Marchioni  
 Level: Beginner  
 Technologies: JSF  
-Summary: This project demonstrates the usage of Primefaces Datatable.  
+Summary: This project demonstrates the usage of Primefaces with Jakarta EE 10.  
 Target Product: WildFly  
 
  
@@ -16,13 +16,13 @@ Build and Deploy the Quickstart
 
         mvn clean install wildfly:deploy
 
-4. This will deploy `target/datatable-demo.war` to the running instance of the server.
+4. This will deploy `target/jakartaee-demo.war` to the running instance of the server.
 
 
 Access the application 
 ---------------------
 
-The application will be running at the following URL: <http://localhost:8080/datatable-demo>. 
+The application will be running at the following URL: <http://localhost:8080/jakartaee-demo>. 
 
 
 Undeploy the Archive
@@ -35,4 +35,4 @@ Undeploy the Archive
         mvn wildfly:undeploy
 
 
-
+Read more: https://www.mastertheboss.com/web/primefaces/primefaces-with-jakarta-ee-10-made-simple/

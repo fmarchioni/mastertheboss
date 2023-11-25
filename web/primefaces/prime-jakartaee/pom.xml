@@ -28,7 +28,7 @@
 
     <!-- JBoss dependency versions -->
 
-    <version.wildfly.maven.plugin>2.0.0.Final</version.wildfly.maven.plugin>
+    <version.wildfly.maven.plugin>4.0.0.Final</version.wildfly.maven.plugin>
 
 
     <!-- other plug-in versions -->
