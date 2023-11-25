@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+
+<h:body>
+<div class="card">
+    <h:form id="form">
+
+    <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
+
+    <div class="card">
+        <h5 class="mt-0">Default</h5>
+        <p:tabView>
+            <p:ajax event="tabChange" listener="#{itemView.onTabChange}" update=":form:msgs"/>
+            <p:ajax event="tabClose" listener="#{itemView.onTabClose}" update=":form:msgs"/>
+            <f:facet name="actions">
+                Global actions
+            </f:facet>
+            <p:tab title="Electronics">
+                <p class="m-0">
+                    Displaying our latest collection of cutting-edge electronics including smartphones, laptops, and smart devices.
+                    <!-- Insert detailed information about the Electronics category -->
+                </p>
+            </p:tab>
+
+            <p:tab title="Apparel">
+                <p class="m-0">
+                    Explore our fashionable clothing line ranging from casual wear to formal attire for all occasions.
+                    <!-- Insert detailed information about the Apparel category -->
+                </p>
+            </p:tab>
+
+            <p:tab title="Home and Furniture">
+                <p class="m-0">
+                    Discover elegant home decor and versatile furniture pieces that complement your lifestyle.
+                    <!-- Insert detailed information about the Home & Furniture category -->
+                </p>
+            </p:tab>
+        </p:tabView>
+    </div>
+
+    </h:form>
+</div>
+
+</h:body>
+
+
+
+</html>
