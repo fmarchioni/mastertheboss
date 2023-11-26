@@ -27,17 +27,19 @@
 
         <!-- JBoss dependency versions -->
 
-        <version.wildfly.maven.plugin>2.0.0.Final</version.wildfly.maven.plugin>
+        <version.wildfly.maven.plugin>4.0.0.Final</version.wildfly.maven.plugin>
  
 
         <!-- other plug-in versions -->
-        <version.war.plugin>2.1.1</version.war.plugin>
+        <version.war.plugin>3.4.0</version.war.plugin>
 
         <!-- maven-compiler-plugin -->
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
 
-        <primefaces.version>10.0.0</primefaces.version>
+        <primefaces.version>13.0.0</primefaces.version>
+            <version.wildfly>30.0.0.Final</version.wildfly>
+    <version.bootable-jar>10.0.0.Final</version.bootable-jar>
     </properties>
 
 
@@ -46,13 +48,14 @@
     <dependency>
         <groupId>jakarta.platform</groupId>
         <artifactId>jakarta.jakartaee-api</artifactId>
-        <version>8.0.0</version>
+        <version>10.0.0</version>
         <scope>provided</scope>
     </dependency>
     <dependency>
         <groupId>org.primefaces</groupId>
         <artifactId>primefaces</artifactId>
         <version>${primefaces.version}</version>
+         <classifier>jakarta</classifier>
     </dependency>
     </dependencies>
 
@@ -75,6 +78,32 @@
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <version>${version.wildfly.maven.plugin}</version>
             </plugin>
+
+               <plugin>
+        <groupId>org.wildfly.plugins</groupId>
+        <artifactId>wildfly-jar-maven-plugin</artifactId>
+           <version>${version.bootable-jar}</version>
+        <configuration>
+          <feature-pack-location>wildfly@maven(org.jboss.universe:community-universe)#${version.wildfly}</feature-pack-location>
+          <layers>
+            <layer>ejb-lite</layer>
+            <layer>jsf</layer>
+            <layer>jpa</layer>
+    
+                    <layer>h2-default-datasource</layer>
+          </layers>
+          <plugin-options>
+            <jboss-fork-embedded>${plugin.fork.embedded}</jboss-fork-embedded>
+          </plugin-options>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>package</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
         </plugins>
     </build>
 </project>
