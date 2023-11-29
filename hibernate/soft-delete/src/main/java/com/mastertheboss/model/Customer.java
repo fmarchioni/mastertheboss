@@ -8,8 +8,7 @@ import java.io.Serializable;
 import org.hibernate.annotations.SoftDeleteType;
 
 @Entity
-@SoftDelete(strategy= SoftDeleteType.ACTIVE)
-//@SoftDelete(columnName = "removed")
+@SoftDelete(columnName = "removed")
 public class Customer implements Serializable {
 
   public Customer() {
