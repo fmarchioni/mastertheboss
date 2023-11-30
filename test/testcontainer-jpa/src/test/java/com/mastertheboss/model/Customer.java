@@ -2,13 +2,12 @@ package com.mastertheboss.model;
 
 import jakarta.persistence.*;
 
-import org.hibernate.annotations.SoftDelete;
+ 
 
 import java.io.Serializable;
-import org.hibernate.annotations.SoftDeleteType;
+ 
 
 @Entity
-@SoftDelete(columnName = "removed")
 public class Customer implements Serializable {
 
   public Customer() {
