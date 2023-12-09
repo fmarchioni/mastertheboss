@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  prometheus:
+    image: prom/prometheus:v2.42.0
+    user: 0:0
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prometheus-data:/prometheus
+    extra_hosts:
+      host.docker.internal: host-gateway
+    command: --web.enable-lifecycle  --config.file=/etc/prometheus/prometheus.yml
+
+
+  grafana:
+    image: grafana/grafana:8.2.2
+    user: 0:0
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    volumes:
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - grafana-data:/var/lib/grafana
+
+  alertmanager:
+    image: prom/alertmanager:v0.23.0
+    user: 0:0
+    restart: unless-stopped
+    ports:
+      - "9093:9093"
+    volumes:
+      - "./alertmanager:/config"
+      - alertmanager-data:/data
+    command: --config.file=/config/alertmanager.yml --log.level=debug
+
+
+
+volumes:
+  prometheus-data:
+
+  grafana-data:
+
+  alertmanager-data:
