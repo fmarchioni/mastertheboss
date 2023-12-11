@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wildfly.plugins.demo.tasksrs.service;
+package com.mastertheboss.service.service;
 
 import java.util.List;
 
@@ -22,15 +22,8 @@ import jakarta.inject.Inject;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.*;
-import jakarta.transaction.Transactional;
 import jakarta.transaction.UserTransaction;
-/**
- * Provides functionality for manipulation with tasks using the persistence context from {@link Resources}.
- *
- * @author Lukas Fryc
- * @author Oliver Kiss
- *
- */
+
 @RequestScoped
  
 public class CustomerService   {
@@ -46,8 +39,11 @@ public class CustomerService   {
         try {
             tx.begin();
             Customer c = new Customer();
-            c.setAddress("aaaa");
-            c.setEmail("aaaa");
+
+            // Setting specific values to the Customer object
+            c.setName("John Doe");
+            c.setEmail("johndoe@example.com");
+            c.setAddress("123 Main Street, City, Country");
             em.persist(c);
             tx.commit();
         } catch (Exception ex) {

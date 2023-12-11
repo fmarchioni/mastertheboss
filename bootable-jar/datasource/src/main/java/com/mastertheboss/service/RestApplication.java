@@ -1,4 +1,4 @@
-package org.wildfly.plugins.demo.tasksrs;
+package com.mastertheboss.service;
 
 
 import jakarta.ws.rs.ApplicationPath;

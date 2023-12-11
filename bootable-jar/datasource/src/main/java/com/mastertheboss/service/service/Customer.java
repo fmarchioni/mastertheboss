@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wildfly.plugins.demo.tasksrs.service;
+package com.mastertheboss.service.service;
 
  
 import jakarta.persistence.*;

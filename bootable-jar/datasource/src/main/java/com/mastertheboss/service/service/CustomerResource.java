@@ -14,36 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wildfly.plugins.demo.tasksrs.service;
+package com.mastertheboss.service.service;
 
-import java.net.URI;
-import java.security.Principal;
 import java.util.List;
 import jakarta.enterprise.context.RequestScoped;
 
 import jakarta.inject.Inject;
-import jakarta.transaction.UserTransaction;
-import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.WebApplicationException;
-import jakarta.ws.rs.core.Context;
-import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.core.SecurityContext;
-import jakarta.ws.rs.core.UriBuilder;
-import jakarta.ws.rs.core.UriInfo;
 
 
 
-/**
- * A JAX-RS resource for exposing REST endpoints for Task manipulation
- */
 @RequestScoped
 @Path("/customers")
-public class TaskResource {
+public class CustomerResource {
 
     @Inject
     private CustomerService service;
