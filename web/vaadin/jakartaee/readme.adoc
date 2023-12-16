@@ -1,0 +1,3 @@
+== Vaadin with Jakarta EE example
+
+Read more: https://www.mastertheboss.com/web/vaadin/how-to-run-vaadin-in-jakarta-ee-containers/
