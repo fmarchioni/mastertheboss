@@ -1,0 +1,6 @@
+tasks:
+  - init: mvn install -Pproduction
+    command: mvn package tomee:run
+ports:
+  - port: 8080
+    onOpen: open-preview
