@@ -1,0 +1,172 @@
+# JBang Cheatsheet
+
+Install JBang on Linux
+----
+curl -Ls https://sh.jbang.dev | bash -s - app setup
+----
+
+Upgrade JBang
+----
+jbang version --update
+----
+
+Init a JBang Script
+----
+// --template=hello
+jbang init hello.java
+----
+
+Execute a JBang Script
+----
+jbang example.java
+----
+
+Debug a script
+----
+jbang --debug helloworld.java
+----
+
+Edit a JBang script
+----
+jbang edit -b foo.java
+----
+
+Run a Java class in a JAR file
+----
+jbang file.jar --main=com.App
+----
+
+Run a Class using Maven GAV
+----
+jbang group:artifact:version --main=com.App
+----
+
+Run a Java Snippet
+----
+echo "hello world" | jbang -c 'lines().forEach(s->println(s.substring(6)))`
+----
+
+Create an Executable JAR
+----
+jbang export portable MyApp.java
+----
+
+Generate the Maven POM
+----
+jbang export mavenrepo --force -O target --group=com.sample -Dartifact=example -Dversion=1.0 MyApp.java
+----
+
+Add Dependency
+----
+//DEPS log4j:log4j:1.2.17
+----
+
+Add a GitHub Dependency
+----
+//DEPS https://github.com/DiUS/java-faker
+----
+
+Add BOM Dependency
+----
+//DEPS io.quarkus:quarkus-bom:1.11.0.Final@pom
+//DEPS io.quarkus:quarkus-resteasy
+----
+
+Add JAR/Source Dependency
+----
+//DEPS myapp.jar 
+//DEPS myclass.java
+----
+
+Use System Properties in Comments
+----
+//DEPS group:artifact${version}
+----
+
+Use Env Vars in Comments
+----
+//DEPS group:artifact${env.version}
+----
+
+Pass Dependencies to jbang
+----
+jbang --deps g1:a1:v1,g2:a2:v2 test.java
+----
+
+Add File Resources
+----
+//FILES resource.properties
+//FILES META-INF/resources/index.html=index.html
+----
+
+Add Manifest
+----
+//MANIFEST version=${version:unknown}
+----
+
+Set Quarkus Properties
+----
+//Q:CONFIG quarkus.datasource.db-kind=postgresql
+----
+
+Remote file expansion [1]
+----
+jbang CountWords.java %https://github.com/dwyl/english-words/raw/master/words.txt
+----
+
+Add Repository
+----
+//REPOS mavencentral,acme=http://maven.acme.repo
+----
+Add Java Sources
+----
+//SOURCES App.java
+//SOURCES othernested/*.java
+----
+
+JDK Configuration
+----
+//JAVA 11  forces use of Java 11.
+//JAVA 13+ Java 13 or higher will be used.
+----
+
+Install a JDK
+----
+jbang jdk install 17
+----
+
+Install JDK from your Machine
+----
+jbang jdk install 17 `sdk home java 17.0.4.1-tem`
+----
+
+Uninstall JDK
+----
+jbang jdk uninstall 14
+----
+
+List JDKs
+----
+jbang jdk list
+----
+
+Set default JDK
+----
+jbang jdk default 12
+----
+
+java / javac Options
+----
+//JAVAC_OPTIONS -source 11
+//JAVA_OPTIONS -Xms128m -Xmx512m
+----
+
+Install a JBang App
+----
+jbang app install CamelJBang@apache/camel
+----
+
+List Available Apps
+----
+jbang app list
+----
