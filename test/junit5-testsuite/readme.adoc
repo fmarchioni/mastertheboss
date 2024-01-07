@@ -1,0 +1,3 @@
+== JUnit 5 TestSuite Example
+
+Article: https://www.mastertheboss.com/various-stuff/testing-java/getting-started-with-junit-5-testsuite/
