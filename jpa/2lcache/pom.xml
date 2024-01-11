@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.example</groupId>
-    <artifactId>uuid-demo</artifactId>
-    <version>1.1</version>
-    <packaging>war</packaging>
+	<groupId>com.mastertheboss</groupId>
+	<artifactId>2lcache</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>war</packaging>
 
-    <name>jpa-basic</name>
+	<name>SecondLevelCacheExample</name>
+	<description>SecondLevelCacheExample</description>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -23,7 +25,7 @@
     </dependencies>
 
     <build>
-        <finalName>jpa-basic</finalName>
+        <finalName>2lcache</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

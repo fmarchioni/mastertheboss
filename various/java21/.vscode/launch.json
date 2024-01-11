@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "java21.App",
+            "projectName": "app"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch) with Arguments Prompt",
+            "request": "launch",
+            "mainClass": "com.sample.App",
+            "args": "arg1 arg2",
+            "vmArgs": "-Xms1g -Xmx1g"
+        }
+    ]
+}
