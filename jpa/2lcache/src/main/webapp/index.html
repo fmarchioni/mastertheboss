@@ -1,0 +1,178 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+table.blueTable {
+  border: 1px solid #1C6EA4;
+  background-color: #EEEEEE;
+  width: 50%;
+  text-align: left;
+  border-collapse: collapse;
+}
+table.blueTable td, table.blueTable th {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
+}
+table.blueTable tbody td {
+  font-size: 13px;
+}
+table.blueTable tr:nth-child(even) {
+  background: #D0E4F5;
+}
+table.blueTable thead {
+  background: #1C6EA4;
+  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  border-bottom: 2px solid #444444;
+}
+table.blueTable thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-left: 2px solid #D0E4F5;
+}
+table.blueTable thead th:first-child {
+  border-left: none;
+}
+table.blueTable tfoot {
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background: #D0E4F5;
+  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  border-top: 2px solid #444444;
+}
+table.blueTable tfoot td {
+  font-size: 14px;
+}
+table.blueTable tfoot .links {
+  text-align: right;
+}
+table.blueTable tfoot .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+</style>
+</head>
+<body>
+<h3>JAX-RS Demo (WildFly) with VueJS</h3>
+<div id="app">
+
+    <table class="blueTable">
+        <thead >
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="user in users" :key="user.id">
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.surname}}</td>
+            <td>  <button class="button"  @click="deleteUser(user.id)">Delete</button></td>
+            <td>  <button class="button"  @click="updateUser(user.id)">Update</button></td>
+        </tr>
+        </tbody>
+    </table>
+    <br/>
+    <h3>Insert / Update Customer</h3>
+    <div>
+        <form name="form" >
+            <input type="text" placeholder="Name" v-model="name" size="60"/><br/>
+            <input type="text" placeholder="Surname" v-model="surname" size="60"/><br/>
+            <input type="submit" value="Save" @click="createUser"/><br/>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+<script>
+
+
+new Vue({
+    el: "#app",
+    data() {
+        return {
+            users: []
+        }
+    },
+    methods: {
+
+
+        updateUser: function(id) {
+
+                axios.put("http://localhost:8080/vuejs-demo/rest/customers?id="+id+"&name="+this.name+"&surname="+this.surname)
+                .then(response => {
+                    this.listUsers()
+                })
+                this.name='';
+                this.surname='';
+        },
+
+        deleteUser: function(id) {
+
+                axios.delete("http://localhost:8080/vuejs-demo/rest/customers?id="+id)
+                .then(response => {
+                    this.listUsers()
+                })
+        },
+
+        createUser: function() {
+
+          var user = {
+                // name and surname should exist in [data] or [computed] section
+                name: this.name,
+                surname: this.surname
+              };
+
+
+            axios.post("http://localhost:8080/vuejs-demo/rest/customers",  user)
+                .then(response => {
+                    this.listUsers()
+                })
+
+
+        },
+        listUsers: function() {
+            axios.get("/vuejs-demo/rest/customers", {
+
+                })
+                .then(response => {
+                    this.users = response.data
+                })
+        }
+    },
+    mounted: function() {
+
+       this.listUsers()
+    }
+
+
+})
+
+
+
+</script>
+
+
+<div>
+
+</div>
+
+</body>
+</html>
