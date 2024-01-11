@@ -1,4 +1,4 @@
-package con.mastertheboss.ejb;
+package com.mastertheboss.ejb;
 
 import java.util.ArrayList;
 
