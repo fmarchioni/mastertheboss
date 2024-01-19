@@ -21,7 +21,7 @@ public class MigrationEJB {
     @PostConstruct
     public void initFlyWay() {
         Flyway flyway = Flyway.configure().dataSource(dataSource).load();
-        flyway.clean();
+
         flyway.baseline();
         flyway.migrate();
     }
