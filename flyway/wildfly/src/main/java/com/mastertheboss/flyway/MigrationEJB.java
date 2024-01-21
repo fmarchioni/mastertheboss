@@ -21,7 +21,8 @@ public class MigrationEJB {
     @PostConstruct
     public void initFlyWay() {
         Flyway flyway = Flyway.configure().dataSource(dataSource).load();
-
+       // Needed if you need to clean the schema
+        // flyway.clean();
         flyway.baseline();
         flyway.migrate();
     }
