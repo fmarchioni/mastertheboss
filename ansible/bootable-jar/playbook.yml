@@ -1,0 +1,33 @@
+---
+- name: WildFly JAX-RS Example Deployment
+  hosts: localhost
+  gather_facts: true
+
+  vars:
+    destination_dir: "{{ lookup('env','HOME') }}/output"
+    git_tag: "10.0.0.Final"
+  tasks:
+ 
+    - name: Check if WildFly JAR Maven Plugin directory exists
+      stat:
+        path: "{{ destination_dir }}/wildfly-jar-maven-plugin"
+      register: plugin_directory_exists
+
+    - name: Clone WildFly JAR Maven Plugin Git Repository
+      git:
+        repo: git@github.com:wildfly-extras/wildfly-jar-maven-plugin.git
+        dest: "{{ destination_dir }}/wildfly-jar-maven-plugin"
+        version: "{{ git_tag }}"
+      when: not plugin_directory_exists.stat.exists
+
+    - name: Move to examples/jaxrs directory
+      command: cd "{{ destination_dir }}/wildfly-jar-maven-plugin/examples/jaxrs"
+      args:
+        chdir: "{{ destination_dir }}/wildfly-jar-maven-plugin/examples/jaxrs"
+
+    - name: Run Maven Install and WildFly JAR Plugin
+      command: mvn install wildfly-jar:run
+      args:
+        chdir: "{{ destination_dir }}/wildfly-jar-maven-plugin/examples/jaxrs"
+
+
