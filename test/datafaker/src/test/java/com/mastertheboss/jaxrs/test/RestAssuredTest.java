@@ -39,9 +39,9 @@ public class RestAssuredTest {
 	 
 	  
 	@Test
-	public void testWithQueryParam() throws Exception {
+	public void testRandomData() throws Exception {
 		Customer client = BaseFaker.populate(Customer.class);
-		System.out.println("Client---------------->" + client);
+ 
 
 		// Convert the Java object to JSON
 		ObjectMapper mapper = new ObjectMapper();
@@ -77,52 +77,5 @@ public class RestAssuredTest {
 
 	}
 
-	/*
-	 * 
-	 * @Test
-	 * public void testWithJSONPayload() {
-	 * RestAssured.defaultParser = Parser.JSON;
-	 * 
-	 * String data = "{\"x\": \"5\",\"y\": \"10\"}";
-	 * 
-	 * RestAssured.given().urlEncodingEnabled(true)
-	 * .contentType("application/json")
-	 * .body(data)
-	 * .when()
-	 * .post("/json")
-	 * .then()
-	 * .statusCode(200)
-	 * .body("result", Matchers.equalTo(15));
-	 * 
-	 * }
-	 * 
-	 * @Test
-	 * public void testWithHeaderParam() {
-	 * 
-	 * RestAssured.given().urlEncodingEnabled(true)
-	 * .headers(
-	 * "User-Agent", "MyJavaApplication/1.0"
-	 * )
-	 * .when().get("/header")
-	 * .then()
-	 * .statusCode(200)
-	 * .body(equalTo("Browser is MyJavaApplication/1.0"));
-	 * 
-	 * 
-	 * }
-	 * 
-	 * @Test
-	 * public void testWithCookie() {
-	 * String id = UUID.randomUUID().toString();
-	 * RestAssured.given().urlEncodingEnabled(true)
-	 * 
-	 * .cookie("JSESSIONID", id)
-	 * .when().get("/session")
-	 * .then()
-	 * .statusCode(200)
-	 * .body(equalTo("Session is "+id));
-	 * 
-	 * 
-	 * }
-	 */
+	 
 }
