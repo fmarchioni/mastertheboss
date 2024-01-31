@@ -1,1 +1,3 @@
 == RabbitMQ HelloWorld example
+
+Article: https://www.mastertheboss.com/rabbitmq/rabbitmq-with-docker-a-comprehensive-guide/
