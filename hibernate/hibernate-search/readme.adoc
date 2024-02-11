@@ -1,0 +1,3 @@
+== Hibernate search tutorial
+
+Read more: https://www.mastertheboss.com/hibernate-jpa/hibernate-search/hibernate-search-and-jpa-tutorial/
