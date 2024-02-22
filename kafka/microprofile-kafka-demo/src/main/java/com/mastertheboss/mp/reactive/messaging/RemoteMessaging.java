@@ -2,6 +2,9 @@
 package com.mastertheboss.mp.reactive.messaging;
 
 import com.mastertheboss.mp.reactive.messaging.model.WeatherData;
+import io.smallrye.reactive.messaging.kafka.api.IncomingKafkaRecordMetadata;
+import io.smallrye.reactive.messaging.kafka.api.KafkaMetadataUtil;
+import io.smallrye.reactive.messaging.kafka.api.OutgoingKafkaRecordMetadata;
 import jakarta.enterprise.context.ApplicationScoped;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Message;
@@ -44,10 +47,10 @@ public class RemoteMessaging {
         try {
           
          
-           System.out.println(msg.getCity() + "  "+msg.getTemperature());
+            System.out.println("Sending to Kafka " +msg);
             Message<WeatherData> m = Message.of(msg);
             // Just use the hash as the Kafka key for this example
-            int key = msg.getCity().hashCode();
+            int key = msg.city().hashCode();
 
             // Create Metadata containing the Kafka key
             OutgoingKafkaRecordMetadata<Integer> md = OutgoingKafkaRecordMetadata
@@ -84,6 +87,6 @@ public class RemoteMessaging {
             throw new RuntimeException(e);
         }
     }
+*/
 
-    */
 }

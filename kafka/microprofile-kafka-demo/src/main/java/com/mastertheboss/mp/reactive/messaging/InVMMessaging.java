@@ -43,20 +43,17 @@ public class InVMMessaging {
   
 
     @Incoming("source")
-    @Outgoing("map")
+    @Outgoing("filter")
     public WeatherData logAllMessages(WeatherData message) {
         System.out.println("Got Weather : " + message);
         return message;
     }
 
-    @Incoming("map")
+    @Incoming("filter")
     @Outgoing("sender")
-    public PublisherBuilder<WeatherData> convertToCelsius(PublisherBuilder<WeatherData> messages) {
+    public PublisherBuilder<WeatherData> filterMessages(PublisherBuilder<WeatherData> messages) {
         return messages
-        .map(weatherData -> {
-            weatherData.setTemperature((int) Math.round((weatherData.getTemperature() - 32) / 1.8));
-            return weatherData;
-        });
+                .filter(data -> !data.city().equals("Sydney"));
     }
 
    

@@ -18,9 +18,8 @@ public class WeatherDataSerializer implements Serializer<WeatherData> {
         try {
             ByteArrayOutputStream bout = new ByteArrayOutputStream();
             ObjectOutputStream out = new ObjectOutputStream(bout);
-            out.writeLong(data.getTime().getTime());
-            out.writeUTF(data.getCity());
-            out.writeInt(data.getTemperature());
+            out.writeUTF(data.city());
+            out.writeInt(data.temperature());
             out.close();
             return bout.toByteArray();
         } catch (IOException e) {

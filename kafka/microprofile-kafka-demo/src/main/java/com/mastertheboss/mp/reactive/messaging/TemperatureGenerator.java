@@ -20,10 +20,8 @@ public class TemperatureGenerator {
     public CompletionStage<WeatherData> getWeatherData() {
         CompletableFuture<WeatherData> future = new CompletableFuture<>();
         ScheduledFuture<?> scheduledFuture = executor.schedule(() -> {
-            WeatherData weatherData = new WeatherData();
-            weatherData.setTemperature(random.nextInt(25) + 50);
-            weatherData.setTime(new Timestamp(System.currentTimeMillis()));
-            weatherData.setCity(getRandomCity());
+            int temperature = random.nextInt(10) + 10;
+            WeatherData weatherData = new WeatherData(getRandomCity(), temperature);
             future.complete(weatherData);
         }, 2, TimeUnit.SECONDS); // Schedule the task to run after 2 seconds
 
