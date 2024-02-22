@@ -1,0 +1,3 @@
+== MicroProfile reactive Messaging example
+
+Read more: https://www.mastertheboss.com/eclipse/eclipse-microservices/building-reactive-applications-with-wildfly/
