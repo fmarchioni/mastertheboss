@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+ 
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>microprofile-reactive-messaging-amqp</artifactId>
+	<groupId>com.mastertherboss</groupId>
+	<version>1.0.0.Final</version>
+	<packaging>war</packaging>
+	<name>Quickstart: microprofile-reactive-messaging-kafka</name>
+	<properties>
+		<!-- the version for the Server -->
+		<version.server>31.0.0.Final</version.server>
+		<!-- The versions for BOMs, Packs and Plugins -->
+		<version.bom.microprofile>${version.server}</version.bom.microprofile>
+	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<!-- importing the microprofile BOM adds MicroProfile specs -->
+			<dependency>
+				<groupId>org.wildfly.bom</groupId>
+				<artifactId>wildfly-microprofile</artifactId>
+				<version>${version.bom.microprofile}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<dependencies>
+		<dependency>
+			<groupId>jakarta.platform</groupId>
+			<artifactId>jakarta.jakartaee-api</artifactId>
+			<version>10.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Import the Reactive Messaging API, we use provided scope as the API is included in WildFly -->
+		<dependency>
+			<groupId>org.eclipse.microprofile.reactive.messaging</groupId>
+			<artifactId>microprofile-reactive-messaging-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!---->
+		<dependency>
+			<groupId>io.smallrye.reactive</groupId>
+			<artifactId>smallrye-reactive-messaging-amqp</artifactId>
+			<version>4.17.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Import the Reactive Streams Operators API, we use provided scope as the API is included in WildFly -->
+		<dependency>
+			<groupId>org.eclipse.microprofile.reactive-streams-operators</groupId>
+			<artifactId>microprofile-reactive-streams-operators-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.reactivestreams</groupId>
+			<artifactId>reactive-streams</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.4.0</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>4.0.0.Final</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>17</source>
+					<target>17</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
