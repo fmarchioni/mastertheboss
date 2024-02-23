@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  rabbit:
+    image: rabbitmq:3.12-management-alpine
+    labels:
+      - quarkus-dev-service-amqp=amqp
+    ports:
+      # AMQP protocol port
+      - '5672:5672'
+      # HTTP management UI
+      - '15672:15672'
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    volumes:
+      - './enabled_plugins:/etc/rabbitmq/enabled_plugins:ro'
