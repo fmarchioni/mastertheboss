@@ -4,7 +4,6 @@ package com.mastertheboss.mp.reactive.messaging;
 import com.mastertheboss.mp.reactive.messaging.model.WeatherData;
 import jakarta.enterprise.context.ApplicationScoped;
 
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.*;
