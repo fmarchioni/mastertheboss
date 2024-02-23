@@ -1,3 +1,0 @@
-== MicroProfile reactive Messaging example with AMQP 1.0
-
-Read more: https://www.mastertheboss.com/eclipse/eclipse-microservices/building-reactive-applications-with-wildfly/
