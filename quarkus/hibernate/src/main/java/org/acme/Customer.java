@@ -1,6 +1,6 @@
 package org.acme;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @NamedQuery(name = "Customers.findAll", query = "SELECT c FROM Customer c ORDER BY c.name")
