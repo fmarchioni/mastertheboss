@@ -1,28 +1,36 @@
 package org.acme;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-import javax.inject.Inject;
 import javax.sql.DataSource;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+
+import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
+ 
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+ 
+
 import java.sql.*;
 
-@Path("/hello")
-public class GreetingResource {
+@Path("/time")
+@Produces("application/json")
+@Consumes("application/json")
+
+public class PlainDataSourceResource {
+
+    @Inject
+    EntityManager entityManager;
+
    @Inject
     DataSource ds;
-
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String getTime() {
-
         String toReturn=null;
         try (Connection con = ds.getConnection();
-
              PreparedStatement ps = con.prepareStatement("SELECT CURRENT_TIMESTAMP");) {
-
             try (ResultSet rs = ps.executeQuery();) {
                 rs.next();
                 toReturn = "Current time: " + rs.getTimestamp(1);
@@ -30,7 +38,6 @@ public class GreetingResource {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return toReturn;
     }
 }
