@@ -1,12 +1,12 @@
 package com.mastertheboss.rest;
 
 import com.mastertheboss.ejb.ServiceBean;
-import com.mastertheboss.model.SimpleProperty;
+import com.mastertheboss.model.Person;
 
-import javax.inject.Inject;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import java.util.List;
 
 
@@ -14,29 +14,29 @@ import java.util.List;
 public class RESTService {
 
 	@Inject
-	ServiceBean ejb;
+	ServiceBean service;
 
 	@GET
 	@Path("/list/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public SimpleProperty getPropertyByPathParam(@PathParam("id") String id)
+	public Person getById(@PathParam("id") String id)
 	{
-		return ejb.findById(id);
+		return service.findById(id);
 	}
 
 	@GET
 	@Path("/list")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<SimpleProperty> getProperty()
+	public List<Person> getAll()
 	{
-		return ejb.findAll();
+		return service.findAll();
 	}
 	@POST
 	@Produces(MediaType.TEXT_PLAIN)
-	public Response createProperty(@FormParam("key")String key,
-								   @FormParam("value")String value)
+	public Response createPerson(@FormParam("name")String name,
+								   @FormParam("surname")String surname)
 	{
-		ejb.put(key,value);
+		service.add(name,surname);
 
 		return Response.ok("Inserted! Go back and check the list.").build();
 

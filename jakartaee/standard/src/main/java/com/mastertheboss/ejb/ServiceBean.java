@@ -1,46 +1,42 @@
 package com.mastertheboss.ejb;
 
-import com.mastertheboss.model.SimpleProperty;
+import com.mastertheboss.model.Person;
 
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
+import jakarta.transaction.Transactional;
+
 import java.util.List;
 
-@Stateless
+@ApplicationScoped
 public class  ServiceBean   {
 
 	@PersistenceContext
 	private EntityManager em;
 
-	public void put(String key, String value){
-        SimpleProperty p = new SimpleProperty();
-        p.setKey(key);
-        p.setValue(value);
+	@Transactional
+	public void add(String name, String surname){
+        Person p = new Person();
+        p.setName(name);
+        p.setSurname(surname);
 		em.persist(p);
 	}
 
-	public void delete(SimpleProperty p){
 
-		Query query = em.createQuery("delete FROM SimpleProperty p where p.key='"+p.getKey()+"'");
+	public List<Person> findAll(){
 
-		query.executeUpdate();
+		Query query = em.createQuery("SELECT p FROM Person p");
 
-	}
-
-	public List<SimpleProperty> findAll(){
-
-		Query query = em.createQuery("FROM SimpleProperty");
-
-		List <SimpleProperty> list = query.getResultList();
+		List <Person> list = query.getResultList();
 		return list;
 
 	}
 
-	public SimpleProperty findById(String id){
+	public Person findById(String id){
 
-		SimpleProperty p = em.find(SimpleProperty.class, id);
+		Person p = em.find(Person.class, id);
 		return p;
 
 	}
