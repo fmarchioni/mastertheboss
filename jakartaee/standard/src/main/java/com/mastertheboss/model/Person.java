@@ -20,8 +20,7 @@ public class Person {
 
 	@NotNull
 	private String surname;
-
-
+  
 	public Long getId() {
 		return id;
 	}
