@@ -1,0 +1,6 @@
+---
+wildfly_yml_configs:
+    - yaml_configuration.yml.j2
+wildfly_validation_queries:
+    - { query: ':read-attribute(name=product-version)', expected_result:  '31.0.0.Final', expected_result_undefined: false}
+
