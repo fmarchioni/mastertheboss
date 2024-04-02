@@ -1,0 +1,36 @@
+- name: "WildFly installation and configuration"
+  hosts: "{{ hosts_group_name | default('localhost') }}"
+  become: yes
+  vars:
+    wildfly_install_workdir: '/opt/'
+    #wildfly_config_base: standalone-ha.xml
+    wildfly_version: 31.0.0.Final
+    wildfly_java_package_name: java-17-openjdk
+    wildfly_home: "/opt/wildfly-{{ wildfly_version }}"
+    wildfly_config_custom_file: standalone-ha.xml
+
+    instance_http_ports: 8080  # Single port defined here
+    app:
+      name: 'info-1.2.war'
+      url: 'https://drive.google.com/uc?export=download&id=13K7RCqccgH4zAU1RfOjYMehNaHB0A3Iq'
+  collections:
+    - middleware_automation.wildfly
+  roles:
+    - role: wildfly_install
+  tasks:
+
+    - name: "Set up for WildFly instance."
+      ansible.builtin.include_role:
+        name: wildfly_systemd
+      vars:
+        # ... rest of the variables within the role ...
+
+    - name: "Wait for WildFly HTTP port to become available."
+      ansible.builtin.wait_for:
+        port: "{{ instance_http_ports }}"
+
+    - name: "Checks that WildFly server is running and accessible."
+      ansible.builtin.get_url:
+        url: "http://localhost:{{ instance_http_ports }}/"
+        dest: "/opt/{{ instance_http_ports }}"
+

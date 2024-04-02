@@ -1,0 +1,11 @@
+- name: "verify"
+  hosts: "{{ hosts_group_name | default('localhost') }}"
+  become: yes
+  gather_facts: false
+  vars_files:
+    - vars.yml
+  collections:
+    - middleware_automation.wildfly
+  roles:
+    - role: wildfly_validation
+ 
