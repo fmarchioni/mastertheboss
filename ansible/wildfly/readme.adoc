@@ -1,0 +1,14 @@
+== WildFly Provisioning with Ansible
+
+* To provision a WildFly Instance:
+
+----
+ansible-playbook wildfly.yml --ask-become-pass
+----
+
+* To update an existing WildFly Installation ( Work in progress! )
+
+----
+ansible-playbook verify.yml --ask-become-pass
+----
+
