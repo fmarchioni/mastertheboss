@@ -3,15 +3,15 @@ package com.itbuzzpress.ejb;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
-import javax.ejb.Schedule;
-import javax.ejb.Singleton;
-import javax.ejb.Startup;
-import javax.ejb.Timeout;
-import javax.ejb.Timer;
-import javax.ejb.TimerConfig;
-import javax.ejb.TimerService;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.Resource;
+import jakarta.ejb.Schedule;
+import jakarta.ejb.Singleton;
+import jakarta.ejb.Startup;
+import jakarta.ejb.Timeout;
+import jakarta.ejb.Timer;
+import jakarta.ejb.TimerConfig;
+import jakarta.ejb.TimerService;
 
 @Singleton
 @Startup
@@ -40,7 +40,7 @@ public class UserRegistry {
 		return listUsers;
 	}
     @Timeout
-	public void createReports(javax.ejb.Timer timer){
+	public void createReports(jakarta.ejb.Timer timer){
 	   System.out.println("It is time to create a Report!");	 
 	}
 	
