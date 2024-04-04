@@ -6,9 +6,10 @@
 ansible-playbook wildfly.yml --ask-become-pass
 ----
 
-* To update an existing WildFly Installation ( Work in progress! )
+* To update an existing WildFly Installation 
 
 ----
 ansible-playbook verify.yml --ask-become-pass
 ----
 
+Read more here: https://tinyurl.com/mvfeapzd
