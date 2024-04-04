@@ -3,11 +3,11 @@
   become: yes
   vars:
     wildfly_install_workdir: '/opt/'
-    #wildfly_config_base: standalone-ha.xml
+    wildfly_config_base: standalone-ha.xml
     wildfly_version: 31.0.0.Final
     wildfly_java_package_name: java-17-openjdk
     wildfly_home: "/opt/wildfly-{{ wildfly_version }}"
-    wildfly_config_custom_file: standalone-ha.xml
+    #wildfly_config_custom_file: standalone-ha.xml
 
     instance_http_ports: 8080  # Single port defined here
     app:

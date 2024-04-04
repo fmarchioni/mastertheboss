@@ -1,12 +1,13 @@
+- name: "verify"
   hosts: "{{ hosts_group_name | default('localhost') }}"
   become: yes
   vars:
     wildfly_install_workdir: '/opt/'
-    #wildfly_config_base: standalone-ha.xml
+    wildfly_config_base: standalone-ha.xml
     wildfly_version: 31.0.0.Final
     wildfly_java_package_name: java-17-openjdk
     wildfly_home: "/opt/wildfly-{{ wildfly_version }}"
-    wildfly_config_custom_file: standalone-ha.xml  
+    wildfly_validation_debug: True
   gather_facts: false
   
   vars_files:
@@ -14,5 +15,5 @@
   collections:
     - middleware_automation.wildfly
   roles:
-    - role: wildfly_validation
+    - role: wildfly_validation 
 
