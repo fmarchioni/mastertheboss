@@ -1,0 +1,5 @@
+== Sample Scripts
+
+* MetaspaceOOM.java : Reproducer for the issue OutOfMemoryError: Metaspace error
+
+Read more here: https://www.mastertheboss.com/java/solving-java-lang-outofmemoryerror-metaspace-error/
