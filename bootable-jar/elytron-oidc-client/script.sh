@@ -1,4 +1,4 @@
-./kcadm.sh config credentials --server http://localhost:8180/auth --realm master --user admin --password admin
+./kcadm.sh config credentials --server http://localhost:8180 --realm master --user admin --password admin
 
 ./kcadm.sh create realms -s realm=wildfly-realm -s enabled=true -o
 
