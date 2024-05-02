@@ -4,7 +4,7 @@
   vars:
     wildfly_install_workdir: '/opt/'
     wildfly_config_base: standalone-ha.xml
-    wildfly_version: 31.0.0.Final
+    wildfly_version: 32.0.0.Final
     wildfly_java_package_name: java-17-openjdk
     wildfly_home: "/opt/wildfly-{{ wildfly_version }}"
     wildfly_validation_debug: True
