@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.mastertheboss</groupId>
+	<artifactId>react-wildfly</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>react-wildfly</name>
+	<description>Insert description for your project here.</description>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<version.wildfly.maven.plugin>4.2.1.Final</version.wildfly.maven.plugin>
+		<version.wildfly.bom>31.0.0.Final</version.wildfly.bom>
+		<!--Use JUnit 5 here - the WildFly bom still brings 4.x -->
+		<version.junit5>5.10.1</version.junit5>
+		<!-- other plugin versions -->
+		<version.compiler.plugin>3.12.1</version.compiler.plugin>
+		<version.surefire.plugin>3.0.0</version.surefire.plugin>
+		<version.failsafe.plugin>3.2.5</version.failsafe.plugin>
+		<version.war.plugin>3.4.0</version.war.plugin>
+		<!-- maven-compiler-plugin -->
+		<maven.compiler.release>11</maven.compiler.release>
+	</properties>
+	<!-- the JBoss community and Red Hat GA Maven repositories -->
+	<repositories>
+		<repository>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Repository Group</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<releases></releases>
+			<snapshots></snapshots>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Repository Group</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
+		</pluginRepository>
+	</pluginRepositories>
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/jakarta.platform/jakarta.jakartaee-api -->
+		<dependency>
+			<groupId>jakarta.platform</groupId>
+			<artifactId>jakarta.jakartaee-api</artifactId>
+			<version>10.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+        <dependency>
+    <groupId>net.datafaker</groupId>
+    <artifactId>datafaker</artifactId>
+    <version>2.2.2</version>
+</dependency>
+
+	</dependencies>
+	<build>
+		<!-- deploys the quickstart on root web context -->
+		<finalName>ROOT</finalName>
+		<plugins>
+        <!--
+			<plugin>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+				<version>1.15.0</version>
+				<configuration>
+					<installDirectory>target</installDirectory>
+					<workingDirectory>src/main/my-app</workingDirectory>
+				</configuration>
+				<executions>
+		 
+					<execution>
+						<id>Install Node and NPM</id>
+						<goals>
+							<goal>install-node-and-npm</goal>
+						</goals>
+						<configuration>
+							<nodeVersion>v20.10.0</nodeVersion>
+						</configuration>
+					</execution>
+				 
+					<execution>
+						<id>npm install</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+					</execution>
+				 
+					<execution>
+						<id>npm run build</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<arguments>run build</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			  -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${version.compiler.plugin}</version>
+				<configuration></configuration>
+			</plugin>
+			<!--Build configuration for the WAR plugin: -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${version.war.plugin}</version>
+				<configuration>
+					<!-- Jakarta EE doesn't require web.xml, Maven needs to catch up! -->
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				 
+				</configuration>
+			</plugin>
+			<!-- The WildFly plugin deploys your war to a local JBoss AS container -->
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-jar-maven-plugin</artifactId>
+				<version>11.0.2.Final</version>
+				<configuration>
+					<feature-pack-location>wildfly@maven(org.jboss.universe:community-universe)#32.0.0.Final</feature-pack-location>
+					<layers>
+						<layer>jaxrs-server</layer>
+					</layers>
+					<plugin-options>
+						<jboss-fork-embedded>true</jboss-fork-embedded>
+					</plugin-options>
+					<cloud/>
+					<cli-sessions>
+						<cli-session>
+							<script-files>
+								<script>cors.cli</script>
+							</script-files>
+						</cli-session>
+					</cli-sessions>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>package</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>${version.wildfly.maven.plugin}</version>
+				<configuration>
+					<feature-packs>
+						<feature-pack>
+							<location>org.wildfly:wildfly-galleon-pack:${version.wildfly.bom}</location>
+						</feature-pack>
+					</feature-packs>
+					<layers>
+						<!-- layers may be used to customize the server to provision-->
+						<layer>cloud-server</layer>
+					</layers>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>package</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

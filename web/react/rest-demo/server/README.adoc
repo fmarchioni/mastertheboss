@@ -1,0 +1,46 @@
+
+= WIldFly demo with React
+
+The `getting-started` project is a simple Jakarta EE application with a HTTP endpoint that is running in
+https://wildfly.org[WildFly].
+
+The `src/main` folder contains a simple 'Hello world' style Jakarta EE application using JAX-RS.
+
+== Building the application
+
+To run the application, you use Maven:
+
+[source,shell]
+----
+mvn clean package
+----
+
+Maven will compile the application, provision a WildFly server
+The WildFly server is created in `target/server` with the application deployed in it.
+
+== Running the application
+
+To run the application as bootable JAR run:
+
+[source,shell]
+----
+java -jar target/ROOT-bootable.jar
+----
+
+Once WildFly is running, the application can be accessed at http://localhost:8080/
+
+== Testing the application
+
+To run integration tests to verify the application, you use Maven:
+
+[source,shell]
+----
+mvn clean package verify
+----
+
+Tests in `src/test` are run against the server in `target/server`.
+
+== Resources
+
+* https://wildfly.org[WildFly]
+* https://docs.wildfly.org[WildFly Documentation]
