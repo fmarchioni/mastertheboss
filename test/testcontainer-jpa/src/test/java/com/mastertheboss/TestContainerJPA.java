@@ -32,7 +32,7 @@ public class TestContainerJPA {
   }
 
   @Test
-  void contextLoads() {
+  void testCreateCustomer() {
     EntityManager entityManager = emf.createEntityManager();
     entityManager.getTransaction().begin();
     Customer c = new Customer();
@@ -40,16 +40,40 @@ public class TestContainerJPA {
     c.setLastName("Doe");
     c.setEmail("jdoe@gmail.com");
     entityManager.persist(c);
+    entityManager.getTransaction().commit();
+    entityManager.close();
 
+    // Verify
+    EntityManager em = emf.createEntityManager();
+    List<Customer> customers = em.createQuery("SELECT c FROM Customer c", Customer.class).getResultList();
+    Assertions.assertEquals(1, customers.size());
+    Assertions.assertEquals("John", customers.get(0).getFirstName());
+    em.close();
+  }
+
+
+
+  @Test
+  void testDeleteCustomer() {
+    EntityManager entityManager = emf.createEntityManager();
+    entityManager.getTransaction().begin();
+    Customer c = new Customer();
+    c.setFirstName("Charlie");
+    c.setLastName("Black");
+    c.setEmail("charlie@gmail.com");
+    entityManager.persist(c);
     entityManager.getTransaction().commit();
 
-    List<Customer> customers = entityManager.createQuery("SELECT c FROM Customer c", Customer.class)
-            .getResultList();
+    // Delete
+    entityManager.getTransaction().begin();
+    entityManager.remove(entityManager.contains(c) ? c : entityManager.merge(c));
+    entityManager.getTransaction().commit();
+    entityManager.close();
 
-    for (Customer customer : customers) {
-      System.out.println(customers);
-
-    Assertions.assertEquals(1, customers.size());
-    }
+    // Verify
+    EntityManager em = emf.createEntityManager();
+    Customer deletedCustomer = em.find(Customer.class, c.getId());
+    Assertions.assertNull(deletedCustomer);
+    em.close();
   }
 }

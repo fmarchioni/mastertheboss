@@ -7,16 +7,16 @@
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
  
     <properties>
-      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:${db.port}/testdb?createDatabaseIfNotExist=true"/>
-      <property name="javax.persistence.jdbc.user" value="root"/>
-      <property name="javax.persistence.jdbc.password" value="password"/>
+      <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:${db.port}/testdb?createDatabaseIfNotExist=true"/>
+      <property name="jakarta.persistence.jdbc.user" value="root"/>
+      <property name="jakarta.persistence.jdbc.password" value="password"/>
       <property name ="hibernate.show_sql" value = "true" />
 
       <!-- Create database schema and add data -->
       <!-- DON'T use this in production! -->
-      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
-      <property name="javax.persistence.sql-load-script-source" value="schema.sql"/>
+      <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+      <property name="jakarta.persistence.sql-load-script-source" value="schema.sql"/>
     </properties>
 
   </persistence-unit>
