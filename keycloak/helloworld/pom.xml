@@ -41,7 +41,7 @@
          <plugin>
             <groupId>org.wildfly.plugins</groupId>
             <artifactId>wildfly-maven-plugin</artifactId>
-            <version>2.1.0.Final</version>
+            <version>4.0.0.Final</version>
             <configuration>
                <filename>${project.build.finalName}.war</filename>
             </configuration>
