@@ -25,7 +25,6 @@ export class CustomerService {
          headers: { 'Content-Type': 'application/json' }
        });
 
-
   }
 
   getCustomerById(id: number): Observable<Customer>{

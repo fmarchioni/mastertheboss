@@ -1,0 +1,19 @@
+# Node.js / Angular
+node_modules/
+dist/
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+# Environment files
+.env
+# Angular build outputs
+.angular/cache/
+
+# Maven
+target/
+
+# IDEs and editors
+/.idea/
+/.vscode/
+/*.swp
