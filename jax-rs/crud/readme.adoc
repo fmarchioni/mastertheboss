@@ -1,5 +1,7 @@
 == Jakarta EE 10 REST CRUD Example
 
+Tutorial reference: https://www.mastertheboss.com/jboss-frameworks/resteasy/jax-rs-helloworld-application/
+
 This example shows how to build and test a REST Application using Jakarta EE 10
 
 In order to test the application you can use the following sample REST script:
