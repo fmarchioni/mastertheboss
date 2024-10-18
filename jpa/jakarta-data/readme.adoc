@@ -1,0 +1,15 @@
+== Jakarta Data quickstart
+
+This is a work-in-progress quickstart which uses jakarta data API on top of WildFly 34 Final Preview
+
+----
+curl -X POST http://localhost:8080/jaxrs-demo/rest/customers  -H 'Content-Type: application/json' -d '{"name":"frank","surname":"marchioni"}'
+
+curl http://localhost:8080/jaxrs-demo/rest/customers
+
+curl -X DELETE http://localhost:8080/jaxrs-demo/rest/customers?id=3
+
+curl -X PUT http://localhost:8080/jaxrs-demo/rest/customers  -H 'Content-Type: application/json' -d '{"id":"1", "name":"frank","surname":"marchioni"}'
+----
+
+If you are using Postman for your tests, within the `Postman` folder there's a Collection script to test the application from Postman.
