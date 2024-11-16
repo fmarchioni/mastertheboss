@@ -1,4 +1,4 @@
-package com.mastertheboss.jaxrs;
+package com.mastertheboss.jakartadata;
 import jakarta.persistence.*;
 
 

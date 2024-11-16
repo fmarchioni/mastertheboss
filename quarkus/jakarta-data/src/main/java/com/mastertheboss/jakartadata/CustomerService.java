@@ -1,20 +1,11 @@
-package com.mastertheboss.jaxrs;
+package com.mastertheboss.jakartadata;
 
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
-
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
- 
 import jakarta.transaction.Transactional;
-import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.Response;
  
 
@@ -22,9 +13,7 @@ import jakarta.ws.rs.core.Response;
 @ApplicationScoped
 public class CustomerService {
 
-    @PersistenceContext
-    private EntityManager entityManager;
-
+ 
     @Inject
     CustomerRepository repository;
 
