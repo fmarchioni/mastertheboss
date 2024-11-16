@@ -1,6 +1,8 @@
-# code-with-quarkus
+# Jakarta Demo with Quarkus
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
+
+Read the full article here: https://www.mastertheboss.com/java-ee/jakarta-ee/jakarta-data-in-action/
 
 If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
 
