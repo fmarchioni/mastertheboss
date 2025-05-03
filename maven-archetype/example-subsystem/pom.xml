@@ -14,7 +14,7 @@
 
 
     <properties>
-        <version.wildfly.core>21.1.0.Final</version.wildfly.core>
+        <version.wildfly.core>22.0.0.Final</version.wildfly.core>
         <version.junit>4.13.2</version.junit>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <module.name>org.test.subsystem</module.name>
