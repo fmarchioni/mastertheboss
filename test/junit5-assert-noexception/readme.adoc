@@ -1,0 +1,3 @@
+== Junit 5 Assertions tutorial
+
+Check this article: http://www.mastertheboss.com/various-stuff/testing-java/how-to-assert-exceptions-in-junit
