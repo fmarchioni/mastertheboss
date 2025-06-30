@@ -32,15 +32,15 @@
 
 
     <!-- other plug-in versions -->
-    <version.war.plugin>2.1.1</version.war.plugin>
+    <version.war.plugin>3.4.0</version.war.plugin>
 
     <!-- maven-compiler-plugin -->
-    <maven.compiler.target>11</maven.compiler.target>
-    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.source>17</maven.compiler.source>
 
-    <primefaces.version>12.0.0</primefaces.version>
-    <version.wildfly>28.0.0.Final</version.wildfly>
-    <version.bootable-jar>10.0.0.Final</version.bootable-jar>
+    <primefaces.version>15.0.4</primefaces.version>
+    <version.wildfly>36.0.0.Final</version.wildfly>
+    <version.bootable-jar>12.0.0.Final</version.bootable-jar>
   </properties>
 
 
@@ -49,7 +49,7 @@
     <dependency>
       <groupId>jakarta.platform</groupId>
       <artifactId>jakarta.jakartaee-api</artifactId>
-      <version>10.0.0</version>
+      <version>11.0.0</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
