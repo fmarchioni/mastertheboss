@@ -1,0 +1,153 @@
+.block-editor-block-list__layout pre {
+	background: rgba(0, 0, 0, 0.05);
+	font-family: inherit;
+	font-size: inherit;
+	line-height: normal;
+	margin-bottom: 1.5em;
+	padding: 20px;
+	overflow: auto;
+	color: inherit; /* editor only */
+}
+
+body .block-editor-block-list__block blockquote {
+	border-left: 5px solid rgba(0, 0, 0, 0.05);
+	padding: 20px;
+	font-size: 1.2em;
+	font-style:italic;
+	margin: 0 0 1.5em;
+	position: relative;
+	color: inherit; /* editor only */
+}
+
+body .wp-block-quote:not(.is-large):not(.is-style-large) {
+	border-left: 5px solid rgba(0, 0, 0, 0.05);
+	padding: 20px;
+}
+
+body .block-editor-block-list__block blockquote p:last-child {
+	margin: 0;
+}
+
+.block-editor-block-list__layout table,
+.block-editor-block-list__layout th,
+.block-editor-block-list__layout td {
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body .block-editor-block-list__block table {
+	border-collapse: separate;
+	border-spacing: 0;
+	border-width: 1px 0 0 1px;
+	margin: 0 0 1.5em;
+	width: 100%;
+}
+
+.block-editor-block-list__layout th,
+.block-editor-block-list__layout td {
+	padding: 8px;
+}
+
+.block-editor-block-list__layout th {
+	border-width: 0 1px 1px 0;
+}
+
+.block-editor-block-list__layout td {
+	border-width: 0 1px 1px 0;
+}
+
+body .block-editor-block-list__block hr {
+	background-color: rgba(0, 0, 0, 0.1);
+	border: 0;
+	height: 1px;
+	margin-bottom: 40px;
+	margin-top: 40px;
+	width: auto;
+}
+
+body .block-editor-default-block-appender input[type=text].editor-default-block-appender__content,
+body .block-editor-default-block-appender textarea.editor-default-block-appender__content {
+	font-family: inherit;
+	font-size: inherit;
+}
+
+/*--------------------------------------------------------------
+## Gallery
+--------------------------------------------------------------*/
+
+.block-editor-block-list__layout .wp-block-gallery li figcaption {
+	background: rgba(255, 255, 255, 0.7);
+	color: #000;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+/*--------------------------------------------------------------
+# Button
+--------------------------------------------------------------*/
+
+.block-editor-block-list__layout .wp-block-button .wp-block-button__link,
+.block-editor-block-list__layout .button {
+	font-size: inherit;
+	padding: 10px 15px;
+	line-height: normal;
+}
+
+/*--------------------------------------------------------------
+# Content Title
+--------------------------------------------------------------*/
+
+button.content-title-visibility {
+	position: absolute;
+	right: 0;
+	font-size: 30px;
+	line-height: 30px;
+	top: calc(50% - 15px);
+	opacity: 0.4;
+	background: none;
+	border: none;
+	cursor: pointer;
+	display: none;
+}
+
+button.show-content-title:before {
+	content: "\f530";
+}
+
+button.disable-content-title:before {
+	content: "\f177";
+}
+
+body:not(.content-title-hidden) .editor-post-title__block:hover button.disable-content-title,
+.content-title-hidden .editor-post-title__block:hover button.show-content-title {
+	display: block;
+}
+
+button.content-title-visibility:before {
+	font-family: dashicons;
+}
+
+.content-title-hidden .editor-post-title textarea {
+	opacity: 0.4;
+}
+
+.edit-post-text-editor .editor-post-title__block .editor-post-title__input {
+	color: initial;
+	opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# Columns
+--------------------------------------------------------------*/
+
+.block-editor-block-list__block .wp-block-columns .wp-block-column {
+	margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# Fix shortcode block label color
+--------------------------------------------------------------*/
+
+.wp-block-shortcode label,
+.wp-block-shortcode .block-editor-plain-text {
+	color: initial;
+}
