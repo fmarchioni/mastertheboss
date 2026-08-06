@@ -8,7 +8,7 @@
     <version>1.0</version>
     <properties>
         <flyway.version>10.6.0</flyway.version>
-        <postgres.driver.version>42.7.1</postgres.driver.version>
+        <postgres.driver.version>42.7.2</postgres.driver.version>
         <database.url>jdbc:postgresql://localhost:5432/postgres</database.url>
         <database.user>postgres</database.user>
         <database.password>postgres</database.password>
